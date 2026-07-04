@@ -6,6 +6,10 @@ import VenueCard from "./components/VenueCard.jsx";
 
 const EMPTY_FILTERS = { q: "", fish: [], types: [], takeout: false, ayce: false };
 
+const REDUCED_MOTION = window.matchMedia(
+  "(prefers-reduced-motion: reduce)"
+).matches;
+
 export function venueSlug(name) {
   return name.toLowerCase().replace(/[^a-z0-9]+/g, "-");
 }
@@ -30,7 +34,8 @@ export default function App() {
   const [locNote, setLocNote] = useState(null);
   const [focus, setFocus] = useState(null); // { name, source: "map" | "list", ts }
 
-  useEffect(() => {
+  const loadData = useCallback(() => {
+    setError(null);
     fetch(`${import.meta.env.BASE_URL}data/fish_fry.json`)
       .then((r) => {
         if (!r.ok) throw new Error(`Data fetch failed with status ${r.status}`);
@@ -39,6 +44,8 @@ export default function App() {
       .then(setData)
       .catch((e) => setError(e.message));
   }, []);
+
+  useEffect(loadData, [loadData]);
 
   // Embedded in a WordPress iframe: report our height so the parent page can
   // size the frame and the widget never scrolls-within-a-scroll.
@@ -113,7 +120,11 @@ export default function App() {
   useEffect(() => {
     if (!focus || focus.source !== "map") return;
     const el = document.getElementById(`venue-${venueSlug(focus.name)}`);
-    if (el) el.scrollIntoView({ behavior: "smooth", block: "center" });
+    if (el)
+      el.scrollIntoView({
+        behavior: REDUCED_MOTION ? "auto" : "smooth",
+        block: "center",
+      });
   }, [focus]);
 
   // The featured slot is paid placement: pinned above the list, unaffected by
@@ -129,13 +140,27 @@ export default function App() {
     return rest;
   }, [filtered, featured, sort, userLoc, miles]);
 
+  const hasFilters =
+    filters.q.trim() !== "" ||
+    filters.fish.length > 0 ||
+    filters.types.length > 0 ||
+    filters.takeout ||
+    filters.ayce;
+  const clearFilters = () => setFilters(EMPTY_FILTERS);
+  const loading = !data && !error;
+
   if (error) {
     return (
       <div className="ff-app">
-        <p className="ff-error">
-          The fish fry data didn&rsquo;t load ({error}). Refresh the page — if it
-          keeps happening, the newsroom knows where to find the build logs.
-        </p>
+        <div className="ff-error">
+          <p>
+            The fish fry data didn&rsquo;t load ({error}). If it keeps
+            happening, the newsroom knows where to find the build logs.
+          </p>
+          <button type="button" className="ff-chip" onClick={loadData}>
+            Try again
+          </button>
+        </div>
       </div>
     );
   }
@@ -168,6 +193,19 @@ export default function App() {
       />
       <MapView venues={filtered} focus={focus} onMarkerClick={onMarkerClick} />
 
+      {data && (
+        <p className="ff-count" aria-live="polite">
+          {hasFilters
+            ? `${filtered.length} of ${venues.length} fish fries match.`
+            : `${venues.length} fish fries this Friday.`}
+          {hasFilters && (
+            <button type="button" className="ff-clear" onClick={clearFilters}>
+              Clear filters
+            </button>
+          )}
+        </p>
+      )}
+
       {featured && (
         <FeaturedCard
           venue={featured}
@@ -178,6 +216,8 @@ export default function App() {
       )}
 
       <section className="ff-list" aria-label="Fish fry listings">
+        {loading &&
+          [0, 1, 2].map((i) => <div key={i} className="ff-card ff-skeleton" />)}
         {listVenues.map((v) => (
           <VenueCard
             key={v.venue_name}
@@ -188,9 +228,12 @@ export default function App() {
           />
         ))}
         {data && listVenues.length === 0 && (
-          <p className="ff-empty">
-            No fish fries match those filters. Loosen up — it&rsquo;s Friday.
-          </p>
+          <div className="ff-empty">
+            <p>No fish fries match those filters. Loosen up — it&rsquo;s Friday.</p>
+            <button type="button" className="ff-chip" onClick={clearFilters}>
+              Clear filters
+            </button>
+          </div>
         )}
       </section>
 

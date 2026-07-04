@@ -187,15 +187,51 @@ body {
   border-color: var(--ink);
 }
 
-.ff-marker-featured img {
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
+.leaflet-popup-content strong {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.leaflet-popup-content a {
+  color: var(--teal-dark);
 }
 
 .leaflet-popup-content {
   font-family: var(--body);
   font-size: 13px;
+}
+
+/* ---------- result count ---------- */
+
+.ff-count {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin: 0 0 12px;
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-soft);
+}
+
+.ff-clear {
+  font-family: var(--display);
+  font-size: 12px;
+  padding: 0;
+  border: none;
+  border-bottom: 1px solid rgba(58, 134, 124, 0.4);
+  background: none;
+  color: var(--teal-dark);
+  cursor: pointer;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.ff-clear:hover {
+  border-bottom-color: var(--teal-dark);
 }
 
 /* ---------- featured slot ---------- */
@@ -236,9 +272,41 @@ body {
   overflow: hidden;
 }
 
+.ff-card {
+  scroll-margin: 16px;
+}
+
 .ff-card.is-selected {
   border-color: var(--teal);
   box-shadow: 0 0 0 2px rgba(58, 134, 124, 0.25);
+  animation: ff-pulse 900ms ease-out 1;
+}
+
+@keyframes ff-pulse {
+  0% {
+    box-shadow: 0 0 0 6px rgba(58, 134, 124, 0.35);
+  }
+  100% {
+    box-shadow: 0 0 0 2px rgba(58, 134, 124, 0.25);
+  }
+}
+
+.ff-skeleton {
+  height: 150px;
+  background: linear-gradient(
+    100deg,
+    #f4f4f4 40%,
+    #ececec 50%,
+    #f4f4f4 60%
+  );
+  background-size: 200% 100%;
+  animation: ff-shimmer 1.4s linear infinite;
+}
+
+@keyframes ff-shimmer {
+  to {
+    background-position: -200% 0;
+  }
 }
 
 .ff-card-photo {
@@ -486,5 +554,36 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .ff-chip {
     transition: none;
+  }
+
+  .ff-card.is-selected,
+  .ff-skeleton {
+    animation: none;
+  }
+}
+
+/* ---------- print: readers pin Friday lists to the fridge ---------- */
+
+@media print {
+  .ff-filters,
+  .ff-map,
+  .ff-maplink,
+  .ff-clear,
+  .ff-badge,
+  .ff-card-photo {
+    display: none;
+  }
+
+  .ff-card,
+  .ff-featured {
+    break-inside: avoid;
+  }
+
+  .ff-card {
+    border-color: #999;
+  }
+
+  body {
+    font-size: 12px;
   }
 }

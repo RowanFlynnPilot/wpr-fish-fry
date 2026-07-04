@@ -117,7 +117,8 @@ cd widget; npm run build
   and it applies to everyone equally.
 - The featured slot is pinned above the list, ignores filters (it's paid
   placement), and is excluded from the list so it never renders twice. On the
-  map, the featured venue's marker is the WPR typewriter badge.
+  map, the featured venue's marker gets a black ring — no logo on the map
+  (editorial decision, 2026-07).
 - "Sponsor" tag wording in `App.jsx`/`VenueCard.jsx` is placeholder pending
   Shereen's disclosure language.
 

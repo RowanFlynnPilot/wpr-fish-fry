@@ -5,7 +5,7 @@ function money(n) {
   return Number.isInteger(n) ? `$${n}` : `$${n.toFixed(2)}`;
 }
 
-function priceRange(v) {
+export function priceRange(v) {
   return v.price_low === v.price_high
     ? money(v.price_low)
     : `${money(v.price_low)}–${money(v.price_high)}`;
