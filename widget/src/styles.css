@@ -1,15 +1,17 @@
+/* Wausau Pilot & Review house style: Oswald display type, Merriweather body,
+   black-on-white newspaper palette. The teal is the typewriter in the WPR
+   badge — it is the only accent color. */
+
 :root {
   --teal: #3a867c;
   --teal-dark: #2d6a62;
-  --cream: #f6f2e9;
-  --paper: #fffdf8;
-  --ink: #22302d;
-  --ink-soft: #5a6b67;
-  --line: #e3dccb;
-  --gold: #c9a227;
-  --display: "Fraunces", Georgia, serif;
-  --body: "Public Sans", system-ui, sans-serif;
-  --mono: "JetBrains Mono", ui-monospace, monospace;
+  --paper: #ffffff;
+  --ink: #111111;
+  --ink-soft: #666666;
+  --line: #e0e0e0;
+  --rule: #111111;
+  --display: "Oswald", "Arial Narrow", Helvetica, sans-serif;
+  --body: "Merriweather", Georgia, serif;
 }
 
 * {
@@ -18,11 +20,11 @@
 
 body {
   margin: 0;
-  background: var(--cream);
+  background: var(--paper);
   color: var(--ink);
   font-family: var(--body);
-  font-size: 15px;
-  line-height: 1.55;
+  font-size: 14px;
+  line-height: 1.6;
 }
 
 .ff-app {
@@ -36,21 +38,31 @@ body {
 .ff-header {
   text-align: center;
   margin-bottom: 18px;
+  padding-bottom: 14px;
+  border-bottom: 3px solid var(--rule);
+}
+
+.ff-badge {
+  width: 72px;
+  height: 72px;
+  margin-bottom: 6px;
 }
 
 .ff-header h1 {
   font-family: var(--display);
   font-weight: 700;
-  font-size: clamp(26px, 5vw, 36px);
+  font-size: clamp(26px, 5vw, 38px);
   line-height: 1.1;
   margin: 0 0 6px;
-  color: var(--teal-dark);
+  color: var(--ink);
+  letter-spacing: 0.01em;
 }
 
 .ff-tagline {
   margin: 0;
   color: var(--ink-soft);
-  font-size: 14px;
+  font-style: italic;
+  font-size: 13px;
 }
 
 /* ---------- filters ---------- */
@@ -58,7 +70,7 @@ body {
 .ff-filters {
   background: var(--paper);
   border: 1px solid var(--line);
-  border-radius: 10px;
+  border-radius: 4px;
   padding: 12px 14px;
   margin-bottom: 14px;
   display: grid;
@@ -72,10 +84,11 @@ body {
 }
 
 .ff-filter-label {
-  font-family: var(--mono);
+  font-family: var(--display);
+  font-weight: 500;
   font-size: 11px;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   color: var(--ink-soft);
   min-width: 44px;
 }
@@ -84,13 +97,37 @@ body {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
+  align-items: baseline;
+}
+
+.ff-search {
+  flex: 1;
+  font-family: var(--body);
+  font-size: 13px;
+  padding: 6px 10px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  color: var(--ink);
+  background: var(--paper);
+  min-width: 0;
+}
+
+.ff-search:focus-visible {
+  outline: 2px solid var(--teal-dark);
+  outline-offset: 1px;
+}
+
+.ff-locnote {
+  font-size: 11px;
+  font-style: italic;
+  color: var(--ink-soft);
 }
 
 .ff-chip {
-  font-family: var(--body);
+  font-family: var(--display);
+  font-weight: 400;
   font-size: 13px;
-  font-weight: 500;
-  padding: 4px 12px;
+  padding: 3px 12px;
   border-radius: 999px;
   border: 1px solid var(--teal);
   background: transparent;
@@ -106,11 +143,11 @@ body {
 
 .ff-chip.is-on {
   background: var(--teal);
-  color: var(--cream);
+  color: var(--paper);
 }
 
 .ff-chip:focus-visible {
-  outline: 2px solid var(--gold);
+  outline: 2px solid var(--teal-dark);
   outline-offset: 2px;
 }
 
@@ -127,7 +164,7 @@ body {
 
 .ff-map {
   height: 420px;
-  border-radius: 10px;
+  border-radius: 4px;
   border: 1px solid var(--line);
   margin-bottom: 16px;
   z-index: 0;
@@ -143,7 +180,17 @@ body {
   border: 2px solid var(--teal);
   border-radius: 50%;
   font-size: 16px;
-  box-shadow: 0 1px 4px rgba(34, 48, 45, 0.3);
+  box-shadow: 0 1px 4px rgba(17, 17, 17, 0.3);
+}
+
+.ff-marker-featured {
+  border-color: var(--ink);
+}
+
+.ff-marker-featured img {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
 }
 
 .leaflet-popup-content {
@@ -159,20 +206,20 @@ body {
 
 .ff-featured-badge {
   display: inline-block;
-  font-family: var(--mono);
+  font-family: var(--display);
   font-size: 11px;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  background: var(--gold);
-  color: var(--ink);
+  background: var(--ink);
+  color: var(--paper);
   padding: 4px 12px;
-  border-radius: 6px 6px 0 0;
+  border-radius: 4px 4px 0 0;
   margin-left: 14px;
 }
 
 .ff-card-featured {
-  border: 2px solid var(--gold);
+  border: 2px solid var(--ink);
 }
 
 /* ---------- cards ---------- */
@@ -185,8 +232,13 @@ body {
 .ff-card {
   background: var(--paper);
   border: 1px solid var(--line);
-  border-radius: 10px;
+  border-radius: 4px;
   overflow: hidden;
+}
+
+.ff-card.is-selected {
+  border-color: var(--teal);
+  box-shadow: 0 0 0 2px rgba(58, 134, 124, 0.25);
 }
 
 .ff-card-photo {
@@ -208,27 +260,29 @@ body {
 }
 
 .ff-type {
-  font-family: var(--mono);
+  font-family: var(--display);
+  font-weight: 500;
   font-size: 11px;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   color: var(--teal-dark);
 }
 
 .ff-sponsor {
-  font-family: var(--mono);
+  font-family: var(--display);
+  font-weight: 400;
   font-size: 10px;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   color: var(--ink-soft);
   border: 1px solid var(--line);
-  border-radius: 4px;
+  border-radius: 3px;
   padding: 1px 6px;
 }
 
 .ff-card-name {
   font-family: var(--display);
-  font-weight: 600;
+  font-weight: 500;
   font-size: 21px;
   line-height: 1.15;
   margin: 0 0 2px;
@@ -237,7 +291,7 @@ body {
 .ff-card-place {
   margin: 0 0 8px;
   color: var(--ink-soft);
-  font-size: 13px;
+  font-size: 12px;
 }
 
 .ff-card-facts {
@@ -246,8 +300,8 @@ body {
   margin-bottom: 8px;
 }
 
-.ff-mono {
-  font-family: var(--mono);
+.ff-fact {
+  font-family: var(--display);
   font-size: 13px;
 }
 
@@ -258,6 +312,7 @@ body {
 
 .ff-hours {
   color: var(--ink-soft);
+  font-weight: 400;
 }
 
 .ff-tags {
@@ -268,6 +323,8 @@ body {
 }
 
 .ff-tag {
+  font-family: var(--display);
+  font-weight: 400;
   font-size: 12px;
   padding: 2px 9px;
   border-radius: 999px;
@@ -280,7 +337,7 @@ body {
 }
 
 .ff-tag-flag {
-  background: var(--cream);
+  background: var(--paper);
   border: 1px solid var(--line);
   color: var(--ink-soft);
   text-transform: none;
@@ -288,18 +345,18 @@ body {
 
 .ff-sides {
   margin: 0 0 6px;
-  font-size: 13px;
+  font-size: 12px;
   color: var(--ink-soft);
 }
 
 .ff-desc {
   margin: 0 0 6px;
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .ff-note {
   margin: 0 0 6px;
-  font-size: 13px;
+  font-size: 12px;
   font-style: italic;
   color: var(--ink-soft);
 }
@@ -309,8 +366,9 @@ body {
   flex-wrap: wrap;
   gap: 14px;
   margin-top: 8px;
+  font-family: var(--display);
+  font-weight: 400;
   font-size: 13px;
-  font-weight: 600;
 }
 
 .ff-links a {
@@ -324,7 +382,28 @@ body {
 }
 
 .ff-links a:focus-visible {
-  outline: 2px solid var(--gold);
+  outline: 2px solid var(--teal-dark);
+  outline-offset: 2px;
+}
+
+.ff-maplink {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: 13px;
+  padding: 0;
+  border: none;
+  border-bottom: 1px solid rgba(58, 134, 124, 0.4);
+  background: none;
+  color: var(--teal-dark);
+  cursor: pointer;
+}
+
+.ff-maplink:hover {
+  border-bottom-color: var(--teal-dark);
+}
+
+.ff-maplink:focus-visible {
+  outline: 2px solid var(--teal-dark);
   outline-offset: 2px;
 }
 
@@ -335,22 +414,55 @@ body {
   text-align: center;
   color: var(--ink-soft);
   padding: 24px 12px;
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .ff-error {
   background: var(--paper);
   border: 1px solid var(--line);
-  border-radius: 10px;
+  border-radius: 4px;
 }
 
 .ff-footer {
   margin-top: 20px;
-  padding-top: 12px;
-  border-top: 1px solid var(--line);
-  font-size: 12px;
+  padding-top: 14px;
+  border-top: 3px solid var(--rule);
+  font-size: 11px;
   color: var(--ink-soft);
   text-align: center;
+}
+
+.ff-footer-brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 6px;
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 13px;
+}
+
+.ff-footer-brand img {
+  width: 28px;
+  height: 28px;
+}
+
+.ff-footer-brand a {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.ff-footer-brand a:hover {
+  color: var(--teal-dark);
+}
+
+.ff-advertise {
+  margin: 8px 0 0;
+}
+
+.ff-advertise a {
+  color: var(--teal-dark);
 }
 
 /* ---------- narrow iframe / mobile ---------- */

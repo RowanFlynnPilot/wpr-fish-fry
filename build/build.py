@@ -15,17 +15,29 @@ local CSV path (development / sample data). Same code path either way.
 """
 
 import csv
+import hashlib
 import io
 import json
+import os
 import sys
 import time
 from datetime import datetime, timezone
 from pathlib import Path
 
 import requests
+from PIL import Image
+
+# Windows consoles default to cp1252; don't let an unprintable arrow crash a
+# build that already succeeded. CI is UTF-8 and unaffected.
+if sys.stdout.encoding and sys.stdout.encoding.lower() != "utf-8":
+    sys.stdout.reconfigure(errors="replace")
+    sys.stderr.reconfigure(errors="replace")
 
 ROOT = Path(__file__).resolve().parent.parent
 CACHE_PATH = ROOT / "data" / "geocode_cache.json"
+PHOTO_MANIFEST_PATH = ROOT / "data" / "photo_cache.json"
+PHOTO_DIR = ROOT / "widget" / "public" / "photos"
+PHOTO_MAX_WIDTH = 1200
 OUTPUT_PATH = ROOT / "widget" / "public" / "data" / "fish_fry.json"
 
 NOMINATIM_URL = "https://nominatim.openstreetmap.org/search"
@@ -279,6 +291,114 @@ def geocode(venues: list[dict]) -> None:
         die(errors)
 
 
+def process_photos(venues: list[dict]) -> None:
+    """Sponsor photos are downloaded once into a committed cache and served
+    from Pages, so a paid listing never ships a broken image because the
+    venue's own site did. Keyed by source URL — change photo_url in the sheet
+    to refresh the photo. Fetch failure fails the build: a paid tier with a
+    dead photo is a product defect, not a warning."""
+    manifest = (
+        json.loads(PHOTO_MANIFEST_PATH.read_text(encoding="utf-8"))
+        if PHOTO_MANIFEST_PATH.exists()
+        else {}
+    )
+    errors: list[str] = []
+    dirty = False
+    PHOTO_DIR.mkdir(parents=True, exist_ok=True)
+
+    for v in venues:
+        url = v["photo_url"]
+        if not url:
+            continue
+        entry = manifest.get(url)
+        if entry and (PHOTO_DIR / entry["file"]).exists():
+            v["photo_url"] = f"photos/{entry['file']}"
+            continue
+        try:
+            resp = requests.get(url, timeout=30, headers={"User-Agent": USER_AGENT})
+            resp.raise_for_status()
+            img = Image.open(io.BytesIO(resp.content)).convert("RGB")
+            if img.width > PHOTO_MAX_WIDTH:
+                img = img.resize(
+                    (PHOTO_MAX_WIDTH, round(img.height * PHOTO_MAX_WIDTH / img.width)),
+                    Image.LANCZOS,
+                )
+            name = hashlib.sha1(url.encode("utf-8")).hexdigest()[:16] + ".jpg"
+            img.save(PHOTO_DIR / name, "JPEG", quality=82, optimize=True)
+            manifest[url] = {
+                "file": name,
+                "fetched_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+            }
+            v["photo_url"] = f"photos/{name}"
+            dirty = True
+        except Exception as e:
+            errors.append(
+                f"Photo fetch failed for '{v['venue_name']}' ({url}): {e} — "
+                "fix the photo_url in the sheet or clear the cell."
+            )
+
+    # Persist successful fetches even if one photo failed, same as geocoding.
+    if dirty:
+        PHOTO_MANIFEST_PATH.write_text(
+            json.dumps(manifest, indent=2, sort_keys=True) + "\n", encoding="utf-8"
+        )
+    if errors:
+        die(errors)
+
+
+def money(n: float) -> str:
+    return f"${n:g}"
+
+
+def featured_blurb(v: dict) -> str:
+    """Copy-paste newsletter/social blurb for the weekly featured (paid) slot."""
+    price = (
+        money(v["price_low"])
+        if v["price_low"] == v["price_high"]
+        else f"{money(v['price_low'])}–{money(v['price_high'])}"
+    )
+    desc = f" {v['description']}" if v["description"] else ""
+    return (
+        f"🐟 **This week's featured Friday fish fry: {v['venue_name']}** "
+        f"({v['city']}) — {', '.join(v['fish'])}; {price}; {v['hours']}.{desc} "
+        f"Find every fish fry in Marathon County: "
+        f"https://rowanflynnpilot.github.io/wpr-fish-fry/"
+    )
+
+
+def write_step_summary(active: list[dict], warning: str | None) -> None:
+    """In CI, hand the curators a build recap and a ready-to-paste featured
+    blurb in the Actions run summary. No-op locally."""
+    summary_path = os.environ.get("GITHUB_STEP_SUMMARY")
+    if not summary_path:
+        return
+    lines = [f"## Fish fry build — {len(active)} active venue(s)", ""]
+    if warning:
+        lines += [f"⚠️ {warning}", ""]
+    featured = next((v for v in active if v["featured_this_week"]), None)
+    if featured:
+        lines += [
+            f"### This week's featured fry: {featured['venue_name']}",
+            "",
+            "Copy-paste for the newsletter or socials:",
+            "",
+            f"> {featured_blurb(featured)}",
+        ]
+    else:
+        lines += ["No venue holds the featured slot this week."]
+    with open(summary_path, "a", encoding="utf-8") as f:
+        f.write("\n".join(lines) + "\n")
+
+
+def previous_venue_count() -> int | None:
+    if not OUTPUT_PATH.exists():
+        return None
+    try:
+        return json.loads(OUTPUT_PATH.read_text(encoding="utf-8")).get("venue_count")
+    except (json.JSONDecodeError, OSError):
+        return None
+
+
 def main() -> None:
     if len(sys.argv) != 2:
         print("Usage: python build/build.py <csv_url_or_path>", file=sys.stderr)
@@ -291,7 +411,21 @@ def main() -> None:
     for v in active:
         del v["active"]
     geocode(active)
+    process_photos(active)
     active.sort(key=lambda v: v["venue_name"].lower())
+
+    # Curator typo detector: a sharp drop in active venues is more often a
+    # sheet mistake than a wave of seasonal closures. Warn, don't fail —
+    # closures are legitimate and the curators can judge.
+    warning = None
+    prev_count = previous_venue_count()
+    if prev_count and prev_count >= 5 and len(active) < prev_count * 0.7:
+        warning = (
+            f"Active venue count dropped from {prev_count} to {len(active)} since "
+            "the last build. If that isn't intentional (seasonal closures), check "
+            "the sheet's 'active' column."
+        )
+        print(f"WARNING: {warning}", file=sys.stderr)
 
     payload = {
         "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
@@ -300,6 +434,7 @@ def main() -> None:
     }
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT_PATH.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
+    write_step_summary(active, warning)
     print(
         f"Build OK — {len(active)} active venue(s), "
         f"{len(venues) - len(active)} inactive → {OUTPUT_PATH.relative_to(ROOT)}"

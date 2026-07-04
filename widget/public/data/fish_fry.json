@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-04T05:40:44+00:00",
+  "generated_at": "2026-07-04T13:29:24+00:00",
   "venue_count": 7,
   "venues": [
     {
@@ -47,7 +47,7 @@
       "takeout": true,
       "tier": "standard",
       "description": "All-you-can-eat cod with the full soup-and-salad bar \u2014 bring the family and an appetite.",
-      "photo_url": "https://picsum.photos/seed/birchcreek/800/500",
+      "photo_url": "photos/e41bcf19d0adc871.jpg",
       "menu_url": "",
       "featured_this_week": false,
       "editor_note": "",
@@ -126,7 +126,7 @@
       "takeout": false,
       "tier": "featured",
       "description": "Old-school supper club fry below the ski hill \u2014 lake perch done right and a brandy old fashioned that means business.",
-      "photo_url": "https://picsum.photos/seed/pineridge/800/500",
+      "photo_url": "photos/91ad4cef17eeae38.jpg",
       "menu_url": "https://example.com/pineridge/menu",
       "featured_this_week": true,
       "editor_note": "Reservations recommended after 6 PM",
@@ -153,7 +153,7 @@
       "takeout": true,
       "tier": "standard",
       "description": "Downtown counter-service spot where the hand-battered walleye outsells everything else on the menu combined.",
-      "photo_url": "https://picsum.photos/seed/walleyeshack/800/500",
+      "photo_url": "photos/5ded6e8de78768a3.jpg",
       "menu_url": "https://example.com/walleyeshack/menu",
       "featured_this_week": false,
       "editor_note": "",

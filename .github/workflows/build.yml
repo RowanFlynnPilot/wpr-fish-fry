@@ -26,7 +26,7 @@ jobs:
         with:
           python-version: "3.12"
 
-      - run: pip install requests
+      - run: pip install requests pillow
 
       - name: Build data from sheet
         env:
@@ -38,13 +38,13 @@ jobs:
           fi
           python build/build.py "$SHEET_CSV_URL"
 
-      - name: Commit geocode cache if changed
+      - name: Commit geocode/photo caches if changed
         run: |
-          if ! git diff --quiet data/geocode_cache.json; then
+          git add data/geocode_cache.json data/photo_cache.json widget/public/photos
+          if ! git diff --cached --quiet; then
             git config user.name "github-actions[bot]"
             git config user.email "github-actions[bot]@users.noreply.github.com"
-            git add data/geocode_cache.json
-            git commit -m "chore: update geocode cache [skip ci]"
+            git commit -m "chore: update geocode/photo caches [skip ci]"
             git push
           fi
 

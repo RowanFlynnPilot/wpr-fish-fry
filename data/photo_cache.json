@@ -1,0 +1,14 @@
+{
+  "https://picsum.photos/seed/birchcreek/800/500": {
+    "fetched_at": "2026-07-04T13:28:52+00:00",
+    "file": "e41bcf19d0adc871.jpg"
+  },
+  "https://picsum.photos/seed/pineridge/800/500": {
+    "fetched_at": "2026-07-04T13:28:50+00:00",
+    "file": "91ad4cef17eeae38.jpg"
+  },
+  "https://picsum.photos/seed/walleyeshack/800/500": {
+    "fetched_at": "2026-07-04T13:28:51+00:00",
+    "file": "5ded6e8de78768a3.jpg"
+  }
+}

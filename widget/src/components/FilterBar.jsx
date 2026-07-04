@@ -5,7 +5,15 @@ export const TYPE_LABELS = {
   vfw_legion: "VFW & Legion",
 };
 
-export default function FilterBar({ venues, filters, setFilters }) {
+export default function FilterBar({
+  venues,
+  filters,
+  setFilters,
+  sort,
+  onSortName,
+  onSortDistance,
+  locNote,
+}) {
   const fishOptions = [...new Set(venues.flatMap((v) => v.fish))].sort();
   const typeOptions = Object.keys(TYPE_LABELS).filter((t) =>
     venues.some((v) => v.venue_type === t)
@@ -23,6 +31,22 @@ export default function FilterBar({ venues, filters, setFilters }) {
 
   return (
     <div className="ff-filters">
+      <div className="ff-filter-group">
+        <label className="ff-filter-label" htmlFor="ff-search">
+          Find
+        </label>
+        <input
+          id="ff-search"
+          className="ff-search"
+          type="search"
+          placeholder="Venue or town — try “Mosinee”"
+          value={filters.q}
+          onChange={(e) =>
+            setFilters((f) => ({ ...f, q: e.target.value }))
+          }
+        />
+      </div>
+
       <div className="ff-filter-group">
         <span className="ff-filter-label">Fish</span>
         <div className="ff-chips">
@@ -70,6 +94,29 @@ export default function FilterBar({ venues, filters, setFilters }) {
           >
             All You Can Eat
           </button>
+        </div>
+      </div>
+
+      <div className="ff-filter-group">
+        <span className="ff-filter-label">Sort</span>
+        <div className="ff-chips">
+          <button
+            type="button"
+            className={`ff-chip ${sort === "name" ? "is-on" : ""}`}
+            aria-pressed={sort === "name"}
+            onClick={onSortName}
+          >
+            A–Z
+          </button>
+          <button
+            type="button"
+            className={`ff-chip ${sort === "distance" ? "is-on" : ""}`}
+            aria-pressed={sort === "distance"}
+            onClick={onSortDistance}
+          >
+            Nearest me
+          </button>
+          {locNote && <span className="ff-locnote">{locNote}</span>}
         </div>
       </div>
     </div>

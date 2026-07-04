@@ -1,0 +1,52 @@
+name: link-check
+
+# Weekly, not hourly: reader-facing links (website, menu_url) die on the
+# venues' own schedule. Dead links become a GitHub issue for the curators
+# instead of failing data builds on third-party outages.
+
+on:
+  schedule:
+    - cron: "0 11 * * 1" # Mondays, 5/6 AM Central
+  workflow_dispatch:
+
+permissions:
+  issues: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install requests
+
+      - name: Check listing links
+        id: check
+        env:
+          SHEET_CSV_URL: ${{ vars.SHEET_CSV_URL }}
+        run: |
+          if [ -z "$SHEET_CSV_URL" ]; then
+            echo "SHEET_CSV_URL repository variable is not set" >&2
+            exit 1
+          fi
+          if ! python build/check_links.py "$SHEET_CSV_URL" > report.md; then
+            echo "failed=true" >> "$GITHUB_OUTPUT"
+          fi
+          cat report.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: File or update the dead-links issue
+        if: steps.check.outputs.failed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          title="Dead links in fish fry listings"
+          existing=$(gh issue list --state open --search "\"$title\" in:title" --json number --jq '.[0].number')
+          if [ -n "$existing" ]; then
+            gh issue comment "$existing" --body-file report.md
+          else
+            gh issue create --title "$title" --body-file report.md
+          fi

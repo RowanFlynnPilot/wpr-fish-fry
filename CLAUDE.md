@@ -11,16 +11,17 @@ weekly featured slot.
 Google Sheet (published CSV, curated by Shereen/Devon)
         │
         ▼
-build/build.py            ← validate contract, geocode via committed cache
+build/build.py            ← validate contract, geocode + fetch photos via committed caches
         │
         ▼
 widget/public/data/fish_fry.json     ← static JSON, the only data artifact
+widget/public/photos/                ← cached sponsor photos (committed)
         │
         ▼
 widget/ (Vite + React 18 + Leaflet)  ← npm run build
         │
         ▼
-GitHub Pages (/wpr-fish-fry/)        ← WordPress iframe embed
+GitHub Pages (/wpr-fish-fry/)        ← WordPress iframe embed (snippet in README.md)
 ```
 
 GitHub Actions runs the whole chain hourly (`.github/workflows/build.yml`),
@@ -64,6 +65,25 @@ Wrong pin? Edit the cache entry's lat/lon directly. One file, one fix.
 Geocode failure on an active row fails the build with the exact cache key to
 add manually.
 
+## Photos — same mechanism
+
+Sponsor photos are fetched once into `data/photo_cache.json` +
+`widget/public/photos/` (resized to ≤1200px JPEG, committed, keyed by source
+URL) and served from Pages, so a paid listing never ships a broken image
+because the venue's own site died. Change `photo_url` in the sheet to refresh
+a photo. Fetch failure on an active paid row fails the build.
+
+## Ops around the build
+
+- The Actions run summary carries a build recap and a copy-paste newsletter
+  blurb for the weekly featured venue (`write_step_summary` in build.py).
+- A sharp drop in active venue count warns (build log + summary) but does not
+  fail — seasonal closures are legitimate.
+- `.github/workflows/linkcheck.yml` runs `build/check_links.py` weekly against
+  `website`/`menu_url` and files/updates a GitHub issue on dead links.
+  Deliberately separate from the hourly build: third-party outages are not
+  data errors.
+
 ## Commands (PowerShell)
 
 ```powershell
@@ -93,11 +113,28 @@ cd widget; npm run build
   eligibility for the weekly slot. Enforced in `build.py`, rendered in
   `VenueCard.jsx`.
 - Default list order is alphabetical — paid tiers win on visual richness,
-  never position.
+  never position. The reader-initiated "Nearest me" sort is the one exception,
+  and it applies to everyone equally.
 - The featured slot is pinned above the list, ignores filters (it's paid
-  placement), and is excluded from the list so it never renders twice.
+  placement), and is excluded from the list so it never renders twice. On the
+  map, the featured venue's marker is the WPR typewriter badge.
 - "Sponsor" tag wording in `App.jsx`/`VenueCard.jsx` is placeholder pending
   Shereen's disclosure language.
+
+## Branding
+
+Matches wausaupilotandreview.com: Oswald (display) + Merriweather (body),
+black-on-white newspaper palette. The teal (`--teal: #3a867c`) is the
+typewriter in the WPR badge and is the only accent color. Badge assets live in
+`widget/public/brand/` (pulled from
+`wausaupilotandreview.com/wp-content/uploads/2024/04/cropped-Wausau-Pilot-Transparent-*.png`;
+swap in a higher-res original if the newsroom supplies one).
+
+## Embed contract
+
+The widget posts `{ type: "wpr-fish-fry:height", height }` to its parent on
+resize; the WordPress snippet in README.md sizes the iframe from it. Don't
+rename the message type without updating the embed on the WordPress side.
 
 ## Principles
 

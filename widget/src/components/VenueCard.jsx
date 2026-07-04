@@ -1,4 +1,5 @@
 import { TYPE_LABELS } from "./FilterBar.jsx";
+import { venueSlug } from "../App.jsx";
 
 function money(n) {
   return Number.isInteger(n) ? `$${n}` : `$${n.toFixed(2)}`;
@@ -10,16 +11,31 @@ function priceRange(v) {
     : `${money(v.price_low)}–${money(v.price_high)}`;
 }
 
-export default function VenueCard({ venue: v, featured = false }) {
+export default function VenueCard({
+  venue: v,
+  featured = false,
+  onShowMap,
+  distance,
+  selected = false,
+}) {
   const paid = v.tier !== "free";
   const destination = encodeURIComponent(`${v.address}, ${v.city}, WI`);
 
   return (
-    <article className={`ff-card ${featured ? "ff-card-featured" : ""}`}>
+    <article
+      id={`venue-${venueSlug(v.venue_name)}`}
+      className={`ff-card ${featured ? "ff-card-featured" : ""} ${
+        selected ? "is-selected" : ""
+      }`}
+    >
       {paid && v.photo_url && (
         <img
           className="ff-card-photo"
-          src={v.photo_url}
+          src={
+            v.photo_url.startsWith("http")
+              ? v.photo_url
+              : `${import.meta.env.BASE_URL}${v.photo_url}`
+          }
           alt={v.venue_name}
           loading="lazy"
         />
@@ -37,8 +53,11 @@ export default function VenueCard({ venue: v, featured = false }) {
         </p>
 
         <div className="ff-card-facts">
-          <span className="ff-mono ff-price">{priceRange(v)}</span>
-          <span className="ff-mono ff-hours">{v.hours}</span>
+          <span className="ff-fact ff-price">{priceRange(v)}</span>
+          <span className="ff-fact ff-hours">{v.hours}</span>
+          {typeof distance === "number" && (
+            <span className="ff-fact ff-dist">{distance.toFixed(1)} mi</span>
+          )}
         </div>
 
         <div className="ff-tags">
@@ -57,6 +76,13 @@ export default function VenueCard({ venue: v, featured = false }) {
 
         <div className="ff-links">
           {v.phone && <a href={`tel:${v.phone.replace(/[^0-9+]/g, "")}`}>{v.phone}</a>}
+          <button
+            type="button"
+            className="ff-maplink"
+            onClick={() => onShowMap(v.venue_name)}
+          >
+            Show on map
+          </button>
           <a
             href={`https://www.google.com/maps/dir/?api=1&destination=${destination}`}
             target="_blank"
