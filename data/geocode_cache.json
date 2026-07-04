@@ -1,0 +1,44 @@
+{
+  "1000 western ave, mosinee": {
+    "geocoded_at": "2026-07-04T05:40:11+00:00",
+    "lat": 44.788871,
+    "lon": -89.714886,
+    "source": "nominatim"
+  },
+  "1300 n 6th st, wausau": {
+    "geocoded_at": "2026-07-04T05:40:05+00:00",
+    "lat": 44.967483,
+    "lon": -89.623384,
+    "source": "nominatim"
+  },
+  "225 scott st, wausau": {
+    "geocoded_at": "2026-07-04T05:40:08+00:00",
+    "lat": 44.96061,
+    "lon": -89.628621,
+    "source": "nominatim"
+  },
+  "300 main st, marathon city": {
+    "geocoded_at": "2026-07-04T05:40:10+00:00",
+    "lat": 44.932066,
+    "lon": -89.839859,
+    "source": "nominatim"
+  },
+  "3000 schofield ave, weston": {
+    "geocoded_at": "2026-07-04T05:40:12+00:00",
+    "lat": 44.905635,
+    "lon": -89.586119,
+    "source": "nominatim"
+  },
+  "4200 rib mountain dr, wausau": {
+    "geocoded_at": "2026-07-04T05:40:02+00:00",
+    "lat": 44.941542,
+    "lon": -89.650699,
+    "source": "nominatim"
+  },
+  "624 grand ave, wausau": {
+    "geocoded_at": "2026-07-04T05:40:07+00:00",
+    "lat": 44.951482,
+    "lon": -89.622793,
+    "source": "nominatim"
+  }
+}
