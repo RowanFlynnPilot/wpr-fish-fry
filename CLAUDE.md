@@ -131,6 +131,9 @@ cd widget; npm run build
   (editorial decision, 2026-07).
 - "Sponsor" tag wording in `App.jsx`/`VenueCard.jsx` is placeholder pending
   Shereen's disclosure language.
+- `FishGuide.jsx` holds the editorial "Know Your Fry" guide, keyed to the
+  FISH enum in build.py. It renders only species present in the live data —
+  when adding a species to the enum, add its guide entry in the same change.
 
 ## Branding
 

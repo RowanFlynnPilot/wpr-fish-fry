@@ -3,6 +3,7 @@ import FilterBar from "./components/FilterBar.jsx";
 import MapView from "./components/MapView.jsx";
 import FeaturedCard from "./components/FeaturedCard.jsx";
 import VenueCard from "./components/VenueCard.jsx";
+import FishGuide from "./components/FishGuide.jsx";
 
 const EMPTY_FILTERS = { q: "", fish: [], types: [], takeout: false, ayce: false };
 
@@ -111,6 +112,15 @@ export default function App() {
 
   const focusVenue = useCallback((name, source) => {
     setFocus({ name, source, ts: Date.now() });
+  }, []);
+
+  // Guide → listings loop: filter to one species and jump to the results.
+  const findFish = useCallback((fish) => {
+    setFilters((f) => ({ ...f, fish: [fish] }));
+    document.querySelector(".ff-count")?.scrollIntoView({
+      behavior: REDUCED_MOTION ? "auto" : "smooth",
+      block: "start",
+    });
   }, []);
 
   const onMarkerClick = useCallback(
@@ -256,6 +266,8 @@ export default function App() {
           </div>
         )}
       </section>
+
+      <FishGuide venues={venues} onFindFish={findFish} />
 
       <footer className="ff-footer">
         <div className="ff-footer-brand">

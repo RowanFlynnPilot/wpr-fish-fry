@@ -476,6 +476,61 @@ body {
   outline-offset: 2px;
 }
 
+/* ---------- fish field guide ---------- */
+
+.ff-guide {
+  margin-top: 24px;
+  padding-top: 14px;
+  border-top: 3px solid var(--rule);
+}
+
+.ff-guide-head {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 22px;
+  margin: 0 0 2px;
+  text-align: center;
+}
+
+.ff-guide-tagline {
+  margin: 0 0 12px;
+  text-align: center;
+  font-style: italic;
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+
+.ff-guide-entry {
+  border-bottom: 1px solid var(--line);
+}
+
+.ff-guide-entry summary {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 16px;
+  padding: 10px 4px;
+  cursor: pointer;
+  list-style-position: inside;
+}
+
+.ff-guide-entry summary:hover {
+  color: var(--teal-dark);
+}
+
+.ff-guide-entry summary:focus-visible {
+  outline: 2px solid var(--teal-dark);
+  outline-offset: 2px;
+}
+
+.ff-guide-body {
+  padding: 0 4px 14px;
+  font-size: 13px;
+}
+
+.ff-guide-body p {
+  margin: 0 0 8px;
+}
+
 /* ---------- states & footer ---------- */
 
 .ff-empty,
