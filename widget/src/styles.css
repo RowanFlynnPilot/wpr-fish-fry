@@ -102,6 +102,7 @@ body {
 
 .ff-search {
   flex: 1;
+  width: 100%;
   font-family: var(--body);
   font-size: 13px;
   padding: 6px 10px;
@@ -548,6 +549,28 @@ body {
   .ff-card-facts {
     flex-direction: column;
     gap: 2px;
+  }
+
+  /* Fingers, not cursors: bigger tap targets on phones. */
+  .ff-chip {
+    padding: 7px 14px;
+    font-size: 14px;
+  }
+
+  .ff-search {
+    padding: 9px 10px;
+    font-size: 14px;
+  }
+
+  .ff-links {
+    gap: 18px;
+    row-gap: 6px;
+  }
+
+  .ff-links a,
+  .ff-maplink {
+    font-size: 14px;
+    padding: 5px 0;
   }
 }
 
