@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Embed test — Friday Fish Fry Finder</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: Georgia, serif;
+        color: #111;
+        background: #fff;
+      }
+      .article {
+        max-width: 840px;
+        margin: 0 auto;
+        padding: 24px 16px 60px;
+      }
+      h1 {
+        font-family: Helvetica, Arial, sans-serif;
+        font-weight: 700;
+      }
+      .note {
+        background: #f0f0f0;
+        padding: 10px 14px;
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="article">
+      <h1>Embed test page</h1>
+      <p class="note">
+        This page fakes a WordPress article around the widget using the exact
+        snippet from README.md. If the iframe below grows and shrinks with the
+        widget (try filtering) and never shows its own scrollbar, the
+        auto-height contract works.
+      </p>
+      <p>
+        Fish fries are a Wisconsin institution, and Marathon County does them
+        as well as anywhere. Scroll on — the widget should read like part of
+        the story, not a box bolted into it.
+      </p>
+
+      <iframe
+        id="wpr-fish-fry"
+        src="./"
+        style="width: 100%; border: 0"
+        height="900"
+        title="Friday Fish Fry Finder"
+        loading="lazy"
+      ></iframe>
+
+      <p>
+        Text after the embed, so you can confirm the page flows normally below
+        the widget as it resizes.
+      </p>
+    </div>
+    <script>
+      // Same listener as the README snippet, with the origin check made
+      // relative so this test page works locally and on Pages.
+      window.addEventListener("message", function (e) {
+        if (e.origin !== window.location.origin) return;
+        if (e.data && e.data.type === "wpr-fish-fry:height") {
+          document.getElementById("wpr-fish-fry").style.height =
+            e.data.height + "px";
+        }
+      });
+    </script>
+  </body>
+</html>

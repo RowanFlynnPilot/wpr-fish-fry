@@ -104,6 +104,11 @@ export default function App() {
     setLocNote(null);
   };
 
+  const sortByPrice = () => {
+    setSort("price");
+    setLocNote(null);
+  };
+
   const focusVenue = useCallback((name, source) => {
     setFocus({ name, source, ts: Date.now() });
   }, []);
@@ -127,6 +132,12 @@ export default function App() {
       });
   }, [focus]);
 
+  // Hourly builds mean fresh data; if the pipeline breaks silently, tell
+  // readers instead of letting them trust week-old hours.
+  const staleHours = data
+    ? (Date.now() - new Date(data.generated_at).getTime()) / 3.6e6
+    : 0;
+
   // The featured slot is paid placement: pinned above the list, unaffected by
   // filters, and excluded from the list so it never renders twice.
   const featured = venues.find((v) => v.featured_this_week);
@@ -135,6 +146,14 @@ export default function App() {
     if (sort === "distance" && userLoc) {
       return [...rest].sort(
         (a, b) => miles[a.venue_name] - miles[b.venue_name]
+      );
+    }
+    if (sort === "price") {
+      return [...rest].sort(
+        (a, b) =>
+          a.price_low - b.price_low ||
+          a.price_high - b.price_high ||
+          a.venue_name.localeCompare(b.venue_name)
       );
     }
     return rest;
@@ -189,6 +208,7 @@ export default function App() {
         sort={sort}
         onSortName={sortByName}
         onSortDistance={sortByDistance}
+        onSortPrice={sortByPrice}
         locNote={locNote}
       />
       <MapView venues={filtered} focus={focus} onMarkerClick={onMarkerClick} />
@@ -262,6 +282,17 @@ export default function App() {
             })}
             .
           </span>
+        )}
+        {data && staleHours > 26 && (
+          <p className="ff-stale">
+            Heads up: these listings haven&rsquo;t refreshed since{" "}
+            {new Date(data.generated_at).toLocaleDateString("en-US", {
+              weekday: "long",
+              month: "short",
+              day: "numeric",
+            })}
+            . Call ahead before you drive.
+          </p>
         )}
         <p className="ff-advertise">
           Run a fish fry?{" "}

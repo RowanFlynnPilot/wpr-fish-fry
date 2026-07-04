@@ -37,6 +37,10 @@ never shows an inner scrollbar.
 The `height="900"` attribute is only the pre-JavaScript fallback; the
 listener takes over on first paint.
 
+To see the contract working before touching WordPress, open
+[the embed test page](https://rowanflynnpilot.github.io/wpr-fish-fry/embed-test.html)
+— it wraps the widget in a fake article using this exact snippet.
+
 ## Development
 
 ```powershell

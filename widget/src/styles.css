@@ -526,6 +526,12 @@ body {
   color: var(--teal-dark);
 }
 
+.ff-stale {
+  margin: 8px 0 0;
+  font-style: italic;
+  color: var(--ink);
+}
+
 .ff-advertise {
   margin: 8px 0 0;
 }

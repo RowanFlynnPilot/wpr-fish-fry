@@ -12,6 +12,7 @@ export default function FilterBar({
   sort,
   onSortName,
   onSortDistance,
+  onSortPrice,
   locNote,
 }) {
   const fishOptions = [...new Set(venues.flatMap((v) => v.fish))].sort();
@@ -115,6 +116,14 @@ export default function FilterBar({
             onClick={onSortDistance}
           >
             Nearest me
+          </button>
+          <button
+            type="button"
+            className={`ff-chip ${sort === "price" ? "is-on" : ""}`}
+            aria-pressed={sort === "price"}
+            onClick={onSortPrice}
+          >
+            Price
           </button>
           {locNote && <span className="ff-locnote">{locNote}</span>}
         </div>

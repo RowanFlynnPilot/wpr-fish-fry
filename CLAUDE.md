@@ -83,6 +83,16 @@ a photo. Fetch failure on an active paid row fails the build.
   `website`/`menu_url` and files/updates a GitHub issue on dead links.
   Deliberately separate from the hourly build: third-party outages are not
   data errors.
+- `.github/workflows/featured-reminder.yml` runs `build/check_featured.py`
+  Thursday mornings and files an issue if no active venue holds the paid
+  featured slot for the coming Friday.
+- `build/tests/` pins the sheet-contract validation rules; CI runs them
+  before every data build.
+- The widget shows a "call ahead" stale-data notice when `generated_at` is
+  older than 26 hours — the reader-facing symptom of a silently broken
+  pipeline.
+- `widget/public/embed-test.html` fakes a WordPress article around the
+  widget to demo the iframe auto-height contract end to end.
 
 ## Commands (PowerShell)
 
@@ -113,8 +123,8 @@ cd widget; npm run build
   eligibility for the weekly slot. Enforced in `build.py`, rendered in
   `VenueCard.jsx`.
 - Default list order is alphabetical — paid tiers win on visual richness,
-  never position. The reader-initiated "Nearest me" sort is the one exception,
-  and it applies to everyone equally.
+  never position. Reader-initiated sorts ("Nearest me", "Price") are the only
+  exceptions, and they apply to everyone equally.
 - The featured slot is pinned above the list, ignores filters (it's paid
   placement), and is excluded from the list so it never renders twice. On the
   map, the featured venue's marker gets a black ring — no logo on the map

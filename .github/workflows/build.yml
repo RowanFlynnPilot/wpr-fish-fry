@@ -28,6 +28,9 @@ jobs:
 
       - run: pip install requests pillow
 
+      - name: Contract regression tests
+        run: python -m unittest discover -s build/tests
+
       - name: Build data from sheet
         env:
           SHEET_CSV_URL: ${{ vars.SHEET_CSV_URL }}

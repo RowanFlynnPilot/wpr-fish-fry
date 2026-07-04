@@ -1,0 +1,52 @@
+name: featured-reminder
+
+# Thursday-morning nudge: if no venue holds the paid featured slot for
+# tomorrow's fish fry, file an issue so the curators have a business day
+# to fix it. Closes quietly when the slot is set (curators close the issue).
+
+on:
+  schedule:
+    - cron: "0 13 * * 4" # Thursdays, 7/8 AM Central
+  workflow_dispatch:
+
+permissions:
+  issues: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install requests
+
+      - name: Check the featured slot
+        id: check
+        env:
+          SHEET_CSV_URL: ${{ vars.SHEET_CSV_URL }}
+        run: |
+          if [ -z "$SHEET_CSV_URL" ]; then
+            echo "SHEET_CSV_URL repository variable is not set" >&2
+            exit 1
+          fi
+          if ! python build/check_featured.py "$SHEET_CSV_URL" > report.md; then
+            echo "empty=true" >> "$GITHUB_OUTPUT"
+          fi
+          cat report.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: File or update the empty-slot issue
+        if: steps.check.outputs.empty == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          title="No featured fish fry set for this Friday"
+          existing=$(gh issue list --state open --search "\"$title\" in:title" --json number --jq '.[0].number')
+          if [ -n "$existing" ]; then
+            gh issue comment "$existing" --body-file report.md
+          else
+            gh issue create --title "$title" --body-file report.md
+          fi
