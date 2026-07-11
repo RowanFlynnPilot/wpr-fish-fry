@@ -317,6 +317,13 @@ body {
   display: block;
 }
 
+/* The featured slot is the showcase — give its photo real estate, and bias
+   the crop below center where food shots put the plate. */
+.ff-card-featured .ff-card-photo {
+  height: 340px;
+  object-position: center 70%;
+}
+
 .ff-card-body {
   padding: 14px 16px 16px;
 }
@@ -600,6 +607,10 @@ body {
 @media (max-width: 520px) {
   .ff-map {
     height: 300px;
+  }
+
+  .ff-card-featured .ff-card-photo {
+    height: 260px;
   }
 
   .ff-filter-group {
