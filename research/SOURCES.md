@@ -10,11 +10,13 @@ not a bug.
 
 ## How to use it
 
-1. Open `fish_fry_draft.csv`, copy the data rows (not the header), and paste
-   them into the sheet below the existing rows — then delete the fictional
-   sample venues (Pine Ridge Supper Club, The Walleye Shack, Northside
-   Tavern, American Legion Post 492, Marathon Lanes, VFW Post 2110, Birch
-   Creek, Lakeview Pavilion).
+1. In the Google Sheet: **File → Import → Upload →** pick
+   `fish_fry_draft_rows_only.csv` (the header-free copy of the draft) **→
+   Import location: "Append to current sheet"**. 57 rows land under the
+   existing data; nothing publishes because they're all inactive. Keep the
+   fictional sample venues active while the widget is under review — retire
+   them (delete the rows or set `active=FALSE`) as real venues get verified
+   and switched on.
 2. Verify a venue (a Friday-afternoon phone call answers everything):
    confirm the fish list, real prices, fry hours, AYCE/takeout; fix
    `venue_type` if the guess is wrong.
