@@ -407,6 +407,23 @@ def main() -> None:
     rows = load_csv(sys.argv[1])
     venues = validate(rows)
 
+    # ------------------------------------------------------------------
+    # TEMPORARY DEMO MODE (2026-07-11, for Chris's sales demo): publish
+    # every venue regardless of `active`, and hide the UNVERIFIED tripwire
+    # note so cards read clean. The widget isn't embedded on the WordPress
+    # site yet, so this only affects the staging/demo Pages URL.
+    # DELETE this block (through "end demo mode") to restore
+    # verified-only publishing before the WordPress embed goes live.
+    DEMO_SHOW_INACTIVE = True
+    UNVERIFIED_NOTE = (
+        "UNVERIFIED IMPORT - confirm fish, prices, hours before activating."
+    )
+    if DEMO_SHOW_INACTIVE:
+        for v in venues:
+            v["active"] = True
+            v["editor_note"] = v["editor_note"].replace(UNVERIFIED_NOTE, "").strip()
+    # ---------------------------- end demo mode ----------------------
+
     active = [v for v in venues if v["active"]]
     for v in active:
         del v["active"]

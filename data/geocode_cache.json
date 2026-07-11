@@ -1,8 +1,62 @@
 {
+  "1000 imperial ave, rothschild": {
+    "geocoded_at": "2026-07-11T03:07:39+00:00",
+    "lat": 44.866515,
+    "lon": -89.636546,
+    "source": "nominatim"
+  },
   "1000 western ave, mosinee": {
     "geocoded_at": "2026-07-04T05:40:11+00:00",
     "lat": 44.788871,
     "lon": -89.714886,
+    "source": "nominatim"
+  },
+  "102 s 2nd ave, wausau": {
+    "geocoded_at": "2026-07-11T03:08:40+00:00",
+    "lat": 44.96269,
+    "lon": -89.638321,
+    "source": "nominatim"
+  },
+  "1024 western ave, mosinee": {
+    "geocoded_at": "2026-07-11T03:08:30+00:00",
+    "lat": 44.788424,
+    "lon": -89.718712,
+    "source": "nominatim"
+  },
+  "10302 market st, rothschild": {
+    "geocoded_at": "2026-07-11T03:08:38+00:00",
+    "lat": 44.863949,
+    "lon": -89.636758,
+    "source": "nominatim"
+  },
+  "1041 e grand ave, rothschild": {
+    "geocoded_at": "2026-07-11T03:08:26+00:00",
+    "lat": 44.89799,
+    "lon": -89.609644,
+    "source": "nominatim"
+  },
+  "1201 w thomas st, wausau": {
+    "geocoded_at": "2026-07-11T03:08:55+00:00",
+    "lat": 44.948257,
+    "lon": -89.650504,
+    "source": "nominatim"
+  },
+  "1206 n 3rd st, wausau": {
+    "geocoded_at": "2026-07-11T03:08:19+00:00",
+    "lat": 44.966311,
+    "lon": -89.627425,
+    "source": "nominatim"
+  },
+  "1208 half moon lake dr, mosinee": {
+    "geocoded_at": "2026-07-11T03:08:28+00:00",
+    "lat": 44.813192,
+    "lon": -89.7123,
+    "source": "nominatim"
+  },
+  "1239 schofield ave, schofield": {
+    "geocoded_at": "2026-07-11T03:08:36+00:00",
+    "lat": 44.913014,
+    "lon": -89.609356,
     "source": "nominatim"
   },
   "1300 n 6th st, wausau": {
@@ -11,10 +65,154 @@
     "lon": -89.623384,
     "source": "nominatim"
   },
+  "1300 n river dr, wausau": {
+    "geocoded_at": "2026-07-11T03:09:01+00:00",
+    "lat": 44.967743,
+    "lon": -89.63045,
+    "source": "nominatim"
+  },
+  "130665 county road n, marathon city": {
+    "geocoded_at": "2026-07-11T03:10:13+00:00",
+    "lat": 44.904916,
+    "lon": -89.831885,
+    "source": "nominatim-road-approx"
+  },
+  "143203 state hwy 153, mosinee": {
+    "geocoded_at": "2026-07-11T03:10:46+00:00",
+    "lat": 44.792767,
+    "lon": -89.703075,
+    "source": "nominatim-city-approx"
+  },
+  "145727 w state hwy 153, mosinee": {
+    "geocoded_at": "2026-07-11T03:11:16+00:00",
+    "lat": 44.792767,
+    "lon": -89.709075,
+    "source": "nominatim-city-approx-spread"
+  },
+  "1490 county rd xx, rothschild": {
+    "geocoded_at": "2026-07-11T03:10:08+00:00",
+    "lat": 44.887191,
+    "lon": -89.620122,
+    "source": "nominatim-city-approx"
+  },
+  "151523 county rd nn, wausau": {
+    "geocoded_at": "2026-07-11T03:10:31+00:00",
+    "lat": 44.959786,
+    "lon": -89.627279,
+    "source": "nominatim-city-approx"
+  },
+  "151701 gadwall ln, wausau": {
+    "geocoded_at": "2026-07-11T03:11:04+00:00",
+    "lat": 44.96325,
+    "lon": -89.624279,
+    "source": "nominatim-city-approx-spread"
+  },
+  "1522 metro dr, schofield": {
+    "geocoded_at": "2026-07-11T03:08:14+00:00",
+    "lat": 44.910314,
+    "lon": -89.604807,
+    "source": "nominatim"
+  },
+  "152501 morning glory ln, wausau": {
+    "geocoded_at": "2026-07-11T03:11:21+00:00",
+    "lat": 44.96325,
+    "lon": -89.630279,
+    "source": "nominatim-city-approx-spread"
+  },
+  "157024 e hamilton st, wausau": {
+    "geocoded_at": "2026-07-11T03:08:12+00:00",
+    "lat": 44.967359,
+    "lon": -89.590287,
+    "source": "nominatim"
+  },
+  "1578 n shore dr, hatley": {
+    "geocoded_at": "2026-07-11T03:11:32+00:00",
+    "lat": 44.88747,
+    "lon": -89.338727,
+    "source": "nominatim-city-approx"
+  },
+  "158241 e wausau ave, wausau": {
+    "geocoded_at": "2026-07-11T03:10:17+00:00",
+    "lat": 44.973779,
+    "lon": -89.62938,
+    "source": "nominatim-road-approx"
+  },
+  "1703 s 3rd ave, wausau": {
+    "geocoded_at": "2026-07-11T03:07:49+00:00",
+    "lat": 44.939481,
+    "lon": -89.639268,
+    "source": "nominatim"
+  },
+  "1715 stewart ave, wausau": {
+    "geocoded_at": "2026-07-11T03:07:45+00:00",
+    "lat": 44.958714,
+    "lon": -89.657111,
+    "source": "nominatim"
+  },
+  "1724 merrill ave, wausau": {
+    "geocoded_at": "2026-07-11T03:07:27+00:00",
+    "lat": 44.986583,
+    "lon": -89.657849,
+    "source": "nominatim"
+  },
+  "2005 schofield ave, schofield": {
+    "geocoded_at": "2026-07-11T03:09:05+00:00",
+    "lat": 44.903291,
+    "lon": -89.613926,
+    "source": "nominatim"
+  },
+  "204575 county rd db, mosinee": {
+    "geocoded_at": "2026-07-11T03:10:53+00:00",
+    "lat": 44.725256,
+    "lon": -89.681032,
+    "source": "nominatim-poi-name"
+  },
+  "208 clark st, hatley": {
+    "geocoded_at": "2026-07-11T03:07:57+00:00",
+    "lat": 44.887581,
+    "lon": -89.338496,
+    "source": "nominatim"
+  },
+  "213 main st, mosinee": {
+    "geocoded_at": "2026-07-11T03:08:57+00:00",
+    "lat": 44.792202,
+    "lon": -89.701578,
+    "source": "nominatim"
+  },
+  "214857 county rd y, hatley": {
+    "geocoded_at": "2026-07-11T03:10:59+00:00",
+    "lat": 44.88747,
+    "lon": -89.344727,
+    "source": "nominatim-city-approx-spread"
+  },
+  "216050 county rd b, mosinee": {
+    "geocoded_at": "2026-07-11T03:10:40+00:00",
+    "lat": 44.867025,
+    "lon": -89.69904,
+    "source": "nominatim-road-approx"
+  },
+  "2200 stewart ave, wausau": {
+    "geocoded_at": "2026-07-11T03:08:16+00:00",
+    "lat": 44.958892,
+    "lon": -89.664233,
+    "source": "nominatim"
+  },
   "225 scott st, wausau": {
     "geocoded_at": "2026-07-04T05:40:08+00:00",
     "lat": 44.96061,
     "lon": -89.628621,
+    "source": "nominatim"
+  },
+  "238532 county rd w, wausau": {
+    "geocoded_at": "2026-07-11T03:11:26+00:00",
+    "lat": 44.959786,
+    "lon": -89.633279,
+    "source": "nominatim-city-approx-spread"
+  },
+  "2510 stewart ave, wausau": {
+    "geocoded_at": "2026-07-11T03:07:25+00:00",
+    "lat": 44.958202,
+    "lon": -89.667558,
     "source": "nominatim"
   },
   "300 main st, marathon city": {
@@ -29,10 +227,100 @@
     "lon": -89.586119,
     "source": "nominatim"
   },
+  "3607 n mountain rd, wausau": {
+    "geocoded_at": "2026-07-11T03:10:10+00:00",
+    "lat": 44.933383,
+    "lon": -89.681847,
+    "source": "nominatim-poi-name"
+  },
+  "3806 schofield ave, weston": {
+    "geocoded_at": "2026-07-11T03:08:48+00:00",
+    "lat": 44.905796,
+    "lon": -89.574723,
+    "source": "nominatim"
+  },
+  "3901 sherman rd, wausau": {
+    "geocoded_at": "2026-07-11T03:08:51+00:00",
+    "lat": 44.948872,
+    "lon": -89.683462,
+    "source": "nominatim"
+  },
+  "3904 stewart ave, wausau": {
+    "geocoded_at": "2026-07-11T03:08:59+00:00",
+    "lat": 44.9555,
+    "lon": -89.685208,
+    "source": "nominatim"
+  },
+  "4198 county rd x, mosinee": {
+    "geocoded_at": "2026-07-11T03:10:35+00:00",
+    "lat": 44.867025,
+    "lon": -89.70504,
+    "source": "nominatim-road-approx-spread"
+  },
   "4200 rib mountain dr, wausau": {
     "geocoded_at": "2026-07-04T05:40:02+00:00",
     "lat": 44.941542,
     "lon": -89.650699,
+    "source": "nominatim"
+  },
+  "422 3rd st, wausau": {
+    "geocoded_at": "2026-07-11T03:08:17+00:00",
+    "lat": 44.960328,
+    "lon": -89.628022,
+    "source": "nominatim"
+  },
+  "450 orbiting dr, mosinee": {
+    "geocoded_at": "2026-07-11T03:10:37+00:00",
+    "lat": 44.785211,
+    "lon": -89.682472,
+    "source": "nominatim-poi-name"
+  },
+  "4810 ross ave, schofield": {
+    "geocoded_at": "2026-07-11T03:08:06+00:00",
+    "lat": 44.913213,
+    "lon": -89.601997,
+    "source": "nominatim"
+  },
+  "525 grand ave, schofield": {
+    "geocoded_at": "2026-07-11T03:08:53+00:00",
+    "lat": 44.924756,
+    "lon": -89.61296,
+    "source": "nominatim"
+  },
+  "5305 n 32nd ave, wausau": {
+    "geocoded_at": "2026-07-11T03:08:31+00:00",
+    "lat": 44.96529,
+    "lon": -89.676101,
+    "source": "nominatim"
+  },
+  "5307 westfair ave, schofield": {
+    "geocoded_at": "2026-07-11T03:10:26+00:00",
+    "lat": 44.909691,
+    "lon": -89.604566,
+    "source": "nominatim-city-approx"
+  },
+  "5912 business hwy 51 s, weston": {
+    "geocoded_at": "2026-07-11T03:11:06+00:00",
+    "lat": 44.903012,
+    "lon": -89.608034,
+    "source": "nominatim-poi-name"
+  },
+  "601 w thomas st, wausau": {
+    "geocoded_at": "2026-07-11T03:07:47+00:00",
+    "lat": 44.948282,
+    "lon": -89.643187,
+    "source": "nominatim"
+  },
+  "606 n 3rd st, wausau": {
+    "geocoded_at": "2026-07-11T03:07:31+00:00",
+    "lat": 44.96165,
+    "lon": -89.627953,
+    "source": "nominatim"
+  },
+  "6202 schofield ave, schofield": {
+    "geocoded_at": "2026-07-11T03:07:29+00:00",
+    "lat": 44.910081,
+    "lon": -89.605723,
     "source": "nominatim"
   },
   "624 grand ave, wausau": {
@@ -40,5 +328,59 @@
     "lat": 44.951482,
     "lon": -89.622793,
     "source": "nominatim"
+  },
+  "628 n 3rd ave, wausau": {
+    "geocoded_at": "2026-07-11T03:09:03+00:00",
+    "lat": 44.970442,
+    "lon": -89.639384,
+    "source": "nominatim"
+  },
+  "707 grand ave, rothschild": {
+    "geocoded_at": "2026-07-11T03:08:21+00:00",
+    "lat": 44.892198,
+    "lon": -89.620112,
+    "source": "nominatim"
+  },
+  "713 grant st, wausau": {
+    "geocoded_at": "2026-07-11T03:07:59+00:00",
+    "lat": 44.96159,
+    "lon": -89.620257,
+    "source": "nominatim"
+  },
+  "8101 schofield ave, weston": {
+    "geocoded_at": "2026-07-11T03:08:49+00:00",
+    "lat": 44.899903,
+    "lon": -89.521372,
+    "source": "nominatim"
+  },
+  "840 grand ave, schofield": {
+    "geocoded_at": "2026-07-11T03:08:01+00:00",
+    "lat": 44.920464,
+    "lon": -89.612997,
+    "source": "nominatim"
+  },
+  "8507 state hwy 52, wausau": {
+    "geocoded_at": "2026-07-11T03:10:51+00:00",
+    "lat": 44.956322,
+    "lon": -89.630279,
+    "source": "nominatim-city-approx-spread"
+  },
+  "900 golf club rd, wausau": {
+    "geocoded_at": "2026-07-11T03:07:32+00:00",
+    "lat": 44.992098,
+    "lon": -89.608418,
+    "source": "nominatim"
+  },
+  "h12950 state hwy 52, wausau": {
+    "geocoded_at": "2026-07-11T03:11:11+00:00",
+    "lat": 44.956322,
+    "lon": -89.624279,
+    "source": "nominatim-city-approx-spread"
+  },
+  "r13085 county rd n, ringle": {
+    "geocoded_at": "2026-07-11T03:10:21+00:00",
+    "lat": 44.911692,
+    "lon": -89.456808,
+    "source": "nominatim-city-approx"
   }
 }
