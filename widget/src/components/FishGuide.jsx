@@ -46,6 +46,13 @@ const GUIDE = {
     menu: "By the basket or the pound, often a first-Friday or seasonal special at Legion and VFW halls.",
     pairs: "Cocktail sauce, lemon, baked beans, and whatever's cold on tap.",
   },
+  flounder: {
+    title: "Flounder",
+    flavor:
+      "A coastal guest at the northwoods table — mild, sweet, and delicate, with thin fillets that crisp up fast and eat light.",
+    menu: "Dinner plates and combo platters, usually the lighter option beside the beer-battered standards.",
+    pairs: "Fries and slaw with a squeeze of lemon; a light lager.",
+  },
   shrimp: {
     title: "Shrimp",
     flavor:

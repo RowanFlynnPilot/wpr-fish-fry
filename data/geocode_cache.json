@@ -35,6 +35,12 @@
     "lon": -89.609644,
     "source": "nominatim"
   },
+  "11420 s county rd k, merrill": {
+    "geocoded_at": "2026-07-30T21:23:07+00:00",
+    "lat": 45.180522,
+    "lon": -89.683459,
+    "source": "nominatim-city-approx"
+  },
   "1201 w thomas st, wausau": {
     "geocoded_at": "2026-07-11T03:08:55+00:00",
     "lat": 44.948257,
@@ -95,6 +101,12 @@
     "lon": -89.620122,
     "source": "nominatim-city-approx"
   },
+  "151508 county rd nn, wausau": {
+    "geocoded_at": "2026-07-30T21:22:13+00:00",
+    "lat": 44.933209,
+    "lon": -89.661089,
+    "source": "nominatim"
+  },
   "151523 county rd nn, wausau": {
     "geocoded_at": "2026-07-11T03:10:31+00:00",
     "lat": 44.959786,
@@ -136,6 +148,12 @@
     "lat": 44.973779,
     "lon": -89.62938,
     "source": "nominatim-road-approx"
+  },
+  "1702 grand ave, wausau": {
+    "geocoded_at": "2026-07-30T21:22:11+00:00",
+    "lat": 44.939978,
+    "lon": -89.618716,
+    "source": "nominatim"
   },
   "1703 s 3rd ave, wausau": {
     "geocoded_at": "2026-07-11T03:07:49+00:00",

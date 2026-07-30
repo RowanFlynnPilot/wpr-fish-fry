@@ -59,7 +59,7 @@ PAID_ONLY_COLUMNS = ["description", "photo_url", "menu_url"]
 
 VENUE_TYPES = {"restaurant", "supper_club", "bar", "vfw_legion"}
 TIERS = {"free", "standard", "featured"}
-FISH = {"perch", "cod", "walleye", "bluegill", "haddock", "smelt", "shrimp"}
+FISH = {"perch", "cod", "walleye", "bluegill", "haddock", "smelt", "shrimp", "flounder"}
 
 
 def die(errors: list[str]) -> None:
