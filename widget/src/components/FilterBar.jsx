@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 export const TYPE_LABELS = {
   restaurant: "Restaurant",
   supper_club: "Supper Club",
@@ -13,8 +15,22 @@ export default function FilterBar({
   onSortName,
   onSortDistance,
   onSortPrice,
+  onSortAddress,
   locNote,
 }) {
+  const [address, setAddress] = useState("");
+  const [looking, setLooking] = useState(false);
+
+  const submitAddress = async (e) => {
+    e.preventDefault();
+    if (!address.trim() || looking) return;
+    setLooking(true);
+    try {
+      await onSortAddress(address.trim());
+    } finally {
+      setLooking(false);
+    }
+  };
   const fishOptions = [...new Set(venues.flatMap((v) => v.fish))].sort();
   const typeOptions = Object.keys(TYPE_LABELS).filter((t) =>
     venues.some((v) => v.venue_type === t)
@@ -125,6 +141,23 @@ export default function FilterBar({
           >
             Price
           </button>
+          <form className="ff-addr" onSubmit={submitAddress}>
+            <input
+              className="ff-search ff-addr-input"
+              type="text"
+              placeholder="…or from an address or town"
+              aria-label="Sort by distance from an address"
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+            />
+            <button
+              type="submit"
+              className="ff-chip"
+              disabled={looking || !address.trim()}
+            >
+              {looking ? "Looking…" : "Go"}
+            </button>
+          </form>
           {locNote && <span className="ff-locnote">{locNote}</span>}
         </div>
       </div>

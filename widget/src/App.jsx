@@ -110,6 +110,45 @@ export default function App() {
     setLocNote(null);
   };
 
+  // Address-based distance: same Nominatim service the build uses, with the
+  // search biased to the greater Wausau area so "Athens" means Athens, WI.
+  const sortByAddress = async (query) => {
+    const q = query.includes(",") ? query : `${query}, Wisconsin`;
+    try {
+      const resp = await fetch(
+        "https://nominatim.openstreetmap.org/search?" +
+          new URLSearchParams({
+            q,
+            format: "json",
+            limit: "1",
+            countrycodes: "us",
+            viewbox: "-90.6,45.6,-88.9,44.4",
+          })
+      );
+      const results = await resp.json();
+      if (!results.length) {
+        setLocNote("Couldn't find that address — try adding the town.");
+        return;
+      }
+      setUserLoc({
+        lat: parseFloat(results[0].lat),
+        lon: parseFloat(results[0].lon),
+      });
+      setSort("distance");
+      setLocNote(`Distances from ${results[0].display_name.split(",")[0]}.`);
+    } catch {
+      setLocNote("Address lookup didn't respond — try again in a moment.");
+    }
+  };
+
+  // Can't decide? The wheel decides. Honors whatever filters are active.
+  const surpriseMe = () => {
+    const pool = filtered.length > 0 ? filtered : venues;
+    if (pool.length === 0) return;
+    const pick = pool[Math.floor(Math.random() * pool.length)];
+    focusVenue(pick.venue_name, "map");
+  };
+
   const focusVenue = useCallback((name, source) => {
     setFocus({ name, source, ts: Date.now() });
   }, []);
@@ -216,6 +255,7 @@ export default function App() {
         onSortName={sortByName}
         onSortDistance={sortByDistance}
         onSortPrice={sortByPrice}
+        onSortAddress={sortByAddress}
         locNote={locNote}
       />
       <MapView venues={filtered} focus={focus} onMarkerClick={onMarkerClick} />
@@ -230,6 +270,9 @@ export default function App() {
               Clear filters
             </button>
           )}
+          <button type="button" className="ff-clear" onClick={surpriseMe}>
+            Can&rsquo;t decide? Spin for a fry
+          </button>
         </p>
       )}
 
@@ -261,6 +304,19 @@ export default function App() {
               Clear filters
             </button>
           </div>
+        )}
+        {listVenues.length > 3 && (
+          <button
+            type="button"
+            className="ff-backtomap"
+            onClick={() =>
+              document
+                .querySelector(".ff-map")
+                ?.scrollIntoView({ block: "start" })
+            }
+          >
+            ↑ Back to the map
+          </button>
         )}
       </section>
 
