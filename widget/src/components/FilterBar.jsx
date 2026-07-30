@@ -145,7 +145,7 @@ export default function FilterBar({
             <input
               className="ff-search ff-addr-input"
               type="text"
-              placeholder="…or from an address or town"
+              placeholder="…or from an address"
               aria-label="Sort by distance from an address"
               value={address}
               onChange={(e) => setAddress(e.target.value)}

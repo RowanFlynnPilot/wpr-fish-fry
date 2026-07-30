@@ -5,6 +5,15 @@ import { venueSlug } from "../App.jsx";
 // else gets Google Maps. iPadOS reports as Macintosh — also covered.
 const APPLE_PLATFORM = /iPhone|iPad|iPod|Macintosh/.test(navigator.userAgent);
 
+// Display-only cleanup for hand-typed hours: consistent en dashes and
+// "11 AM" spacing, so "Fri 11AM-9PM" and "Fri 7 AM - 8 PM" render alike.
+// The sheet data itself is never touched.
+export function formatHours(hours) {
+  return hours
+    .replace(/\s*[-–—]\s*/g, "–")
+    .replace(/(\d)\s*(am|pm)/gi, (_, d, ap) => `${d} ${ap.toUpperCase()}`);
+}
+
 export function directionsUrl(v) {
   const destination = encodeURIComponent(`${v.address}, ${v.city}, WI`);
   return APPLE_PLATFORM
@@ -64,7 +73,7 @@ export default function VenueCard({
 
         <div className="ff-card-facts">
           <span className="ff-fact ff-price">{priceRange(v)}</span>
-          <span className="ff-fact ff-hours">{v.hours}</span>
+          <span className="ff-fact ff-hours">{formatHours(v.hours)}</span>
           {typeof distance === "number" && (
             <span className="ff-fact ff-dist">{distance.toFixed(1)} mi</span>
           )}

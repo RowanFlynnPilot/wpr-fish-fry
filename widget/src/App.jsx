@@ -242,7 +242,7 @@ export default function App() {
         />
         <h1>Friday Fish Fry Finder</h1>
         <p className="ff-tagline">
-          Every fish fry in Marathon County — the prices, the perch, the potato
+          Every fish fry in the Wausau area — the prices, the perch, the potato
           pancakes.
         </p>
       </header>
