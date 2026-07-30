@@ -1,0 +1,885 @@
+[
+ {
+  "venue": "4 Father's Pub",
+  "fish": null,
+  "raw_note": "Friday fish fry confirmed (Facebook post 'Serving our Full Menu & Fish Fry All Day' and WPR Lenten Fish Fry Guide listing), but no accessible source names the species. Also known for gluten-free pizzas.",
+  "source": "https://www.facebook.com/permalink.php/?story_fbid=122149840430217954&id=61556538628561",
+  "confidence": "low",
+  "website": "https://www.facebook.com/p/4-Fathers-Pub-61556538628561/",
+  "extras": {
+   "ayce": null,
+   "takeout": null,
+   "price_low": null,
+   "price_high": null
+  }
+ },
+ {
+  "venue": "Arrow Sports Bar & Grill",
+  "fish": null,
+  "raw_note": "Friday fish fry confirmed by Travel Wisconsin listing, but species never named. A customer tip asked them to ADD perch, implying perch is not currently served. Former domain arrowsportsclub.com is now parked/for sale.",
+  "source": "https://www.travelwisconsin.com/food-drink/bars-taverns/arrow-sports-bar-grill",
+  "confidence": "low",
+  "website": "https://www.facebook.com/arrowsportsclubweston/",
+  "extras": {
+   "ayce": null,
+   "takeout": null,
+   "price_low": null,
+   "price_high": null
+  }
+ },
+ {
+  "venue": "Back When Cafe",
+  "fish": [
+   "cod",
+   "haddock"
+  ],
+  "raw_note": "Friday-only fish fry: baked or fried Alaskan cod or haddock, $16 with potato, $19 with salad. Friday dinner 5-9 pm.",
+  "source": "https://restaurantguru.com/Back-When-Cafe-Wausau/menu",
+  "confidence": "high",
+  "website": "https://www.backwhencafe.com/",
+  "extras": {
+   "ayce": null,
+   "takeout": null,
+   "price_low": 16,
+   "price_high": 19
+  }
+ },
+ {
+  "venue": "BB Jacks Pizza & Sandwich Lounge",
+  "fish": [
+   "haddock",
+   "walleye",
+   "shrimp"
+  ],
+  "raw_note": "Friday Fish Fry served with coleslaw, rye bread, choice of potato: butterflied shrimp and haddock, pan-fried walleye, breaded shrimp basket, haddock soft-shell fish tacos. Menu PDF on bbjacks.com is indexed but the server refused direct fetch; details from search-indexed menu content, dated ~2020.",
+  "source": "http://bbjacks.com/images/bbjacksmenu_wausau_2020_04_29.pdf",
+  "confidence": "medium",
+  "website": "http://bbjacks.com/",
+  "extras": {
+   "ayce": null,
+   "takeout": null,
+   "price_low": null,
+   "price_high": null
+  }
+ },
+ {
+  "venue": "Blissful Bites & Brunch",
+  "fish": null,
+  "raw_note": "Aggregator listings (menupix, visitwausau) say the restaurant 'offers Fish Fry' and is open Fridays to 8 pm, but no source names a species. Primarily a breakfast/brunch spot.",
+  "source": "https://www.menupix.com/wisconsin/restaurants/33301770/Blissful-Bites-and-Brunch-Rothschild-WI",
+  "confidence": "low",
+  "website": "https://www.facebook.com/p/Blissful-Bites-Brunch-100091658664778/",
+  "extras": {
+   "ayce": null,
+   "takeout": null,
+   "price_low": null,
+   "price_high": null
+  }
+ },
+ {
+  "venue": "Carmelo's Italian Restaurant",
+  "fish": [
+   "haddock"
+  ],
+  "raw_note": "Own menu: Friday pan-fried haddock, half portion $12.50, whole $13.75, 1.5 order $17.75, double $21.75; choice of baked potato, hash browns, spaghetti, or fettuccine Alfredo plus coleslaw. Online ordering offered. Voted best fish fry in Wausau-area polls.",
+  "source": "https://www.carmeloswausau.com/menu",
+  "confidence": "high",
+  "website": "https://www.carmeloswausau.com/",
+  "extras": {
+   "ayce": null,
+   "takeout": true,
+   "price_low": 12.5,
+   "price_high": 21.75
+  }
+ },
+ {
+  "venue": "Cedar Creek Grill House",
+  "fish": [
+   "walleye"
+  ],
+  "raw_note": "Read their dinner menu PDF directly: Pan Fried Canadian Walleye $28 and 'Shore Lunch' Canadian walleye sandwich $18; also chili-glazed salmon $24 (unmapped species). Menu does not label a dedicated Friday fish fry, though aggregators list one.",
+  "source": "https://www.cedarcreekgrillhouse.com/_files/ugd/1123de_1227d6aa66cc4a80ba62740b5e87c906.pdf",
+  "confidence": "medium",
+  "website": "https://www.cedarcreekgrillhouse.com/",
+  "extras": {
+   "ayce": null,
+   "takeout": null,
+   "price_low": 18,
+   "price_high": 28
+  }
+ },
+ {
+  "venue": "Cheeks Bar & Grill",
+  "fish": [
+   "walleye",
+   "cod",
+   "shrimp"
+  ],
+  "raw_note": "WiscoBars listing: Friday fish fry with walleye, lightly breaded cod, and garlic shrimp skewers; visitwausau adds baked 'poor man's' cod option. Fish Fry Friday confirmed on their Facebook, served until 9 pm. Tied 6th in WPR 2026 readers' poll.",
+  "source": "https://wiscobars.com/bars/wausau/cheeks-bar-and-grill/",
+  "confidence": "medium",
+  "website": "https://cheeksbar.com/",
+  "extras": {
+   "ayce": null,
+   "takeout": null,
+   "price_low": null,
+   "price_high": null
+  }
+ },
+ {
+  "venue": "Clubhouse Bar & Grill",
+  "fish": [
+   "haddock",
+   "walleye"
+  ],
+  "raw_note": "IMPORTANT: this venue has been renamed Prost Hill Bar & Grill LLC (same County Rd N Ringle address and phone; a newer 'Hillside Pub' Facebook page may indicate another rename). Menu favorites: Beer Battered Haddock 2-pc meal and Fresh Water Walleye Bites; Friday fish fry with fries and potato salad.",
+  "source": "https://www.restaurantji.com/wi/ringle/clubhouse-bar-and-grill-llc-/",
+  "confidence": "medium",
+  "website": "https://www.facebook.com/ProstHillBarGrillLLC/",
+  "extras": {
+   "ayce": null,
+   "takeout": true,
+   "price_low": null,
+   "price_high": null
+  }
+ },
+ {
+  "venue": "Day Break Bar & Grill",
+  "fish": null,
+  "raw_note": "Now operating as 'Chacks Day Break Bar & Grill'. Reviews confirm a Friday night fish fry and Friday fish tacos, but no source names the species. Primarily a breakfast/lunch spot.",
+  "source": "https://www.restaurantji.com/wi/schofield/razzs-breakfast-bar-and-grill-/",
+  "confidence": "low",
+  "website": "https://www.facebook.com/daybreakbar/",
+  "extras": {
+   "ayce": null,
+   "takeout": null,
+   "price_low": null,
+   "price_high": null
+  }
+ },
+ {
+  "venue": "Day's Bowl-A-Dome",
+  "fish": null,
+  "raw_note": "Own site (Fast Lane Cafe) has a dedicated 'Friday Fish Fry Menus' section, but the menus are posted only as images that could not be read as text; no species named in any text source. Reviews call the fish fry excellent.",
+  "source": "https://www.daysbowl.com/menu",
+  "confidence": "low",
+  "website": "https://www.daysbowl.com/",
+  "extras": {
+   "ayce": null,
+   "takeout": null,
+   "price_low": null,
+   "price_high": null
+  }
+ },
+ {
+  "venue": "Denmar Tavern",
+  "fish": [
+   "haddock",
+   "shrimp"
+  ],
+  "raw_note": "Fish Fry Friday features baked or fried haddock and shrimp with tartar sauce; starts 6 pm Fridays. Shrimp portions repeatedly praised in reviews. Neighborhood tavern since 1936.",
+  "source": "https://denmar-tavern.goto-where.com/",
+  "confidence": "medium",
+  "website": "https://www.facebook.com/p/Denmar-Tavern-100041395795806/",
+  "extras": {
+   "ayce": null,
+   "takeout": null,
+   "price_low": null,
+   "price_high": null
+  }
+ },
+ {
+  "venue": "Eagle's Club",
+  "fish": [
+   "haddock",
+   "perch",
+   "walleye",
+   "shrimp"
+  ],
+  "raw_note": "Friday fish fry 11 am-9 pm. Indexed menu from the club's own friday-fish-fry page lists haddock, perch, walleye (plate and sandwich), jumbo tiger shrimp, haddock sandwich, combo (2 pc haddock + 4 pc shrimp), plus 'poor man's lobster' (base species unstated), breaded scallops, and frog legs (unmapped). Site itself was unreachable at research time (DNS timeout); perch corroborated by a restaurantji review.",
+  "source": "http://wausaueaglesclub251.com/friday-fish-fry",
+  "confidence": "medium",
+  "website": "http://wausaueaglesclub251.com/",
+  "extras": {
+   "ayce": null,
+   "takeout": null,
+   "price_low": null,
+   "price_high": null
+  }
+ },
+ {
+  "venue": "Era Cafe",
+  "fish": null,
+  "raw_note": "Friday fish fry confirmed but no source names the species. Breakfast/brunch cafe.",
+  "source": "https://www.facebook.com/groups/askwausau/posts/3890307787854587/",
+  "confidence": "low",
+  "website": "https://eracaferibmountain.com/",
+  "extras": {
+   "ayce": null,
+   "takeout": null,
+   "price_low": null,
+   "price_high": null
+  }
+ },
+ {
+  "venue": "Funny Farm Bar & Grill",
+  "fish": [
+   "perch",
+   "shrimp"
+  ],
+  "raw_note": "Species from customer reviews only, no published menu: perch 'best he has had in the area', shrimp 'big & excellent'.",
+  "source": "https://www.restaurantji.com/wi/mosinee/funny-farm-bar-and-grill-/",
+  "confidence": "medium",
+  "website": "https://www.facebook.com/funnyfarmbar/",
+  "extras": {
+   "ayce": null,
+   "takeout": true,
+   "price_low": null,
+   "price_high": null
+  }
+ },
+ {
+  "venue": "Hammer Down Bar",
+  "fish": [
+   "walleye",
+   "shrimp"
+  ],
+  "raw_note": "Reviews: 'biggest piece of walleye'; 21-shrimp baskets. Haddock mention unverified.",
+  "source": "https://www.restaurantji.com/wi/mosinee/hammer-down-bar-/",
+  "confidence": "medium",
+  "website": "https://www.facebook.com/p/Hammer-Down-Bar-100054357648287/",
+  "extras": {
+   "ayce": null,
+   "takeout": null,
+   "price_low": null,
+   "price_high": null
+  }
+ },
+ {
+  "venue": "Hatley Hangout",
+  "fish": null,
+  "raw_note": "'Fish Friday' advertised and praised, but no source names the species.",
+  "source": "https://restaurantguru.com/Hatley-Hangout-Hatley",
+  "confidence": "low",
+  "website": "https://www.facebook.com/p/Hatley-Hangout-100095334878258/",
+  "extras": {
+   "ayce": null,
+   "takeout": true,
+   "price_low": null,
+   "price_high": null
+  }
+ },
+ {
+  "venue": "Hiawatha Sports Bar",
+  "fish": [
+   "haddock",
+   "shrimp"
+  ],
+  "raw_note": "Online ordering menu: 2 Piece Haddock $16.95 (most popular) and Haddock & Jumbo Shrimp Combo. Caution: cod/perch/walleye references online belong to the predecessor Hiawatha Restaurant & Lounge, closed Sept 2022. Own domain is parked, so no website listed.",
+  "source": "https://order.online/store/hiawatha-sports-bar-grant-st-25812707",
+  "confidence": "medium",
+  "website": "",
+  "extras": {
+   "ayce": null,
+   "takeout": true,
+   "price_low": 16.95,
+   "price_high": null
+  }
+ },
+ {
+  "venue": "Hoehn's Huddle Sports Bar & Grill",
+  "fish": [
+   "haddock",
+   "cod",
+   "walleye",
+   "perch",
+   "shrimp"
+  ],
+  "raw_note": "Fish fry menu: haddock fillet $16.99; Poorman's Lobster (Icelandic cod) $19.99; Canadian walleye $23.99; Lake Superior perch $22.99; shrimp basket $19.99.",
+  "source": "https://restaurantguru.com/Hoehns-Huddle-Schofield/menu",
+  "confidence": "high",
+  "website": "https://hoehnshuddlebarandgrill.com/",
+  "extras": {
+   "ayce": null,
+   "takeout": true,
+   "price_low": 16.99,
+   "price_high": 23.99
+  }
+ },
+ {
+  "venue": "Hog Creek Bar & Grill",
+  "fish": [
+   "walleye",
+   "haddock",
+   "shrimp"
+  ],
+  "raw_note": "Friday specials (own menu PDF, 12pm-9pm): Canadian walleye, beer-battered haddock 2pc/3pc, tiger shrimp, combos, clam fry, poor man's lobster. PDF prints no prices; carryout allowed with surcharge.",
+  "source": "https://hogcreekbarandgrill.com/wp-content/uploads/menu.pdf",
+  "confidence": "high",
+  "website": "https://hogcreekbarandgrill.com/",
+  "extras": {
+   "ayce": null,
+   "takeout": true,
+   "price_low": null,
+   "price_high": null
+  }
+ },
+ {
+  "venue": "Homestead Inn",
+  "fish": [
+   "cod",
+   "walleye"
+  ],
+  "raw_note": "Now operating as 'Homestead on 52'. Own site confirms Friday fish fry 2pm-8pm but names no species; aggregated menus list Cajun cod and walleye.",
+  "source": "https://www.menupix.com/wisconsin/restaurants/460516/Homestead-Inn-Wausau-WI",
+  "confidence": "low",
+  "website": "https://welcomehomeon52.com/",
+  "extras": {
+   "ayce": null,
+   "takeout": true,
+   "price_low": null,
+   "price_high": null
+  }
+ },
+ {
+  "venue": "Kelly Club",
+  "fish": [
+   "perch"
+  ],
+  "raw_note": "Review cites perch dinners; prices 'at the low end of the fish fry scale'. Haddock/cod mentions unverified. Fast takeout noted.",
+  "source": "https://www.fourdollarjacks.com/bars-near-me/kelly-club-sports-bar-grill",
+  "confidence": "medium",
+  "website": "https://www.facebook.com/KellyClubSportsBar/",
+  "extras": {
+   "ayce": null,
+   "takeout": true,
+   "price_low": null,
+   "price_high": null
+  }
+ },
+ {
+  "venue": "Knowlton House Distillery",
+  "fish": null,
+  "raw_note": "Weekly fish fry confirmed via own Facebook, but no source names the species.",
+  "source": "https://www.facebook.com/knowltonhousedistilleryusa/posts/362476979825268/",
+  "confidence": "low",
+  "website": "https://www.knowltonhouse.com/",
+  "extras": {
+   "ayce": null,
+   "takeout": null,
+   "price_low": null,
+   "price_high": null
+  }
+ },
+ {
+  "venue": "Lisa's at Lakeside",
+  "fish": [
+   "walleye",
+   "cod",
+   "perch",
+   "bluegill",
+   "shrimp",
+   "smelt"
+  ],
+  "raw_note": "Own Friday menu: walleye $19.99; Romano-encrusted cod $18.99; perch $14.99; bluegill $14.99; shrimp $14.99-$19.99; salmon outside allowed list. AYCE tempura smelt cited in reviews as recurring special.",
+  "source": "https://www.lisasatlakeside.com/in-house-menu",
+  "confidence": "high",
+  "website": "https://www.lisasatlakeside.com/",
+  "extras": {
+   "ayce": true,
+   "takeout": null,
+   "price_low": 11.5,
+   "price_high": 19.99
+  }
+ },
+ {
+  "venue": "Loading Zone Eatery",
+  "fish": [
+   "cod",
+   "walleye",
+   "perch",
+   "shrimp"
+  ],
+  "raw_note": "Syndicated menu: cod 2pc $10 - 4pc $17; walleye $17; perch $14; jumbo shrimp $14-$19.50; combos to $22. Voted Best Fish Fry ~15 years; to-go by phone.",
+  "source": "http://places.singleplatform.com/loading-zone-5/menu",
+  "confidence": "high",
+  "website": "https://theloadingzone.biz/",
+  "extras": {
+   "ayce": null,
+   "takeout": true,
+   "price_low": 10,
+   "price_high": 22
+  }
+ },
+ {
+  "venue": "Log Cabin Restaurant",
+  "fish": [
+   "cod"
+  ],
+  "raw_note": "Reviews cite hand-breaded cod at the Friday fry; walleye bites are an any-day menu item, not confirmed as part of the fry.",
+  "source": "https://www.tripadvisor.com/Restaurant_Review-g60264-d4623688-Reviews-Log_Cabin_Restaurant-Schofield_Wisconsin.html",
+  "confidence": "medium",
+  "website": "https://www.logcabinwausau.com/",
+  "extras": {
+   "ayce": null,
+   "takeout": true,
+   "price_low": null,
+   "price_high": null
+  }
+ },
+ {
+  "venue": "Milwaukee Burger Company",
+  "fish": null,
+  "raw_note": "Friday fish fry confirmed via reviews but no source states the species; chain menu has no fish fry items. Likely dine-in Friday special.",
+  "source": "https://www.tripadvisor.com/ShowUserReviews-g60370-d6527618-r473479444-Milwaukee_Burger_Company_Wausau-Wausau_Wisconsin.html",
+  "confidence": "low",
+  "website": "https://milwaukeeburgercompany.com/",
+  "extras": {
+   "ayce": null,
+   "takeout": null,
+   "price_low": null,
+   "price_high": null
+  }
+ },
+ {
+  "venue": "Mint Cafe",
+  "fish": [
+   "cod",
+   "perch"
+  ],
+  "raw_note": "Friday fish fry is an off-menu special. Reviews cite fried cod and Friday perch dinner; coleslaw, potato salad, fries, rye. Call ahead for carryouts.",
+  "source": "https://www.tripadvisor.com/Restaurant_Review-g60370-d1743959-Reviews-Mint_Cafe-Wausau_Wisconsin.html",
+  "confidence": "medium",
+  "website": "https://www.mintcafewausau.com/",
+  "extras": {
+   "ayce": null,
+   "takeout": true,
+   "price_low": null,
+   "price_high": null
+  }
+ },
+ {
+  "venue": "Nevermore on Third",
+  "fish": null,
+  "raw_note": "Fish fry confirmed via reviews but species never stated; Friday special not published online.",
+  "source": "https://www.tripadvisor.com/Restaurant_Review-g60370-d33000896-Reviews-Nevermore_On_Third_Bar_Grille-Wausau_Wisconsin.html",
+  "confidence": "low",
+  "website": "https://nevermoreonthird.com/",
+  "extras": {
+   "ayce": null,
+   "takeout": true,
+   "price_low": null,
+   "price_high": null
+  }
+ },
+ {
+  "venue": "Norm's",
+  "fish": [
+   "cod",
+   "shrimp"
+  ],
+  "raw_note": "Freshly Battered Cod Fish Fry customer favorite; fish $10, 8 large shrimp $15. $1/order to-go charge. Facebook only.",
+  "source": "https://www.restaurantji.com/wi/rothschild/norms-/",
+  "confidence": "medium",
+  "website": "https://www.facebook.com/p/Norms-100063639667190/",
+  "extras": {
+   "ayce": null,
+   "takeout": true,
+   "price_low": 10,
+   "price_high": 15
+  }
+ },
+ {
+  "venue": "Oliva's at Gulliver's Landing",
+  "fish": [
+   "haddock",
+   "walleye",
+   "shrimp"
+  ],
+  "raw_note": "Friday Fish menu: beer battered haddock $10.50-$14; baked or pan fried options; battered shrimp $17; crispy walleye bites $14. Opened Jan 2025.",
+  "source": "https://www.yelp.com/menu/oliva-s-at-gulliver-s-landing-wausau/friday-fish",
+  "confidence": "high",
+  "website": "https://www.olivasgullivers.com/",
+  "extras": {
+   "ayce": null,
+   "takeout": true,
+   "price_low": 10.5,
+   "price_high": 17
+  }
+ },
+ {
+  "venue": "Papillon's",
+  "fish": [
+   "cod"
+  ],
+  "raw_note": "Freshly Battered Cod $9.99-$11.99; Baked Cod $12.99. Twice-baked potato or fries, coleslaw, rye. Call for takeout.",
+  "source": "https://www.papillonspizza.com/menu.html",
+  "confidence": "high",
+  "website": "https://www.papillonspizza.com/",
+  "extras": {
+   "ayce": null,
+   "takeout": true,
+   "price_low": 9.99,
+   "price_high": 12.99
+  }
+ },
+ {
+  "venue": "Pinewood Supper Club",
+  "fish": [
+   "haddock",
+   "walleye"
+  ],
+  "raw_note": "Friday Fish Fry $10.99 haddock (battered, broiled, or Italian-crumb breaded); fish & chips $15.99; Canadian walleye $16.99/$21.99. Menu may be stale - venue points to Facebook for current.",
+  "source": "https://www.allmenus.com/wi/mosinee/377650-pinewood-supper-club/menu/",
+  "confidence": "medium",
+  "website": "https://thepinewood.com/",
+  "extras": {
+   "ayce": null,
+   "takeout": true,
+   "price_low": 10.99,
+   "price_high": 21.99
+  }
+ },
+ {
+  "venue": "Pit Stop Bar & Grill",
+  "fish": [
+   "walleye",
+   "shrimp"
+  ],
+  "raw_note": "2026 menu: beer battered walleye bites fish & chips $15; shrimp baskets $12-$18. Friday fry features 'a new catch every single month' - rotating species. Curbside pickup.",
+  "source": "http://www.pitstopmosinee.com/menu/",
+  "confidence": "high",
+  "website": "http://www.pitstopmosinee.com/",
+  "extras": {
+   "ayce": null,
+   "takeout": true,
+   "price_low": 12,
+   "price_high": 18
+  }
+ },
+ {
+  "venue": "Richard's Restaurant & Bar",
+  "fish": [
+   "haddock",
+   "walleye",
+   "shrimp"
+  ],
+  "raw_note": "Friday menu: haddock $13.50-$19.50; walleye $19.99; shrimp $25.75; Poorman's/Baked $15.50. AYCE is Thursday wings only, not fish.",
+  "source": "https://www.richards-restaurant.com/",
+  "confidence": "high",
+  "website": "https://www.richards-restaurant.com/",
+  "extras": {
+   "ayce": null,
+   "takeout": true,
+   "price_low": 13.5,
+   "price_high": 25.75
+  }
+ },
+ {
+  "venue": "Rick & Becky's Sunrise Bar",
+  "fish": [
+   "cod",
+   "shrimp"
+  ],
+  "raw_note": "Friday menu: North Atlantic cod battered or grilled $9-$19; shrimp $14. Fries or potato salad, coleslaw, rye, tartar.",
+  "source": "https://sunrisebar52.com/sunrise-menu-fridays/",
+  "confidence": "high",
+  "website": "https://sunrisebar52.com/",
+  "extras": {
+   "ayce": null,
+   "takeout": null,
+   "price_low": 9,
+   "price_high": 19
+  }
+ },
+ {
+  "venue": "Salty Bones",
+  "fish": [
+   "shrimp"
+  ],
+  "raw_note": "Fish Fry with Shrimp and Fish & Shrimp Combo are customer favorites; fried-fish species never stated in any accessible source. Facebook only.",
+  "source": "https://www.restaurantji.com/wi/mosinee/salty-bones-/",
+  "confidence": "low",
+  "website": "https://www.facebook.com/SaltyBonesLLC/",
+  "extras": {
+   "ayce": null,
+   "takeout": true,
+   "price_low": null,
+   "price_high": null
+  }
+ },
+ {
+  "venue": "Sconni's Alehouse & Eatery",
+  "fish": [
+   "cod",
+   "shrimp"
+  ],
+  "raw_note": "Friday Fish Fry Specials: Pacific Cod $14-$20; 6pc shrimp $17; Fridays 11am-9pm. Walleye entree on regular menu (not the fry).",
+  "source": "http://www.sconnis.com/menus/food/",
+  "confidence": "high",
+  "website": "http://www.sconnis.com/",
+  "extras": {
+   "ayce": null,
+   "takeout": null,
+   "price_low": 14,
+   "price_high": 20
+  }
+ },
+ {
+  "venue": "The Bar - Wausau",
+  "fish": [
+   "perch",
+   "cod",
+   "shrimp"
+  ],
+  "raw_note": "Fish Fry Menu PDF: Perch Plate $17.99; Perch Sandwich $14.99; Cod Plate $14.99/$16.99 (broiled available); cod Baja tacos $14.99; shrimp $10.99-$11.99. Delivery & carry out.",
+  "source": "https://www.meetatthebar.com/pdf/the_bar_wausau_fish_menu.pdf",
+  "confidence": "high",
+  "website": "https://www.meetatthebar.com/wausau.html",
+  "extras": {
+   "ayce": null,
+   "takeout": true,
+   "price_low": 14.99,
+   "price_high": 17.99
+  }
+ },
+ {
+  "venue": "The Chatterbox Bar",
+  "fish": [
+   "walleye"
+  ],
+  "raw_note": "Reviews cite a traditional Friday fish fry and a walleye fish fry; fried fish sandwich also mentioned, species unstated. No own website found.",
+  "source": "https://wanderlog.com/place/details/3170726/chatterbox-bar",
+  "confidence": "medium",
+  "website": "https://www.facebook.com/pages/The-Chatterbox-Bar/117540758272535",
+  "extras": {
+   "ayce": null,
+   "takeout": null,
+   "price_low": null,
+   "price_high": null
+  }
+ },
+ {
+  "venue": "The Garage",
+  "fish": [
+   "perch",
+   "walleye",
+   "haddock"
+  ],
+  "raw_note": "Venue's own Facebook post: perch walleye haddock fish tacos; website menu lists 10-12 oz Canadian walleye and lake perch dinners with coleslaw, tartar, lemon & rye.",
+  "source": "https://www.facebook.com/thegaragewausau/posts/782877580706430",
+  "confidence": "high",
+  "website": "https://www.thegaragewausau.com/",
+  "extras": {
+   "ayce": null,
+   "takeout": null,
+   "price_low": null,
+   "price_high": null
+  }
+ },
+ {
+  "venue": "The Mill Yard",
+  "fish": [
+   "haddock",
+   "perch",
+   "walleye",
+   "shrimp"
+  ],
+  "raw_note": "Official menu PDF: 2pc/3pc haddock beer battered or baked $12/$14, 4pc lightly breaded perch $15, 2pc pan-fried walleye $16, 5pc shrimp dinner $19, mix & match $20; all with coleslaw and rye.",
+  "source": "https://themillyardwi.com/optimamedia/products/P_38313/7a2b8f0c-6f3c-41e0-befe-c0a2af8df358.pdf",
+  "confidence": "high",
+  "website": "https://themillyardwi.com/",
+  "extras": {
+   "ayce": null,
+   "takeout": null,
+   "price_low": 12,
+   "price_high": 20
+  }
+ },
+ {
+  "venue": "The Red Retriever Bar & Grill",
+  "fish": [
+   "walleye"
+  ],
+  "raw_note": "Review: battered walleye Friday fish fry; jumbo shrimp also mentioned (unverified). No own website; active Facebook page.",
+  "source": "https://maps.roadtrippers.com/us/hatley-wi/food-drink/the-red-retriever-bar-grill",
+  "confidence": "medium",
+  "website": "https://www.facebook.com/p/The-Red-Retriever-Bar-Grill-61554763671287/",
+  "extras": {
+   "ayce": null,
+   "takeout": null,
+   "price_low": null,
+   "price_high": null
+  }
+ },
+ {
+  "venue": "Tine & Cellar",
+  "fish": [
+   "walleye",
+   "shrimp"
+  ],
+  "raw_note": "Friday Fish menu lists panko-breaded walleye, 6-pc shrimp, and beer-battered pollock fish & chips - pollock not in allowed list. Curry walleye also on dinner menu.",
+  "source": "https://www.tineandcellar.com/friday-fish",
+  "confidence": "medium",
+  "website": "https://www.tineandcellar.com/",
+  "extras": {
+   "ayce": null,
+   "takeout": null,
+   "price_low": null,
+   "price_high": null
+  }
+ },
+ {
+  "venue": "Trailside Sports Bar & Grill",
+  "fish": [
+   "haddock"
+  ],
+  "raw_note": "Menu: Fish Fry comes with 2 beer batter haddock, coleslaw, and homemade potato salad. Aggregator claims of cod/walleye/perch/bluegill appear AI-generated and are excluded.",
+  "source": "https://www.zmenu.com/trailside-sports-bar-and-grill-weston-online-menu/",
+  "confidence": "medium",
+  "website": "https://www.trail-side-bar-and-grill.com/",
+  "extras": {
+   "ayce": null,
+   "takeout": null,
+   "price_low": null,
+   "price_high": null
+  }
+ },
+ {
+  "venue": "Tri-City Family Restaurant",
+  "fish": [
+   "cod",
+   "haddock",
+   "smelt",
+   "shrimp"
+  ],
+  "raw_note": "Own menu Friday specials: beer-battered Icelandic cod $11.49, smelt fry $10.99, 2pc haddock $13.49, 6pc shrimp $15.99, combos; catfish $15.99 not in allowed list.",
+  "source": "https://www.tricityfamilyrestaurant.com/menu",
+  "confidence": "high",
+  "website": "https://www.tricityfamilyrestaurant.com/",
+  "extras": {
+   "ayce": null,
+   "takeout": true,
+   "price_low": 10.99,
+   "price_high": 15.99
+  }
+ },
+ {
+  "venue": "Treu's Tic Toc",
+  "fish": [
+   "haddock"
+  ],
+  "raw_note": "Haddock Fish Fry with coleslaw, rye, choice of side; venue site advertises Friday fish fry but publishes no menu online.",
+  "source": "https://restaurantguru.com/Treus-Tic-Toc-Wausau",
+  "confidence": "medium",
+  "website": "https://treustictoc.com/",
+  "extras": {
+   "ayce": null,
+   "takeout": null,
+   "price_low": null,
+   "price_high": null
+  }
+ },
+ {
+  "venue": "Two's Company Restaurant & Lounge",
+  "fish": [
+   "haddock",
+   "perch",
+   "shrimp"
+  ],
+  "raw_note": "Own menu: haddock deep fried or baked, combination platter of perch, haddock, shrimp and scallops - scallops not in allowed list.",
+  "source": "https://www.twoscompanymosinee.com/menu-page",
+  "confidence": "medium",
+  "website": "https://www.twoscompanymosinee.com/",
+  "extras": {
+   "ayce": null,
+   "takeout": null,
+   "price_low": null,
+   "price_high": null
+  }
+ },
+ {
+  "venue": "Wausau Mine",
+  "fish": [
+   "cod",
+   "walleye",
+   "shrimp"
+  ],
+  "raw_note": "Official menu Friday specials: beer-battered cod 1-4pc $10.99-$13.99, Poorman's baked cod $15.99, 8pc shrimp $17.99; after 4pm pan-fried cod $15.99, pan-fried walleye $17.99.",
+  "source": "https://wausaumine.com/menu/",
+  "confidence": "high",
+  "website": "https://wausaumine.com/",
+  "extras": {
+   "ayce": null,
+   "takeout": true,
+   "price_low": 10.99,
+   "price_high": 17.99
+  }
+ },
+ {
+  "venue": "Wausau on Water",
+  "fish": [
+   "haddock",
+   "perch",
+   "shrimp"
+  ],
+  "raw_note": "Official menu, fish fry all day 11am-10pm: 2pc haddock $15, 2pc butterflied perch $18, 6 jumbo shrimp $17, coconut shrimp $21.",
+  "source": "https://play-wow.net/menu",
+  "confidence": "high",
+  "website": "https://play-wow.net/",
+  "extras": {
+   "ayce": null,
+   "takeout": true,
+   "price_low": 15,
+   "price_high": 21
+  }
+ },
+ {
+  "venue": "Westsider Diner & Lounge",
+  "fish": null,
+  "raw_note": "Serves a fish fry per multiple listings, but menu is image-only; no source names a species.",
+  "source": "",
+  "confidence": "low",
+  "website": "https://www.westsiderdiner.com/",
+  "extras": {
+   "ayce": null,
+   "takeout": null,
+   "price_low": null,
+   "price_high": null
+  }
+ },
+ {
+  "venue": "Wiggly Field",
+  "fish": [
+   "perch",
+   "haddock",
+   "shrimp"
+  ],
+  "raw_note": "Official menu, fish fry daily 11am-9pm: pollock fry $7.25-$10.50 (pollock not in allowed list); perch 3pc $12.75 / 4pc $15.75; haddock 2pc $11 / 3pc $13; shrimp $11.50; combos $12-$14.",
+  "source": "https://wigglyfieldanddome.com/menu/",
+  "confidence": "high",
+  "website": "https://wigglyfieldanddome.com/",
+  "extras": {
+   "ayce": null,
+   "takeout": true,
+   "price_low": 7.25,
+   "price_high": 15.75
+  }
+ },
+ {
+  "venue": "Red Granite Bar & Grill",
+  "fish": [
+   "walleye"
+  ],
+  "raw_note": "Friday Walleye Dinner listed under customers' favorites; seafood combo also praised, contents unstated. No own website; Facebook is primary presence.",
+  "source": "https://www.restaurantji.com/wi/merrill/red-granite-bar-and-grill-/",
+  "confidence": "medium",
+  "website": "https://www.facebook.com/profile.php?id=61552638063869",
+  "extras": {
+   "ayce": null,
+   "takeout": null,
+   "price_low": null,
+   "price_high": null
+  }
+ }
+]
