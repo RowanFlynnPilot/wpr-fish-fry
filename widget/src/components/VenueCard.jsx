@@ -1,6 +1,17 @@
 import { TYPE_LABELS } from "./FilterBar.jsx";
 import { venueSlug } from "../App.jsx";
 
+// iPhone/iPad/Mac readers get Apple Maps (opens the native app); everyone
+// else gets Google Maps. iPadOS reports as Macintosh — also covered.
+const APPLE_PLATFORM = /iPhone|iPad|iPod|Macintosh/.test(navigator.userAgent);
+
+export function directionsUrl(v) {
+  const destination = encodeURIComponent(`${v.address}, ${v.city}, WI`);
+  return APPLE_PLATFORM
+    ? `https://maps.apple.com/?daddr=${destination}`
+    : `https://www.google.com/maps/dir/?api=1&destination=${destination}`;
+}
+
 function money(n) {
   return Number.isInteger(n) ? `$${n}` : `$${n.toFixed(2)}`;
 }
@@ -19,7 +30,6 @@ export default function VenueCard({
   selected = false,
 }) {
   const paid = v.tier !== "free";
-  const destination = encodeURIComponent(`${v.address}, ${v.city}, WI`);
 
   return (
     <article
@@ -83,11 +93,7 @@ export default function VenueCard({
           >
             Show on map
           </button>
-          <a
-            href={`https://www.google.com/maps/dir/?api=1&destination=${destination}`}
-            target="_blank"
-            rel="noreferrer"
-          >
+          <a href={directionsUrl(v)} target="_blank" rel="noreferrer">
             Directions
           </a>
           {v.website && (

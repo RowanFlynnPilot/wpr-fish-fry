@@ -169,6 +169,7 @@ body {
   border: 1px solid var(--line);
   margin-bottom: 16px;
   z-index: 0;
+  scroll-margin-top: 8px;
 }
 
 .ff-marker {

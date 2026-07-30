@@ -5,11 +5,11 @@ import FeaturedCard from "./components/FeaturedCard.jsx";
 import VenueCard from "./components/VenueCard.jsx";
 import FishGuide from "./components/FishGuide.jsx";
 
+// Page scrolls are instant, not smooth: smooth scrollIntoView silently
+// no-ops in some embedded/iframe contexts (notably mobile Safari across
+// the WordPress iframe boundary), and instant works everywhere. The card
+// highlight pulse handles orientation.
 const EMPTY_FILTERS = { q: "", fish: [], types: [], takeout: false, ayce: false };
-
-const REDUCED_MOTION = window.matchMedia(
-  "(prefers-reduced-motion: reduce)"
-).matches;
 
 export function venueSlug(name) {
   return name.toLowerCase().replace(/[^a-z0-9]+/g, "-");
@@ -117,10 +117,7 @@ export default function App() {
   // Guide → listings loop: filter to one species and jump to the results.
   const findFish = useCallback((fish) => {
     setFilters((f) => ({ ...f, fish: [fish] }));
-    document.querySelector(".ff-count")?.scrollIntoView({
-      behavior: REDUCED_MOTION ? "auto" : "smooth",
-      block: "start",
-    });
+    document.querySelector(".ff-count")?.scrollIntoView({ block: "start" });
   }, []);
 
   const onMarkerClick = useCallback(
@@ -128,18 +125,18 @@ export default function App() {
     [focusVenue]
   );
   const onShowMap = useCallback(
-    (name) => focusVenue(name, "list"),
+    (name) => {
+      focusVenue(name, "list");
+      // The reader is deep in the list — bring the map back to them.
+      document.querySelector(".ff-map")?.scrollIntoView({ block: "start" });
+    },
     [focusVenue]
   );
 
   useEffect(() => {
     if (!focus || focus.source !== "map") return;
     const el = document.getElementById(`venue-${venueSlug(focus.name)}`);
-    if (el)
-      el.scrollIntoView({
-        behavior: REDUCED_MOTION ? "auto" : "smooth",
-        block: "center",
-      });
+    if (el) el.scrollIntoView({ block: "center" });
   }, [focus]);
 
   // Hourly builds mean fresh data; if the pipeline breaks silently, tell

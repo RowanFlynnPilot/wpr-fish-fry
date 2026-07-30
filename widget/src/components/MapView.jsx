@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import L from "leaflet";
-import { priceRange } from "./VenueCard.jsx";
+import { directionsUrl, priceRange } from "./VenueCard.jsx";
 
 // Supper clubs deserve their own icon. This is Wisconsin.
 const TYPE_GLYPH = {
@@ -17,13 +17,11 @@ const REDUCED_MOTION = window.matchMedia(
 ).matches;
 
 function popupHtml(v) {
-  const destination = encodeURIComponent(`${v.address}, ${v.city}, WI`);
   return (
     `<strong>${v.venue_name}</strong><br>` +
     `${v.fish.join(", ")} · ${priceRange(v)}<br>` +
     `${v.hours}<br>` +
-    `<a href="https://www.google.com/maps/dir/?api=1&destination=${destination}" ` +
-    `target="_blank" rel="noreferrer">Directions</a>`
+    `<a href="${directionsUrl(v)}" target="_blank" rel="noreferrer">Directions</a>`
   );
 }
 
