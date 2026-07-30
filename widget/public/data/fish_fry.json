@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-30T21:23:08+00:00",
+  "generated_at": "2026-07-30T22:55:37+00:00",
   "venue_count": 59,
   "venues": [
     {
@@ -8,7 +8,7 @@
       "address": "1724 Merrill Ave",
       "city": "Wausau",
       "phone": "715-841-0035",
-      "website": "",
+      "website": "https://www.facebook.com/p/4-Fathers-Pub-61556538628561/",
       "fish": [
         "cod"
       ],
@@ -62,7 +62,7 @@
       "address": "6202 Schofield Ave",
       "city": "Schofield",
       "phone": "715-359-2363",
-      "website": "",
+      "website": "https://www.facebook.com/arrowsportsclubweston/",
       "fish": [
         "cod"
       ],
@@ -87,12 +87,13 @@
       "address": "606 N 3rd St",
       "city": "Wausau",
       "phone": "715-848-5668",
-      "website": "",
+      "website": "https://www.backwhencafe.com/",
       "fish": [
-        "cod"
+        "cod",
+        "haddock"
       ],
-      "price_low": 10.0,
-      "price_high": 20.0,
+      "price_low": 16.0,
+      "price_high": 19.0,
       "sides": "",
       "hours": "Fri 5PM- 10PM",
       "all_you_can_eat": false,
@@ -112,9 +113,11 @@
       "address": "900 Golf Club Rd",
       "city": "Wausau",
       "phone": "715-675-2460",
-      "website": "",
+      "website": "http://bbjacks.com/",
       "fish": [
-        "cod"
+        "walleye",
+        "haddock",
+        "shrimp"
       ],
       "price_low": 10.0,
       "price_high": 20.0,
@@ -137,7 +140,7 @@
       "address": "1490 County Rd XX",
       "city": "Rothschild",
       "phone": "715-393-4409",
-      "website": "",
+      "website": "https://www.facebook.com/p/Blissful-Bites-Brunch-100091658664778/",
       "fish": [
         "cod"
       ],
@@ -162,9 +165,9 @@
       "address": "3607 N Mountain Rd",
       "city": "Wausau",
       "phone": "715-845-5570",
-      "website": "",
+      "website": "https://www.carmeloswausau.com/",
       "fish": [
-        "cod"
+        "haddock"
       ],
       "price_low": 10.0,
       "price_high": 30.0,
@@ -214,12 +217,12 @@
       "address": "1000 Imperial Ave",
       "city": "Rothschild",
       "phone": "715-355-9200",
-      "website": "",
+      "website": "https://www.cedarcreekgrillhouse.com/",
       "fish": [
-        "cod"
+        "walleye"
       ],
-      "price_low": 10.0,
-      "price_high": 20.0,
+      "price_low": 18.0,
+      "price_high": 28.0,
       "sides": "",
       "hours": "Fri 4PM-10PM",
       "all_you_can_eat": false,
@@ -239,9 +242,11 @@
       "address": "158241 E Wausau Ave",
       "city": "Wausau",
       "phone": "715-393-4026",
-      "website": "",
+      "website": "https://cheeksbar.com/",
       "fish": [
-        "cod"
+        "walleye",
+        "cod",
+        "shrimp"
       ],
       "price_low": 10.0,
       "price_high": 20.0,
@@ -264,9 +269,10 @@
       "address": "R13085 County Rd N",
       "city": "Ringle",
       "phone": "715-842-1913",
-      "website": "",
+      "website": "https://www.facebook.com/ProstHillBarGrillLLC/",
       "fish": [
-        "cod"
+        "walleye",
+        "haddock"
       ],
       "price_low": 10.0,
       "price_high": 20.0,
@@ -279,7 +285,7 @@
       "photo_url": "",
       "menu_url": "",
       "featured_this_week": false,
-      "editor_note": "",
+      "editor_note": "Recently operating as Prost Hill Bar & Grill.",
       "lat": 44.911692,
       "lon": -89.456808
     },
@@ -289,7 +295,7 @@
       "address": "5307 Westfair Ave",
       "city": "Schofield",
       "phone": "715-298-1046",
-      "website": "",
+      "website": "https://www.facebook.com/daybreakbar/",
       "fish": [
         "cod"
       ],
@@ -304,7 +310,7 @@
       "photo_url": "",
       "menu_url": "",
       "featured_this_week": false,
-      "editor_note": "",
+      "editor_note": "Recently operating as Chacks Day Break Bar & Grill.",
       "lat": 44.909691,
       "lon": -89.604566
     },
@@ -314,7 +320,7 @@
       "address": "1715 Stewart Ave",
       "city": "Wausau",
       "phone": "715-848-2292",
-      "website": "",
+      "website": "https://www.daysbowl.com/",
       "fish": [
         "cod"
       ],
@@ -339,9 +345,10 @@
       "address": "601 W Thomas St",
       "city": "Wausau",
       "phone": "715-298-3131",
-      "website": "",
+      "website": "https://www.facebook.com/p/Denmar-Tavern-100041395795806/",
       "fish": [
-        "cod"
+        "haddock",
+        "shrimp"
       ],
       "price_low": 10.0,
       "price_high": 20.0,
@@ -372,7 +379,7 @@
       "price_low": 10.0,
       "price_high": 20.0,
       "sides": "",
-      "hours": "Fri 11AM - 9AM",
+      "hours": "Fri 11AM - 9PM",
       "all_you_can_eat": false,
       "takeout": true,
       "tier": "free",
@@ -390,9 +397,12 @@
       "address": "1703 S 3rd Ave",
       "city": "Wausau",
       "phone": "715-845-4795",
-      "website": "",
+      "website": "http://wausaueaglesclub251.com/",
       "fish": [
-        "cod"
+        "perch",
+        "walleye",
+        "haddock",
+        "shrimp"
       ],
       "price_low": 10.0,
       "price_high": 20.0,
@@ -415,7 +425,7 @@
       "address": "151523 County Rd NN",
       "city": "Wausau",
       "phone": "715-551-1172",
-      "website": "",
+      "website": "https://eracaferibmountain.com/",
       "fish": [
         "cod"
       ],
@@ -440,9 +450,10 @@
       "address": "4198 County Rd X",
       "city": "Mosinee",
       "phone": "715-295-6695",
-      "website": "",
+      "website": "https://www.facebook.com/funnyfarmbar/",
       "fish": [
-        "cod"
+        "perch",
+        "shrimp"
       ],
       "price_low": 10.0,
       "price_high": 20.0,
@@ -465,9 +476,11 @@
       "address": "152501 Morning Glory Ln",
       "city": "Wausau",
       "phone": "715-393-4495",
-      "website": "",
+      "website": "https://www.thegaragewausau.com/",
       "fish": [
-        "cod"
+        "perch",
+        "walleye",
+        "haddock"
       ],
       "price_low": 10.0,
       "price_high": 20.0,
@@ -518,9 +531,10 @@
       "address": "216050 County Rd B",
       "city": "Mosinee",
       "phone": "715-693-2335",
-      "website": "",
+      "website": "https://www.facebook.com/p/Hammer-Down-Bar-100054357648287/",
       "fish": [
-        "cod"
+        "walleye",
+        "shrimp"
       ],
       "price_low": 10.0,
       "price_high": 20.0,
@@ -543,7 +557,7 @@
       "address": "208 Clark St",
       "city": "Hatley",
       "phone": "715-446-5006",
-      "website": "",
+      "website": "https://www.facebook.com/p/Hatley-Hangout-100095334878258/",
       "fish": [
         "cod"
       ],
@@ -570,7 +584,8 @@
       "phone": "715-298-1061",
       "website": "",
       "fish": [
-        "cod"
+        "haddock",
+        "shrimp"
       ],
       "price_low": 10.0,
       "price_high": 20.0,
@@ -593,12 +608,16 @@
       "address": "840 Grand Ave",
       "city": "Schofield",
       "phone": "715-298-3225",
-      "website": "",
+      "website": "https://hoehnshuddlebarandgrill.com/",
       "fish": [
-        "cod"
+        "perch",
+        "walleye",
+        "cod",
+        "haddock",
+        "shrimp"
       ],
-      "price_low": 10.0,
-      "price_high": 20.0,
+      "price_low": 16.99,
+      "price_high": 23.99,
       "sides": "",
       "hours": "Fri 10AM-9PM",
       "all_you_can_eat": false,
@@ -618,9 +637,11 @@
       "address": "143203 State Hwy 153",
       "city": "Mosinee",
       "phone": "715-693-7222",
-      "website": "",
+      "website": "https://hogcreekbarandgrill.com/",
       "fish": [
-        "cod"
+        "walleye",
+        "haddock",
+        "shrimp"
       ],
       "price_low": 10.0,
       "price_high": 20.0,
@@ -643,8 +664,9 @@
       "address": "8507 State Hwy 52",
       "city": "Wausau",
       "phone": "715-842-8396",
-      "website": "",
+      "website": "https://welcomehomeon52.com/",
       "fish": [
+        "walleye",
         "cod"
       ],
       "price_low": 10.0,
@@ -658,7 +680,7 @@
       "photo_url": "",
       "menu_url": "",
       "featured_this_week": false,
-      "editor_note": "",
+      "editor_note": "Recently operating as Homestead on 52.",
       "lat": 44.956322,
       "lon": -89.630279
     },
@@ -668,9 +690,9 @@
       "address": "4810 Ross Ave",
       "city": "Schofield",
       "phone": "715-359-6307",
-      "website": "",
+      "website": "https://www.facebook.com/KellyClubSportsBar/",
       "fish": [
-        "cod"
+        "perch"
       ],
       "price_low": 10.0,
       "price_high": 20.0,
@@ -693,7 +715,7 @@
       "address": "204575 County Rd DB",
       "city": "Mosinee",
       "phone": "715-693-0099",
-      "website": "",
+      "website": "https://www.knowltonhouse.com/",
       "fish": [
         "cod"
       ],
@@ -718,15 +740,20 @@
       "address": "214857 County Rd Y",
       "city": "Hatley",
       "phone": "715-255-4029",
-      "website": "",
+      "website": "https://www.lisasatlakeside.com/",
       "fish": [
-        "cod"
+        "perch",
+        "walleye",
+        "bluegill",
+        "cod",
+        "smelt",
+        "shrimp"
       ],
-      "price_low": 10.0,
-      "price_high": 20.0,
+      "price_low": 11.5,
+      "price_high": 19.99,
       "sides": "",
       "hours": "Fri 11AM-8:30PM",
-      "all_you_can_eat": false,
+      "all_you_can_eat": true,
       "takeout": true,
       "tier": "free",
       "description": "",
@@ -745,10 +772,13 @@
       "phone": "715-845-9585",
       "website": "https://www.theloadingzone.biz",
       "fish": [
-        "cod"
+        "perch",
+        "walleye",
+        "cod",
+        "shrimp"
       ],
       "price_low": 10.0,
-      "price_high": 20.0,
+      "price_high": 22.0,
       "sides": "",
       "hours": "Fri 4PM-9PM",
       "all_you_can_eat": false,
@@ -768,7 +798,7 @@
       "address": "1522 Metro Dr",
       "city": "Schofield",
       "phone": "715-359-3669",
-      "website": "",
+      "website": "https://www.logcabinwausau.com/",
       "fish": [
         "cod"
       ],
@@ -793,7 +823,7 @@
       "address": "2200 Stewart Ave",
       "city": "Wausau",
       "phone": "715-298-9371",
-      "website": "",
+      "website": "https://milwaukeeburgercompany.com/",
       "fish": [
         "cod"
       ],
@@ -818,8 +848,9 @@
       "address": "422 3rd St",
       "city": "Wausau",
       "phone": "715-845-5879",
-      "website": "",
+      "website": "https://www.mintcafewausau.com/",
       "fish": [
+        "perch",
         "cod"
       ],
       "price_low": 10.0,
@@ -843,7 +874,7 @@
       "address": "1206 N 3rd St",
       "city": "Wausau",
       "phone": "715-298-0028",
-      "website": "",
+      "website": "https://nevermoreonthird.com/",
       "fish": [
         "cod"
       ],
@@ -868,12 +899,13 @@
       "address": "707 Grand Ave",
       "city": "Rothschild",
       "phone": "715-298-6000",
-      "website": "",
+      "website": "https://www.facebook.com/p/Norms-100063639667190/",
       "fish": [
-        "cod"
+        "cod",
+        "shrimp"
       ],
       "price_low": 10.0,
-      "price_high": 20.0,
+      "price_high": 15.0,
       "sides": "",
       "hours": "Fri 11AM-9PM",
       "all_you_can_eat": false,
@@ -893,12 +925,14 @@
       "address": "151701 Gadwall Ln",
       "city": "Wausau",
       "phone": "715-393-4040",
-      "website": "",
+      "website": "https://www.olivasgullivers.com/",
       "fish": [
-        "cod"
+        "walleye",
+        "haddock",
+        "shrimp"
       ],
-      "price_low": 10.0,
-      "price_high": 20.0,
+      "price_low": 10.5,
+      "price_high": 17.0,
       "sides": "",
       "hours": "Fri 3PM-9PM",
       "all_you_can_eat": false,
@@ -944,12 +978,12 @@
       "address": "1041 E Grand Ave",
       "city": "Rothschild",
       "phone": "715-359-9417",
-      "website": "",
+      "website": "https://www.papillonspizza.com/",
       "fish": [
         "cod"
       ],
-      "price_low": 10.0,
-      "price_high": 20.0,
+      "price_low": 9.99,
+      "price_high": 12.99,
       "sides": "",
       "hours": "Fri 11AM-10PM",
       "all_you_can_eat": false,
@@ -969,12 +1003,13 @@
       "address": "1208 Half Moon Lake Dr",
       "city": "Mosinee",
       "phone": "715-693-3180",
-      "website": "",
+      "website": "https://thepinewood.com/",
       "fish": [
-        "cod"
+        "walleye",
+        "haddock"
       ],
-      "price_low": 10.0,
-      "price_high": 20.0,
+      "price_low": 10.99,
+      "price_high": 21.99,
       "sides": "",
       "hours": "Fri 5PM-9PM",
       "all_you_can_eat": false,
@@ -994,12 +1029,13 @@
       "address": "1024 Western Ave",
       "city": "Mosinee",
       "phone": "715-693-3636",
-      "website": "",
+      "website": "http://www.pitstopmosinee.com/",
       "fish": [
-        "cod"
+        "walleye",
+        "shrimp"
       ],
-      "price_low": 10.0,
-      "price_high": 20.0,
+      "price_low": 12.0,
+      "price_high": 18.0,
       "sides": "",
       "hours": "Fri 11AM-9PM",
       "all_you_can_eat": false,
@@ -1019,9 +1055,9 @@
       "address": "11420 S County Rd K",
       "city": "Merrill",
       "phone": "715-536-9391",
-      "website": "",
+      "website": "https://www.facebook.com/profile.php?id=61552638063869",
       "fish": [
-        "cod"
+        "walleye"
       ],
       "price_low": 10.0,
       "price_high": 20.0,
@@ -1044,12 +1080,14 @@
       "address": "5305 N 32nd Ave",
       "city": "Wausau",
       "phone": "715-675-7070",
-      "website": "",
+      "website": "https://www.richards-restaurant.com/",
       "fish": [
-        "cod"
+        "walleye",
+        "haddock",
+        "shrimp"
       ],
-      "price_low": 10.0,
-      "price_high": 20.0,
+      "price_low": 13.5,
+      "price_high": 25.75,
       "sides": "",
       "hours": "Fri 4PM-9PM",
       "all_you_can_eat": false,
@@ -1069,12 +1107,13 @@
       "address": "H12950 State Hwy 52",
       "city": "Wausau",
       "phone": "715-581-8237",
-      "website": "",
+      "website": "https://sunrisebar52.com/",
       "fish": [
-        "cod"
+        "cod",
+        "shrimp"
       ],
-      "price_low": 10.0,
-      "price_high": 20.0,
+      "price_low": 9.0,
+      "price_high": 19.0,
       "sides": "",
       "hours": "Fri 11AM-10PM",
       "all_you_can_eat": false,
@@ -1094,9 +1133,9 @@
       "address": "145727 W State Hwy 153",
       "city": "Mosinee",
       "phone": "715-814-1655",
-      "website": "",
+      "website": "https://www.facebook.com/SaltyBonesLLC/",
       "fish": [
-        "cod"
+        "shrimp"
       ],
       "price_low": 10.0,
       "price_high": 20.0,
@@ -1119,11 +1158,12 @@
       "address": "1239 Schofield Ave",
       "city": "Schofield",
       "phone": "715-241-7665",
-      "website": "",
+      "website": "http://www.sconnis.com/",
       "fish": [
-        "cod"
+        "cod",
+        "shrimp"
       ],
-      "price_low": 10.0,
+      "price_low": 14.0,
       "price_high": 20.0,
       "sides": "",
       "hours": "Fri 11AM - 9PM",
@@ -1144,9 +1184,11 @@
       "address": "10302 Market St",
       "city": "Rothschild",
       "phone": "715-355-7001",
-      "website": "",
+      "website": "https://www.meetatthebar.com/wausau.html",
       "fish": [
-        "cod"
+        "perch",
+        "cod",
+        "shrimp"
       ],
       "price_low": 10.0,
       "price_high": 22.0,
@@ -1169,9 +1211,9 @@
       "address": "102 S 2nd Ave",
       "city": "Wausau",
       "phone": "715-842-3059",
-      "website": "",
+      "website": "https://www.facebook.com/pages/The-Chatterbox-Bar/117540758272535",
       "fish": [
-        "cod"
+        "walleye"
       ],
       "price_low": 10.0,
       "price_high": 20.0,
@@ -1194,11 +1236,14 @@
       "address": "238532 County Rd W",
       "city": "Wausau",
       "phone": "715-298-0923",
-      "website": "",
+      "website": "https://themillyardwi.com/",
       "fish": [
-        "cod"
+        "perch",
+        "walleye",
+        "haddock",
+        "shrimp"
       ],
-      "price_low": 10.0,
+      "price_low": 12.0,
       "price_high": 20.0,
       "sides": "",
       "hours": "Fri 11AM-9PM",
@@ -1219,9 +1264,9 @@
       "address": "1578 N Shore Dr",
       "city": "Hatley",
       "phone": "715-446-2190",
-      "website": "",
+      "website": "https://www.facebook.com/p/The-Red-Retriever-Bar-Grill-61554763671287/",
       "fish": [
-        "cod"
+        "walleye"
       ],
       "price_low": 10.0,
       "price_high": 20.0,
@@ -1244,9 +1289,10 @@
       "address": "3806 Schofield Ave",
       "city": "Weston",
       "phone": "715-841-0080",
-      "website": "",
+      "website": "https://www.tineandcellar.com/",
       "fish": [
-        "cod"
+        "walleye",
+        "shrimp"
       ],
       "price_low": 10.0,
       "price_high": 20.0,
@@ -1296,9 +1342,9 @@
       "address": "8101 Schofield Ave",
       "city": "Weston",
       "phone": "715-241-8999",
-      "website": "",
+      "website": "https://www.trail-side-bar-and-grill.com/",
       "fish": [
-        "cod"
+        "haddock"
       ],
       "price_low": 10.0,
       "price_high": 20.0,
@@ -1321,9 +1367,9 @@
       "address": "1201 W Thomas St",
       "city": "Wausau",
       "phone": "715-848-2465",
-      "website": "",
+      "website": "https://treustictoc.com/",
       "fish": [
-        "cod"
+        "haddock"
       ],
       "price_low": 10.0,
       "price_high": 20.0,
@@ -1346,12 +1392,15 @@
       "address": "525 Grand Ave",
       "city": "Schofield",
       "phone": "715-359-9596",
-      "website": "",
+      "website": "https://www.tricityfamilyrestaurant.com/",
       "fish": [
-        "cod"
+        "cod",
+        "haddock",
+        "smelt",
+        "shrimp"
       ],
-      "price_low": 10.0,
-      "price_high": 20.0,
+      "price_low": 10.99,
+      "price_high": 15.99,
       "sides": "",
       "hours": "Fri 11AM-9PM",
       "all_you_can_eat": false,
@@ -1371,9 +1420,11 @@
       "address": "213 Main St",
       "city": "Mosinee",
       "phone": "715-693-3090",
-      "website": "",
+      "website": "https://www.twoscompanymosinee.com/",
       "fish": [
-        "cod"
+        "perch",
+        "haddock",
+        "shrimp"
       ],
       "price_low": 10.0,
       "price_high": 20.0,
@@ -1396,12 +1447,14 @@
       "address": "3904 Stewart Ave",
       "city": "Wausau",
       "phone": "715-845-7304",
-      "website": "",
+      "website": "https://wausaumine.com/",
       "fish": [
-        "cod"
+        "walleye",
+        "cod",
+        "shrimp"
       ],
-      "price_low": 10.0,
-      "price_high": 20.0,
+      "price_low": 10.99,
+      "price_high": 17.99,
       "sides": "",
       "hours": "Fri 11AM-9:30PM",
       "all_you_can_eat": false,
@@ -1421,12 +1474,14 @@
       "address": "1300 N River Dr",
       "city": "Wausau",
       "phone": "715-298-6012",
-      "website": "",
+      "website": "https://play-wow.net/",
       "fish": [
-        "cod"
+        "perch",
+        "haddock",
+        "shrimp"
       ],
-      "price_low": 10.0,
-      "price_high": 20.0,
+      "price_low": 15.0,
+      "price_high": 21.0,
       "sides": "",
       "hours": "Fri 11AM-9PM",
       "all_you_can_eat": false,
@@ -1446,7 +1501,7 @@
       "address": "628 N 3rd Ave",
       "city": "Wausau",
       "phone": "715-663-3663",
-      "website": "",
+      "website": "https://www.westsiderdiner.com/",
       "fish": [
         "cod"
       ],
@@ -1471,12 +1526,14 @@
       "address": "2005 Schofield Ave",
       "city": "Schofield",
       "phone": "715-359-5864",
-      "website": "",
+      "website": "https://wigglyfieldanddome.com/",
       "fish": [
-        "cod"
+        "perch",
+        "haddock",
+        "shrimp"
       ],
-      "price_low": 10.0,
-      "price_high": 20.0,
+      "price_low": 7.25,
+      "price_high": 15.75,
       "sides": "",
       "hours": "Fri 11AM-9PM",
       "all_you_can_eat": false,
