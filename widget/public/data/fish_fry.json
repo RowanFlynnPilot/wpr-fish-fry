@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-30T22:55:37+00:00",
+  "generated_at": "2026-07-31T01:10:57+00:00",
   "venue_count": 59,
   "venues": [
     {
@@ -963,11 +963,11 @@
       "hours": "Fri 11AM-10PM",
       "all_you_can_eat": false,
       "takeout": true,
-      "tier": "featured",
-      "description": "A supper club original since 1936! Steaks, seafood and cocktails around the historic Roller's Round Bar, and a reader-poll favorite Friday fry.",
-      "photo_url": "photos/f840f3561af42795.jpg",
-      "menu_url": "https://thepalmswausau.com/menus/",
-      "featured_this_week": true,
+      "tier": "free",
+      "description": "",
+      "photo_url": "",
+      "menu_url": "",
+      "featured_this_week": false,
       "editor_note": "8th in the 2026 reader poll.",
       "lat": 44.903012,
       "lon": -89.608034
@@ -1065,11 +1065,11 @@
       "hours": "Fri 11 AM - 9PM",
       "all_you_can_eat": false,
       "takeout": true,
-      "tier": "free",
+      "tier": "featured",
       "description": "",
-      "photo_url": "",
+      "photo_url": "photos/4e5f79174220cbcd.jpg",
       "menu_url": "",
-      "featured_this_week": false,
+      "featured_this_week": true,
       "editor_note": "",
       "lat": 45.180522,
       "lon": -89.683459
