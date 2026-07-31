@@ -202,6 +202,33 @@ body {
   text-align: center;
 }
 
+.ff-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--paper);
+  border: 2px solid var(--teal);
+  vertical-align: -1px;
+  margin-right: 3px;
+}
+
+.ff-dot--supper_club {
+  border-color: #7a3540;
+}
+
+.ff-dot--bar {
+  border-color: #a06a1f;
+}
+
+.ff-dot--vfw_legion {
+  border-color: #55622e;
+}
+
+.ff-dot--featured {
+  border-color: var(--ink);
+}
+
 .ff-cluster {
   display: flex;
   align-items: center;
@@ -229,8 +256,46 @@ body {
   box-shadow: 0 1px 4px rgba(17, 17, 17, 0.3);
 }
 
+/* Wayfinding colors per venue type — muted so the newspaper palette still
+   leads. The legend under the map mirrors them. */
+.ff-marker--restaurant {
+  border-color: var(--teal);
+}
+
+.ff-marker--supper_club {
+  border-color: #7a3540;
+}
+
+.ff-marker--bar {
+  border-color: #a06a1f;
+}
+
+.ff-marker--vfw_legion {
+  border-color: #55622e;
+}
+
 .ff-marker-featured {
   border-color: var(--ink);
+}
+
+.ff-zoom-hint {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1200;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 200ms ease;
+  font-family: var(--display);
+  font-size: 15px;
+  color: #fff;
+  background: rgba(17, 17, 17, 0.45);
+}
+
+.ff-zoom-hint.is-visible {
+  opacity: 1;
 }
 
 .leaflet-popup-content strong {

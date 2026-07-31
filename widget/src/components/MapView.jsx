@@ -18,13 +18,15 @@ const REDUCED_MOTION = window.matchMedia(
   "(prefers-reduced-motion: reduce)"
 ).matches;
 
+const properCase = (s) => s[0].toUpperCase() + s.slice(1);
+
 function popupHtml(v, milesAway) {
   const dist =
     typeof milesAway === "number" ? ` · ${milesAway.toFixed(1)} mi` : "";
   return (
     `<strong>${v.venue_name}</strong><br>` +
     `<span class="ff-popup-type">${TYPE_LABELS[v.venue_type]}${dist}</span><br>` +
-    `${v.fish.join(", ")} · ${priceRange(v)}<br>` +
+    `${v.fish.map(properCase).join(", ")} · ${priceRange(v)}<br>` +
     `${formatHours(v.hours)}<br>` +
     `<a href="${directionsUrl(v)}" target="_blank" rel="noreferrer">Directions</a>` +
     ` · <a href="#" class="ff-popup-details" data-venue="${v.venue_name.replace(/"/g, "&quot;")}">Full listing ↓</a>`
@@ -77,6 +79,33 @@ export default function MapView({ venues, focus, userLoc, miles, onShowDetails }
     };
     containerRef.current.addEventListener("click", onPopupClick);
 
+    // Ctrl/⌘ + scroll zooms; plain scroll keeps scrolling the article and
+    // briefly shows a hint. (Pinch-zoom on touch works regardless.)
+    const hint = L.DomUtil.create("div", "ff-zoom-hint", containerRef.current);
+    hint.textContent = /Mac/.test(navigator.userAgent)
+      ? "Use ⌘ + scroll to zoom the map"
+      : "Use Ctrl + scroll to zoom the map";
+    let hintTimer = null;
+    let lastWheelZoom = 0;
+    const onWheel = (e) => {
+      if (e.ctrlKey || e.metaKey) {
+        e.preventDefault();
+        hint.classList.remove("is-visible");
+        const now = performance.now();
+        if (now - lastWheelZoom < 180) return;
+        lastWheelZoom = now;
+        map.setZoomAround(
+          map.mouseEventToLatLng(e),
+          map.getZoom() + (e.deltaY < 0 ? 1 : -1)
+        );
+      } else {
+        hint.classList.add("is-visible");
+        clearTimeout(hintTimer);
+        hintTimer = setTimeout(() => hint.classList.remove("is-visible"), 1100);
+      }
+    };
+    containerRef.current.addEventListener("wheel", onWheel, { passive: false });
+
     return () => map.remove();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -88,7 +117,7 @@ export default function MapView({ venues, focus, userLoc, miles, onShowDetails }
     venues.forEach((v) => {
       // The featured (paid) venue gets a black ring, nothing louder.
       const icon = L.divIcon({
-        className: `ff-marker ${v.featured_this_week ? "ff-marker-featured" : ""}`,
+        className: `ff-marker ff-marker--${v.venue_type} ${v.featured_this_week ? "ff-marker-featured" : ""}`,
         html: `<span>${TYPE_GLYPH[v.venue_type]}</span>`,
         iconSize: [34, 34],
         iconAnchor: [17, 17],

@@ -266,9 +266,14 @@ export default function App() {
         onShowDetails={onMarkerClick}
       />
       <p className="ff-maplegend">
-        🍴 Restaurant &nbsp;·&nbsp; 🥂 Supper club &nbsp;·&nbsp; 🍺 Bar &amp;
-        tavern &nbsp;·&nbsp; 🎖️ VFW &amp; Legion &nbsp;·&nbsp; black ring =
-        this week&rsquo;s featured fry
+        <span className="ff-dot" /> 🍴 Restaurant &nbsp;·&nbsp;
+        <span className="ff-dot ff-dot--supper_club" /> 🥂 Supper club
+        &nbsp;·&nbsp;
+        <span className="ff-dot ff-dot--bar" /> 🍺 Bar &amp; tavern
+        &nbsp;·&nbsp;
+        <span className="ff-dot ff-dot--vfw_legion" /> 🎖️ VFW &amp; Legion
+        &nbsp;·&nbsp;
+        <span className="ff-dot ff-dot--featured" /> featured fry
       </p>
 
       {data && (
