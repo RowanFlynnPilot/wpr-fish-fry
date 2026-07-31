@@ -94,9 +94,17 @@ export default function MapView({ venues, focus, userLoc, miles, onShowDetails }
         iconAnchor: [17, 17],
         popupAnchor: [0, -18],
       });
-      const marker = L.marker([v.lat, v.lon], { icon }).bindPopup(
-        popupHtml(v, miles?.[v.venue_name])
-      );
+      const marker = L.marker([v.lat, v.lon], { icon })
+        .bindPopup(popupHtml(v, miles?.[v.venue_name]))
+        .bindTooltip(
+          `<strong>${v.venue_name}</strong> · ${priceRange(v)}`,
+          {
+            direction: "top",
+            offset: [0, -20],
+            opacity: 1,
+            className: "ff-tooltip",
+          }
+        );
       cluster.addLayer(marker);
       markersRef.current[v.venue_name] = marker;
     });
