@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-31T02:41:12+00:00",
+  "generated_at": "2026-07-31T02:55:21+00:00",
   "venue_count": 59,
   "venues": [
     {
@@ -189,7 +189,7 @@
       "editor_note": "4th in the 2026 reader poll.",
       "lat": 44.933383,
       "lon": -89.681847,
-      "logo": ""
+      "logo": "logos/carmelo-s-italian-restaurant.png"
     },
     {
       "venue_name": "Cassel Bar & Grill",
@@ -459,7 +459,7 @@
       "editor_note": "",
       "lat": 44.959786,
       "lon": -89.627279,
-      "logo": ""
+      "logo": "logos/era-cafe.png"
     },
     {
       "venue_name": "Funny Farm Bar & Grill",
@@ -543,7 +543,7 @@
       "editor_note": "Homemade fish fry.",
       "lat": 44.785211,
       "lon": -89.682472,
-      "logo": ""
+      "logo": "logos/gorski-s.png"
     },
     {
       "venue_name": "Hammer Down Bar",
@@ -681,7 +681,7 @@
       "editor_note": "10th in the 2026 reader poll.",
       "lat": 44.792767,
       "lon": -89.703075,
-      "logo": ""
+      "logo": "logos/hog-creek-bar-grill.png"
     },
     {
       "venue_name": "Homestead Inn",
@@ -708,7 +708,7 @@
       "editor_note": "Recently operating as Homestead on 52.",
       "lat": 44.956322,
       "lon": -89.630279,
-      "logo": ""
+      "logo": "logos/homestead-inn.png"
     },
     {
       "venue_name": "Kelly Club",
@@ -760,7 +760,7 @@
       "editor_note": "",
       "lat": 44.725256,
       "lon": -89.681032,
-      "logo": ""
+      "logo": "logos/knowlton-house-distillery.png"
     },
     {
       "venue_name": "Lisa's at Lakeside",
@@ -846,7 +846,7 @@
       "editor_note": "",
       "lat": 44.910314,
       "lon": -89.604807,
-      "logo": ""
+      "logo": "logos/log-cabin-restaurant.png"
     },
     {
       "venue_name": "Milwaukee Burger Company",
@@ -872,7 +872,7 @@
       "editor_note": "",
       "lat": 44.958892,
       "lon": -89.664233,
-      "logo": ""
+      "logo": "logos/milwaukee-burger-company.png"
     },
     {
       "venue_name": "Mint Cafe",
@@ -899,7 +899,7 @@
       "editor_note": "",
       "lat": 44.960328,
       "lon": -89.628022,
-      "logo": ""
+      "logo": "logos/mint-cafe.png"
     },
     {
       "venue_name": "Nevermore on Third",
@@ -1007,7 +1007,7 @@
       "editor_note": "8th in the 2026 reader poll.",
       "lat": 44.903012,
       "lon": -89.608034,
-      "logo": ""
+      "logo": "logos/palms-supper-club.png"
     },
     {
       "venue_name": "Papillon's",
@@ -1033,7 +1033,7 @@
       "editor_note": "",
       "lat": 44.89799,
       "lon": -89.609644,
-      "logo": ""
+      "logo": "logos/papillon-s.png"
     },
     {
       "venue_name": "Pinewood Supper Club",
@@ -1087,7 +1087,7 @@
       "editor_note": "",
       "lat": 44.788424,
       "lon": -89.718712,
-      "logo": ""
+      "logo": "logos/pit-stop-bar-grill.png"
     },
     {
       "venue_name": "Red Granite Bar & Grill",
@@ -1168,7 +1168,7 @@
       "editor_note": "",
       "lat": 44.956322,
       "lon": -89.624279,
-      "logo": ""
+      "logo": "logos/rick-becky-s-sunrise-bar.png"
     },
     {
       "venue_name": "Salty Bones",
@@ -1249,7 +1249,7 @@
       "editor_note": "",
       "lat": 44.863949,
       "lon": -89.636758,
-      "logo": ""
+      "logo": "logos/the-bar-wausau.png"
     },
     {
       "venue_name": "The Chatterbox Bar",
@@ -1411,7 +1411,7 @@
       "editor_note": "5th in the 2026 reader poll.",
       "lat": 44.899903,
       "lon": -89.521372,
-      "logo": ""
+      "logo": "logos/trailside-sports-bar-grill.png"
     },
     {
       "venue_name": "Treu's Tic Toc",
@@ -1550,7 +1550,7 @@
       "editor_note": "",
       "lat": 44.967743,
       "lon": -89.63045,
-      "logo": ""
+      "logo": "logos/wausau-on-water.png"
     },
     {
       "venue_name": "Westsider Diner & Lounge",
@@ -1576,7 +1576,7 @@
       "editor_note": "",
       "lat": 44.970442,
       "lon": -89.639384,
-      "logo": ""
+      "logo": "logos/westsider-diner-lounge.png"
     },
     {
       "venue_name": "Wiggly Field",
@@ -1604,7 +1604,7 @@
       "editor_note": "",
       "lat": 44.903291,
       "lon": -89.613926,
-      "logo": ""
+      "logo": "logos/wiggly-field.png"
     }
   ]
 }
