@@ -40,7 +40,14 @@ export default function VenueCard({
   selected = false,
 }) {
   const paid = v.tier !== "free";
-  const [photoExpanded, setPhotoExpanded] = useState(false);
+  // Full uncropped photo by default; a click compacts the card.
+  const [photoExpanded, setPhotoExpanded] = useState(true);
+  const photoSrc =
+    paid && v.photo_url
+      ? v.photo_url.startsWith("http")
+        ? v.photo_url
+        : `${import.meta.env.BASE_URL}${v.photo_url}`
+      : null;
 
   return (
     <article
@@ -49,27 +56,36 @@ export default function VenueCard({
         selected ? "is-selected" : ""
       }`}
     >
-      {paid && v.photo_url && (
-        <button
-          type="button"
-          className={`ff-photo-btn ${photoExpanded ? "is-expanded" : ""}`}
-          onClick={() => setPhotoExpanded((x) => !x)}
-          aria-label={
-            photoExpanded ? "Collapse photo" : "Expand photo to full size"
-          }
-          title={photoExpanded ? "Click to shrink" : "Click to see the full photo"}
-        >
-          <img
-            className="ff-card-photo"
-            src={
-              v.photo_url.startsWith("http")
-                ? v.photo_url
-                : `${import.meta.env.BASE_URL}${v.photo_url}`
+      {photoSrc && (
+        <div className="ff-photo-wrap">
+          <button
+            type="button"
+            className={`ff-photo-btn ${photoExpanded ? "is-expanded" : ""}`}
+            onClick={() => setPhotoExpanded((x) => !x)}
+            aria-label={
+              photoExpanded ? "Collapse photo" : "Expand photo to full size"
             }
-            alt={v.venue_name}
-            loading="lazy"
-          />
-        </button>
+            title={
+              photoExpanded ? "Click to shrink" : "Click to see the full photo"
+            }
+          >
+            <img
+              className="ff-card-photo"
+              src={photoSrc}
+              alt={v.venue_name}
+              loading="lazy"
+            />
+          </button>
+          <a
+            className="ff-photo-dl"
+            href={photoSrc}
+            download={`${venueSlug(v.venue_name)}.jpg`}
+            aria-label={`Download the ${v.venue_name} photo`}
+            title="Download photo"
+          >
+            Download
+          </a>
+        </div>
       )}
 
       <div className="ff-card-body">

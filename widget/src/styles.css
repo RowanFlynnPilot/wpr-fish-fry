@@ -364,6 +364,35 @@ body {
    the full image in place (overlay lightboxes misbehave inside the
    auto-height iframe). Extra selector depth so the expanded state outranks
    the featured/mobile height rules. */
+.ff-photo-wrap {
+  position: relative;
+}
+
+.ff-photo-dl {
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #fff;
+  background: rgba(17, 17, 17, 0.72);
+  padding: 4px 10px;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+.ff-photo-dl:hover {
+  background: var(--teal-dark);
+}
+
+.ff-photo-dl:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 1px;
+}
+
 .ff-photo-btn {
   display: block;
   width: 100%;
