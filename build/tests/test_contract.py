@@ -106,6 +106,20 @@ class ContractTests(unittest.TestCase):
         rows = [base_row(takeout="yes")]
         validate_expecting_failure(self, rows, "must be exactly TRUE or FALSE")
 
+    def test_photo_url_accepts_inbox_filename(self):
+        rows = [base_row(tier="standard", photo_url="red-granite.jpg")]
+        venues = build.validate(rows)
+        self.assertEqual(venues[0]["photo_url"], "red-granite.jpg")
+
+    def test_photo_url_rejects_paths_and_non_images(self):
+        for bad in ("../secrets.jpg", "photos/x.jpg", "menu.pdf", "not a url"):
+            rows = [base_row(tier="standard", photo_url=bad)]
+            validate_expecting_failure(self, rows, "photo_url")
+
+    def test_website_still_requires_url(self):
+        rows = [base_row(website="wausaumine.com")]
+        validate_expecting_failure(self, rows, "website")
+
     def test_normalize_address(self):
         # load_csv strips cells before this runs; the key's job is lowercase
         # and collapsing internal runs of whitespace.

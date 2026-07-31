@@ -19,6 +19,7 @@ import hashlib
 import io
 import json
 import os
+import re
 import sys
 import time
 from datetime import datetime, timezone
@@ -37,7 +38,12 @@ ROOT = Path(__file__).resolve().parent.parent
 CACHE_PATH = ROOT / "data" / "geocode_cache.json"
 PHOTO_MANIFEST_PATH = ROOT / "data" / "photo_cache.json"
 PHOTO_DIR = ROOT / "widget" / "public" / "photos"
+PHOTO_INBOX_DIR = ROOT / "photos-inbox"
 PHOTO_MAX_WIDTH = 1200
+
+# photo_url is either a full http(s) URL or the bare filename of an image
+# committed to photos-inbox/ (the email-me-a-photo workflow).
+INBOX_FILENAME_RE = re.compile(r"^[\w][\w .()-]*\.(jpe?g|png|webp)$", re.IGNORECASE)
 OUTPUT_PATH = ROOT / "widget" / "public" / "data" / "fish_fry.json"
 
 NOMINATIM_URL = "https://nominatim.openstreetmap.org/search"
@@ -182,10 +188,20 @@ def validate(rows: list[dict], warnings: list[str] | None = None) -> list[dict]:
                 bools[col] = b
 
         for col in URL_COLUMNS:
-            if r[col] and not r[col].startswith(("http://", "https://")):
-                row_errors.append(
-                    f"{label}: {col} must start with http:// or https:// (got '{r[col]}')"
-                )
+            if not r[col] or r[col].startswith(("http://", "https://")):
+                continue
+            if col == "photo_url" and INBOX_FILENAME_RE.match(r[col]):
+                continue  # photos-inbox/ filename — resolved at photo time
+            hint = (
+                " — or, for photo_url only, the filename of an image uploaded "
+                "to photos-inbox/ (e.g. red-granite.jpg)"
+                if col == "photo_url"
+                else ""
+            )
+            row_errors.append(
+                f"{label}: {col} must start with http:// or https:// "
+                f"(got '{r[col]}'){hint}"
+            )
 
         # The business model, enforced in code: free rows don't get paid
         # features. Paid content on a free row stays in the sheet (handy for
@@ -324,9 +340,21 @@ def process_photos(venues: list[dict]) -> None:
             v["photo_url"] = f"photos/{entry['file']}"
             continue
         try:
-            resp = requests.get(url, timeout=30, headers={"User-Agent": USER_AGENT})
-            resp.raise_for_status()
-            img = Image.open(io.BytesIO(resp.content)).convert("RGB")
+            if url.startswith(("http://", "https://")):
+                resp = requests.get(url, timeout=30, headers={"User-Agent": USER_AGENT})
+                resp.raise_for_status()
+                data = resp.content
+            else:
+                # Bare filename → the committed photos-inbox/ folder.
+                inbox_file = PHOTO_INBOX_DIR / url
+                if not inbox_file.exists():
+                    raise FileNotFoundError(
+                        f"no file named '{url}' in photos-inbox/ — upload it "
+                        "there (GitHub: Add file → Upload files) or fix the "
+                        "filename in the sheet"
+                    )
+                data = inbox_file.read_bytes()
+            img = Image.open(io.BytesIO(data)).convert("RGB")
             if img.width > PHOTO_MAX_WIDTH:
                 img = img.resize(
                     (PHOTO_MAX_WIDTH, round(img.height * PHOTO_MAX_WIDTH / img.width)),

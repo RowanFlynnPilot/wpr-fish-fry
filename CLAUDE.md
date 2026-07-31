@@ -44,7 +44,7 @@ copy it into a new Google Sheet to start.
 | sides, hours | sides optional, hours required — both free text |
 | all_you_can_eat, takeout, featured_this_week, active | exactly `TRUE` or `FALSE`, nothing else |
 | tier | required, enum: `free` `standard` `featured` |
-| description, photo_url, menu_url | **paid tiers only** — on a `free` row they stay in the sheet but are stripped from the published data (build warns; lets a lapsed sponsor's content park until they re-up) |
+| description, photo_url, menu_url | **paid tiers only** — on a `free` row they stay in the sheet but are stripped from the published data (build warns; lets a lapsed sponsor's content park until they re-up). photo_url is a URL **or** a `photos-inbox/` filename |
 | featured_this_week | `TRUE` on at most one row, and that row must be tier `featured` |
 | editor_note | optional |
 | active | `FALSE` keeps seasonal closures in the sheet without publishing them |
@@ -72,10 +72,18 @@ add manually.
 ## Photos — same mechanism
 
 Sponsor photos are fetched once into `data/photo_cache.json` +
-`widget/public/photos/` (resized to ≤1200px JPEG, committed, keyed by source
-URL) and served from Pages, so a paid listing never ships a broken image
-because the venue's own site died. Change `photo_url` in the sheet to refresh
-a photo. Fetch failure on an active paid row fails the build.
+`widget/public/photos/` (resized to ≤1200px JPEG, committed, keyed by the
+photo_url cell's exact string) and served from Pages, so a paid listing never
+ships a broken image because the venue's own site died. Change `photo_url` in
+the sheet to refresh a photo. Fetch failure on an active paid row fails the
+build.
+
+`photo_url` takes either a full http(s) URL **or a bare filename** (e.g.
+`red-granite.jpg`) pointing at a file the curator uploaded to
+`photos-inbox/` via GitHub's web UI — the emailed-photo workflow; curator
+instructions live in `photos-inbox/README.md`. Same cache, same refresh rule
+(new filename = new photo), and a missing inbox file fails the build naming
+the filename it wanted.
 
 ## Ops around the build
 
