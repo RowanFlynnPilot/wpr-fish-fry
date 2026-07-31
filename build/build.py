@@ -40,6 +40,9 @@ PHOTO_MANIFEST_PATH = ROOT / "data" / "photo_cache.json"
 PHOTO_DIR = ROOT / "widget" / "public" / "photos"
 PHOTO_INBOX_DIR = ROOT / "photos-inbox"
 PHOTO_MAX_WIDTH = 1200
+LOGO_INBOX_DIR = ROOT / "logos-inbox"
+LOGO_DIR = ROOT / "widget" / "public" / "logos"
+LOGO_MAX_DIM = 128
 
 # photo_url is either a full http(s) URL or the bare filename of an image
 # committed to photos-inbox/ (the email-me-a-photo workflow).
@@ -383,6 +386,40 @@ def process_photos(venues: list[dict]) -> None:
         die(errors)
 
 
+def venue_slug(name: str) -> str:
+    """Must mirror venueSlug() in the widget (App.jsx) — logos are keyed by it."""
+    return re.sub(r"[^a-z0-9]+", "-", name.lower())
+
+
+def process_logos(venues: list[dict]) -> None:
+    """Optional small logos, curated by dropping files into logos-inbox/
+    named by venue slug (e.g. red-granite-bar-grill.png). No sheet column:
+    which venues get logos is a curation choice made in that folder. Absent
+    file = no logo, never an error. Output dir is rebuilt every run so
+    replaced or deleted inbox files flow through."""
+    LOGO_DIR.mkdir(parents=True, exist_ok=True)
+    for stale in LOGO_DIR.glob("*.png"):
+        stale.unlink()
+    for v in venues:
+        slug = venue_slug(v["venue_name"])
+        source = next(
+            (
+                p
+                for ext in ("png", "jpg", "jpeg", "webp")
+                if (p := LOGO_INBOX_DIR / f"{slug}.{ext}").exists()
+            ),
+            None,
+        )
+        if source is None:
+            v["logo"] = ""
+            continue
+        img = Image.open(source)
+        img.thumbnail((LOGO_MAX_DIM, LOGO_MAX_DIM))
+        out = LOGO_DIR / f"{slug}.png"
+        img.save(out, "PNG", optimize=True)
+        v["logo"] = f"logos/{slug}.png"
+
+
 def money(n: float) -> str:
     return f"${n:g}"
 
@@ -450,6 +487,7 @@ def main() -> None:
         del v["active"]
     geocode(active)
     process_photos(active)
+    process_logos(active)
     active.sort(key=lambda v: v["venue_name"].lower())
 
     # Curator typo detector: a sharp drop in active venues is more often a

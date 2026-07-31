@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-31T01:10:57+00:00",
+  "generated_at": "2026-07-31T02:41:12+00:00",
   "venue_count": 59,
   "venues": [
     {
@@ -25,7 +25,8 @@
       "featured_this_week": false,
       "editor_note": "",
       "lat": 44.986583,
-      "lon": -89.657849
+      "lon": -89.657849,
+      "logo": ""
     },
     {
       "venue_name": "A&A Restaurant",
@@ -54,7 +55,8 @@
       "featured_this_week": false,
       "editor_note": "",
       "lat": 44.939978,
-      "lon": -89.618716
+      "lon": -89.618716,
+      "logo": ""
     },
     {
       "venue_name": "Arrow Sports Bar & Grill",
@@ -79,7 +81,8 @@
       "featured_this_week": false,
       "editor_note": "",
       "lat": 44.910081,
-      "lon": -89.605723
+      "lon": -89.605723,
+      "logo": ""
     },
     {
       "venue_name": "Back When Cafe",
@@ -105,7 +108,8 @@
       "featured_this_week": false,
       "editor_note": "",
       "lat": 44.96165,
-      "lon": -89.627953
+      "lon": -89.627953,
+      "logo": ""
     },
     {
       "venue_name": "BB Jacks Pizza & Sandwich Lounge",
@@ -132,7 +136,8 @@
       "featured_this_week": false,
       "editor_note": "",
       "lat": 44.992098,
-      "lon": -89.608418
+      "lon": -89.608418,
+      "logo": ""
     },
     {
       "venue_name": "Blissful Bites & Brunch",
@@ -157,7 +162,8 @@
       "featured_this_week": false,
       "editor_note": "",
       "lat": 44.887191,
-      "lon": -89.620122
+      "lon": -89.620122,
+      "logo": ""
     },
     {
       "venue_name": "Carmelo's Italian Restaurant",
@@ -182,7 +188,8 @@
       "featured_this_week": false,
       "editor_note": "4th in the 2026 reader poll.",
       "lat": 44.933383,
-      "lon": -89.681847
+      "lon": -89.681847,
+      "logo": ""
     },
     {
       "venue_name": "Cassel Bar & Grill",
@@ -209,7 +216,8 @@
       "featured_this_week": false,
       "editor_note": "Runner-up, 2026 reader poll. Haddock comes baked or fried.",
       "lat": 44.904916,
-      "lon": -89.831885
+      "lon": -89.831885,
+      "logo": ""
     },
     {
       "venue_name": "Cedar Creek Grill House",
@@ -234,7 +242,8 @@
       "featured_this_week": false,
       "editor_note": "",
       "lat": 44.866515,
-      "lon": -89.636546
+      "lon": -89.636546,
+      "logo": ""
     },
     {
       "venue_name": "Cheeks Bar & Grill",
@@ -261,7 +270,8 @@
       "featured_this_week": false,
       "editor_note": "Tied 6th in the 2026 reader poll.",
       "lat": 44.973779,
-      "lon": -89.62938
+      "lon": -89.62938,
+      "logo": ""
     },
     {
       "venue_name": "Clubhouse Bar & Grill",
@@ -287,7 +297,8 @@
       "featured_this_week": false,
       "editor_note": "Recently operating as Prost Hill Bar & Grill.",
       "lat": 44.911692,
-      "lon": -89.456808
+      "lon": -89.456808,
+      "logo": ""
     },
     {
       "venue_name": "Day Break Bar & Grill",
@@ -312,7 +323,8 @@
       "featured_this_week": false,
       "editor_note": "Recently operating as Chacks Day Break Bar & Grill.",
       "lat": 44.909691,
-      "lon": -89.604566
+      "lon": -89.604566,
+      "logo": ""
     },
     {
       "venue_name": "Day's Bowl-A-Dome",
@@ -337,7 +349,8 @@
       "featured_this_week": false,
       "editor_note": "",
       "lat": 44.958714,
-      "lon": -89.657111
+      "lon": -89.657111,
+      "logo": ""
     },
     {
       "venue_name": "Denmar Tavern",
@@ -363,7 +376,8 @@
       "featured_this_week": false,
       "editor_note": "",
       "lat": 44.948282,
-      "lon": -89.643187
+      "lon": -89.643187,
+      "logo": ""
     },
     {
       "venue_name": "E.J.'s Diner",
@@ -389,7 +403,8 @@
       "featured_this_week": false,
       "editor_note": "Fraternal club - closest venue_type is vfw_legion; review.",
       "lat": 44.933209,
-      "lon": -89.661089
+      "lon": -89.661089,
+      "logo": ""
     },
     {
       "venue_name": "Eagle's Club",
@@ -417,7 +432,8 @@
       "featured_this_week": false,
       "editor_note": "Fraternal club - closest venue_type is vfw_legion; review.",
       "lat": 44.939481,
-      "lon": -89.639268
+      "lon": -89.639268,
+      "logo": ""
     },
     {
       "venue_name": "Era Cafe",
@@ -442,7 +458,8 @@
       "featured_this_week": false,
       "editor_note": "",
       "lat": 44.959786,
-      "lon": -89.627279
+      "lon": -89.627279,
+      "logo": ""
     },
     {
       "venue_name": "Funny Farm Bar & Grill",
@@ -468,7 +485,8 @@
       "featured_this_week": false,
       "editor_note": "",
       "lat": 44.867025,
-      "lon": -89.70504
+      "lon": -89.70504,
+      "logo": ""
     },
     {
       "venue_name": "Garage",
@@ -495,7 +513,8 @@
       "featured_this_week": false,
       "editor_note": "",
       "lat": 44.96325,
-      "lon": -89.630279
+      "lon": -89.630279,
+      "logo": ""
     },
     {
       "venue_name": "Gorski's",
@@ -523,7 +542,8 @@
       "featured_this_week": false,
       "editor_note": "Homemade fish fry.",
       "lat": 44.785211,
-      "lon": -89.682472
+      "lon": -89.682472,
+      "logo": ""
     },
     {
       "venue_name": "Hammer Down Bar",
@@ -549,7 +569,8 @@
       "featured_this_week": false,
       "editor_note": "",
       "lat": 44.867025,
-      "lon": -89.69904
+      "lon": -89.69904,
+      "logo": ""
     },
     {
       "venue_name": "Hatley Hangout",
@@ -574,7 +595,8 @@
       "featured_this_week": false,
       "editor_note": "9th in the 2026 reader poll.",
       "lat": 44.887581,
-      "lon": -89.338496
+      "lon": -89.338496,
+      "logo": ""
     },
     {
       "venue_name": "Hiawatha Sports Bar",
@@ -600,7 +622,8 @@
       "featured_this_week": false,
       "editor_note": "",
       "lat": 44.96159,
-      "lon": -89.620257
+      "lon": -89.620257,
+      "logo": ""
     },
     {
       "venue_name": "Hoehn's Huddle Sports Bar & Grill",
@@ -629,7 +652,8 @@
       "featured_this_week": false,
       "editor_note": "",
       "lat": 44.920464,
-      "lon": -89.612997
+      "lon": -89.612997,
+      "logo": ""
     },
     {
       "venue_name": "Hog Creek Bar & Grill",
@@ -656,7 +680,8 @@
       "featured_this_week": false,
       "editor_note": "10th in the 2026 reader poll.",
       "lat": 44.792767,
-      "lon": -89.703075
+      "lon": -89.703075,
+      "logo": ""
     },
     {
       "venue_name": "Homestead Inn",
@@ -682,7 +707,8 @@
       "featured_this_week": false,
       "editor_note": "Recently operating as Homestead on 52.",
       "lat": 44.956322,
-      "lon": -89.630279
+      "lon": -89.630279,
+      "logo": ""
     },
     {
       "venue_name": "Kelly Club",
@@ -707,7 +733,8 @@
       "featured_this_week": false,
       "editor_note": "",
       "lat": 44.913213,
-      "lon": -89.601997
+      "lon": -89.601997,
+      "logo": ""
     },
     {
       "venue_name": "Knowlton House Distillery",
@@ -732,7 +759,8 @@
       "featured_this_week": false,
       "editor_note": "",
       "lat": 44.725256,
-      "lon": -89.681032
+      "lon": -89.681032,
+      "logo": ""
     },
     {
       "venue_name": "Lisa's at Lakeside",
@@ -762,7 +790,8 @@
       "featured_this_week": false,
       "editor_note": "",
       "lat": 44.88747,
-      "lon": -89.344727
+      "lon": -89.344727,
+      "logo": ""
     },
     {
       "venue_name": "Loading Zone Eatery",
@@ -790,7 +819,8 @@
       "featured_this_week": false,
       "editor_note": "Winner, 2026 reader poll. Friday menu posted on website.",
       "lat": 44.967359,
-      "lon": -89.590287
+      "lon": -89.590287,
+      "logo": ""
     },
     {
       "venue_name": "Log Cabin Restaurant",
@@ -815,7 +845,8 @@
       "featured_this_week": false,
       "editor_note": "",
       "lat": 44.910314,
-      "lon": -89.604807
+      "lon": -89.604807,
+      "logo": ""
     },
     {
       "venue_name": "Milwaukee Burger Company",
@@ -840,7 +871,8 @@
       "featured_this_week": false,
       "editor_note": "",
       "lat": 44.958892,
-      "lon": -89.664233
+      "lon": -89.664233,
+      "logo": ""
     },
     {
       "venue_name": "Mint Cafe",
@@ -866,7 +898,8 @@
       "featured_this_week": false,
       "editor_note": "",
       "lat": 44.960328,
-      "lon": -89.628022
+      "lon": -89.628022,
+      "logo": ""
     },
     {
       "venue_name": "Nevermore on Third",
@@ -891,7 +924,8 @@
       "featured_this_week": false,
       "editor_note": "",
       "lat": 44.966311,
-      "lon": -89.627425
+      "lon": -89.627425,
+      "logo": ""
     },
     {
       "venue_name": "Norm's",
@@ -917,7 +951,8 @@
       "featured_this_week": false,
       "editor_note": "",
       "lat": 44.892198,
-      "lon": -89.620112
+      "lon": -89.620112,
+      "logo": ""
     },
     {
       "venue_name": "Oliva's at Gulliver's Landing",
@@ -944,7 +979,8 @@
       "featured_this_week": false,
       "editor_note": "",
       "lat": 44.96325,
-      "lon": -89.624279
+      "lon": -89.624279,
+      "logo": ""
     },
     {
       "venue_name": "Palms Supper Club",
@@ -970,7 +1006,8 @@
       "featured_this_week": false,
       "editor_note": "8th in the 2026 reader poll.",
       "lat": 44.903012,
-      "lon": -89.608034
+      "lon": -89.608034,
+      "logo": ""
     },
     {
       "venue_name": "Papillon's",
@@ -995,7 +1032,8 @@
       "featured_this_week": false,
       "editor_note": "",
       "lat": 44.89799,
-      "lon": -89.609644
+      "lon": -89.609644,
+      "logo": ""
     },
     {
       "venue_name": "Pinewood Supper Club",
@@ -1021,7 +1059,8 @@
       "featured_this_week": false,
       "editor_note": "",
       "lat": 44.813192,
-      "lon": -89.7123
+      "lon": -89.7123,
+      "logo": ""
     },
     {
       "venue_name": "Pit Stop Bar & Grill",
@@ -1047,7 +1086,8 @@
       "featured_this_week": false,
       "editor_note": "",
       "lat": 44.788424,
-      "lon": -89.718712
+      "lon": -89.718712,
+      "logo": ""
     },
     {
       "venue_name": "Red Granite Bar & Grill",
@@ -1072,7 +1112,8 @@
       "featured_this_week": true,
       "editor_note": "",
       "lat": 45.180522,
-      "lon": -89.683459
+      "lon": -89.683459,
+      "logo": "logos/red-granite-bar-grill.png"
     },
     {
       "venue_name": "Richard's Restaurant & Bar",
@@ -1099,7 +1140,8 @@
       "featured_this_week": false,
       "editor_note": "Known for the Poor Man's fish fry.",
       "lat": 44.96529,
-      "lon": -89.676101
+      "lon": -89.676101,
+      "logo": ""
     },
     {
       "venue_name": "Rick & Becky's Sunrise Bar",
@@ -1125,7 +1167,8 @@
       "featured_this_week": false,
       "editor_note": "",
       "lat": 44.956322,
-      "lon": -89.624279
+      "lon": -89.624279,
+      "logo": ""
     },
     {
       "venue_name": "Salty Bones",
@@ -1150,7 +1193,8 @@
       "featured_this_week": false,
       "editor_note": "",
       "lat": 44.792767,
-      "lon": -89.709075
+      "lon": -89.709075,
+      "logo": ""
     },
     {
       "venue_name": "Sconni's Alehouse & Eatery",
@@ -1176,7 +1220,8 @@
       "featured_this_week": false,
       "editor_note": "",
       "lat": 44.913014,
-      "lon": -89.609356
+      "lon": -89.609356,
+      "logo": ""
     },
     {
       "venue_name": "The Bar - Wausau",
@@ -1203,7 +1248,8 @@
       "featured_this_week": false,
       "editor_note": "",
       "lat": 44.863949,
-      "lon": -89.636758
+      "lon": -89.636758,
+      "logo": ""
     },
     {
       "venue_name": "The Chatterbox Bar",
@@ -1228,7 +1274,8 @@
       "featured_this_week": false,
       "editor_note": "",
       "lat": 44.96269,
-      "lon": -89.638321
+      "lon": -89.638321,
+      "logo": ""
     },
     {
       "venue_name": "The Mill Yard",
@@ -1256,7 +1303,8 @@
       "featured_this_week": false,
       "editor_note": "",
       "lat": 44.959786,
-      "lon": -89.633279
+      "lon": -89.633279,
+      "logo": ""
     },
     {
       "venue_name": "The Red Retriever Bar & Grill",
@@ -1281,7 +1329,8 @@
       "featured_this_week": false,
       "editor_note": "",
       "lat": 44.88747,
-      "lon": -89.338727
+      "lon": -89.338727,
+      "logo": ""
     },
     {
       "venue_name": "Tine & Cellar",
@@ -1307,7 +1356,8 @@
       "featured_this_week": false,
       "editor_note": "",
       "lat": 44.905796,
-      "lon": -89.574723
+      "lon": -89.574723,
+      "logo": ""
     },
     {
       "venue_name": "Trails End Bar & Lounge",
@@ -1334,7 +1384,8 @@
       "featured_this_week": false,
       "editor_note": "3rd in the 2026 reader poll. Beer-battered haddock, fish tacos, and a Finnish-style baked haddock.",
       "lat": 44.948872,
-      "lon": -89.683462
+      "lon": -89.683462,
+      "logo": ""
     },
     {
       "venue_name": "Trailside Sports Bar & Grill",
@@ -1359,7 +1410,8 @@
       "featured_this_week": false,
       "editor_note": "5th in the 2026 reader poll.",
       "lat": 44.899903,
-      "lon": -89.521372
+      "lon": -89.521372,
+      "logo": ""
     },
     {
       "venue_name": "Treu's Tic Toc",
@@ -1384,7 +1436,8 @@
       "featured_this_week": false,
       "editor_note": "",
       "lat": 44.948257,
-      "lon": -89.650504
+      "lon": -89.650504,
+      "logo": ""
     },
     {
       "venue_name": "Tri-City Family Restaurant",
@@ -1412,7 +1465,8 @@
       "featured_this_week": false,
       "editor_note": "",
       "lat": 44.924756,
-      "lon": -89.61296
+      "lon": -89.61296,
+      "logo": ""
     },
     {
       "venue_name": "Two's Company Restaurant & Lounge",
@@ -1439,7 +1493,8 @@
       "featured_this_week": false,
       "editor_note": "",
       "lat": 44.792202,
-      "lon": -89.701578
+      "lon": -89.701578,
+      "logo": ""
     },
     {
       "venue_name": "Wausau Mine",
@@ -1466,7 +1521,8 @@
       "featured_this_week": false,
       "editor_note": "",
       "lat": 44.9555,
-      "lon": -89.685208
+      "lon": -89.685208,
+      "logo": ""
     },
     {
       "venue_name": "Wausau on Water",
@@ -1493,7 +1549,8 @@
       "featured_this_week": false,
       "editor_note": "",
       "lat": 44.967743,
-      "lon": -89.63045
+      "lon": -89.63045,
+      "logo": ""
     },
     {
       "venue_name": "Westsider Diner & Lounge",
@@ -1518,7 +1575,8 @@
       "featured_this_week": false,
       "editor_note": "",
       "lat": 44.970442,
-      "lon": -89.639384
+      "lon": -89.639384,
+      "logo": ""
     },
     {
       "venue_name": "Wiggly Field",
@@ -1545,7 +1603,8 @@
       "featured_this_week": false,
       "editor_note": "",
       "lat": 44.903291,
-      "lon": -89.613926
+      "lon": -89.613926,
+      "logo": ""
     }
   ]
 }

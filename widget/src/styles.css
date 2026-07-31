@@ -501,12 +501,26 @@ body {
   padding: 1px 6px;
 }
 
+.ff-name-row {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 2px;
+}
+
+.ff-logo {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+  flex: none;
+}
+
 .ff-card-name {
   font-family: var(--display);
   font-weight: 500;
   font-size: 21px;
   line-height: 1.15;
-  margin: 0 0 2px;
+  margin: 0;
 }
 
 .ff-card-place {

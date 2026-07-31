@@ -94,7 +94,17 @@ export default function VenueCard({
           {paid && <span className="ff-sponsor">Sponsor</span>}
         </div>
 
-        <h3 className="ff-card-name">{v.venue_name}</h3>
+        <div className="ff-name-row">
+          {v.logo && (
+            <img
+              className="ff-logo"
+              src={`${import.meta.env.BASE_URL}${v.logo}`}
+              alt=""
+              loading="lazy"
+            />
+          )}
+          <h3 className="ff-card-name">{v.venue_name}</h3>
+        </div>
         <p className="ff-card-place">
           {v.address}, {v.city}
         </p>
