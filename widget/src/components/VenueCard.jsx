@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { TYPE_LABELS } from "./FilterBar.jsx";
 import { venueSlug } from "../App.jsx";
 
@@ -39,6 +40,7 @@ export default function VenueCard({
   selected = false,
 }) {
   const paid = v.tier !== "free";
+  const [photoExpanded, setPhotoExpanded] = useState(false);
 
   return (
     <article
@@ -48,16 +50,26 @@ export default function VenueCard({
       }`}
     >
       {paid && v.photo_url && (
-        <img
-          className="ff-card-photo"
-          src={
-            v.photo_url.startsWith("http")
-              ? v.photo_url
-              : `${import.meta.env.BASE_URL}${v.photo_url}`
+        <button
+          type="button"
+          className={`ff-photo-btn ${photoExpanded ? "is-expanded" : ""}`}
+          onClick={() => setPhotoExpanded((x) => !x)}
+          aria-label={
+            photoExpanded ? "Collapse photo" : "Expand photo to full size"
           }
-          alt={v.venue_name}
-          loading="lazy"
-        />
+          title={photoExpanded ? "Click to shrink" : "Click to see the full photo"}
+        >
+          <img
+            className="ff-card-photo"
+            src={
+              v.photo_url.startsWith("http")
+                ? v.photo_url
+                : `${import.meta.env.BASE_URL}${v.photo_url}`
+            }
+            alt={v.venue_name}
+            loading="lazy"
+          />
+        </button>
       )}
 
       <div className="ff-card-body">

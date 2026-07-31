@@ -298,6 +298,15 @@ body {
   border: 1px solid var(--line);
   border-radius: 4px;
   overflow: hidden;
+  transition: border-color 120ms ease, box-shadow 120ms ease;
+}
+
+.ff-card:hover {
+  box-shadow: 0 2px 8px rgba(17, 17, 17, 0.1);
+}
+
+.ff-card:not(.ff-card-featured):not(.is-selected):hover {
+  border-color: var(--teal);
 }
 
 .ff-card {
@@ -349,6 +358,34 @@ body {
 .ff-card-featured .ff-card-photo {
   height: 340px;
   object-position: center 70%;
+}
+
+/* Click-to-expand: photos crop by default; a click grows the card to show
+   the full image in place (overlay lightboxes misbehave inside the
+   auto-height iframe). Extra selector depth so the expanded state outranks
+   the featured/mobile height rules. */
+.ff-photo-btn {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: none;
+  background: var(--ink);
+  cursor: zoom-in;
+}
+
+.ff-photo-btn.is-expanded {
+  cursor: zoom-out;
+}
+
+.ff-photo-btn:focus-visible {
+  outline: 2px solid var(--teal-dark);
+  outline-offset: -2px;
+}
+
+.ff-card .ff-photo-btn.is-expanded .ff-card-photo {
+  height: auto;
+  max-height: none;
+  object-fit: contain;
 }
 
 .ff-card-body {
@@ -693,7 +730,8 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .ff-chip {
+  .ff-chip,
+  .ff-card {
     transition: none;
   }
 
