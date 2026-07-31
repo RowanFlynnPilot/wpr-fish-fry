@@ -1,6 +1,8 @@
 import { useEffect, useRef } from "react";
 import L from "leaflet";
+import "leaflet.markercluster";
 import { directionsUrl, formatHours, priceRange } from "./VenueCard.jsx";
+import { TYPE_LABELS } from "./FilterBar.jsx";
 
 // Supper clubs deserve their own icon. This is Wisconsin.
 const TYPE_GLYPH = {
@@ -16,37 +18,72 @@ const REDUCED_MOTION = window.matchMedia(
   "(prefers-reduced-motion: reduce)"
 ).matches;
 
-function popupHtml(v) {
+function popupHtml(v, milesAway) {
+  const dist =
+    typeof milesAway === "number" ? ` · ${milesAway.toFixed(1)} mi` : "";
   return (
     `<strong>${v.venue_name}</strong><br>` +
+    `<span class="ff-popup-type">${TYPE_LABELS[v.venue_type]}${dist}</span><br>` +
     `${v.fish.join(", ")} · ${priceRange(v)}<br>` +
     `${formatHours(v.hours)}<br>` +
-    `<a href="${directionsUrl(v)}" target="_blank" rel="noreferrer">Directions</a>`
+    `<a href="${directionsUrl(v)}" target="_blank" rel="noreferrer">Directions</a>` +
+    ` · <a href="#" class="ff-popup-details" data-venue="${v.venue_name.replace(/"/g, "&quot;")}">Full listing ↓</a>`
   );
 }
 
-export default function MapView({ venues, focus, onMarkerClick }) {
+export default function MapView({ venues, focus, userLoc, miles, onShowDetails }) {
   const containerRef = useRef(null);
   const mapRef = useRef(null);
-  const layerRef = useRef(null);
+  const clusterRef = useRef(null);
   const markersRef = useRef({});
+  const youRef = useRef(null);
 
   useEffect(() => {
     const map = L.map(containerRef.current, {
       scrollWheelZoom: false, // embedded iframe: don't hijack article scroll
     }).setView(WAUSAU, 10);
-    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-      attribution:
-        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-    }).addTo(map);
-    layerRef.current = L.layerGroup().addTo(map);
+    // Muted CARTO cartography so the newspaper palette does the talking.
+    L.tileLayer(
+      "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+      {
+        attribution:
+          '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+        maxZoom: 19,
+      }
+    ).addTo(map);
+
+    const cluster = L.markerClusterGroup({
+      maxClusterRadius: 42,
+      disableClusteringAtZoom: 13,
+      showCoverageOnHover: false,
+      iconCreateFunction: (c) =>
+        L.divIcon({
+          className: "ff-cluster",
+          html: `<span>${c.getChildCount()}</span>`,
+          iconSize: [38, 38],
+          iconAnchor: [19, 19],
+        }),
+    });
+    map.addLayer(cluster);
+    clusterRef.current = cluster;
     mapRef.current = map;
+
+    // One delegated listener covers every popup's "Full listing" link.
+    const onPopupClick = (e) => {
+      const link = e.target.closest(".ff-popup-details");
+      if (!link) return;
+      e.preventDefault();
+      onShowDetails(link.dataset.venue);
+    };
+    containerRef.current.addEventListener("click", onPopupClick);
+
     return () => map.remove();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
-    const layer = layerRef.current;
-    layer.clearLayers();
+    const cluster = clusterRef.current;
+    cluster.clearLayers();
     markersRef.current = {};
     venues.forEach((v) => {
       // The featured (paid) venue gets a black ring, nothing louder.
@@ -57,17 +94,42 @@ export default function MapView({ venues, focus, onMarkerClick }) {
         iconAnchor: [17, 17],
         popupAnchor: [0, -18],
       });
-      const marker = L.marker([v.lat, v.lon], { icon })
-        .bindPopup(popupHtml(v))
-        .addTo(layer);
-      marker.on("click", () => onMarkerClick(v.venue_name));
+      const marker = L.marker([v.lat, v.lon], { icon }).bindPopup(
+        popupHtml(v, miles?.[v.venue_name])
+      );
+      cluster.addLayer(marker);
       markersRef.current[v.venue_name] = marker;
     });
-    if (venues.length > 0) {
-      const bounds = L.latLngBounds(venues.map((v) => [v.lat, v.lon]));
-      mapRef.current.fitBounds(bounds, { padding: [30, 30], maxZoom: 13 });
+
+    const points = venues.map((v) => [v.lat, v.lon]);
+    if (userLoc) points.push([userLoc.lat, userLoc.lon]);
+    if (points.length > 0) {
+      mapRef.current.fitBounds(L.latLngBounds(points), {
+        padding: [30, 30],
+        maxZoom: 13,
+      });
     }
-  }, [venues, onMarkerClick]);
+  }, [venues, miles, userLoc]);
+
+  // "You are here" pin whenever a distance sort gave us a reader location.
+  useEffect(() => {
+    const map = mapRef.current;
+    if (youRef.current) {
+      map.removeLayer(youRef.current);
+      youRef.current = null;
+    }
+    if (userLoc) {
+      youRef.current = L.circleMarker([userLoc.lat, userLoc.lon], {
+        radius: 8,
+        color: "#ffffff",
+        weight: 2,
+        fillColor: "#3a867c",
+        fillOpacity: 1,
+      })
+        .bindPopup("You are here")
+        .addTo(map);
+    }
+  }, [userLoc]);
 
   useEffect(() => {
     if (!focus || focus.source !== "list") return;
@@ -80,7 +142,8 @@ export default function MapView({ venues, focus, onMarkerClick }) {
     } else {
       map.flyTo(marker.getLatLng(), zoom);
     }
-    marker.openPopup();
+    // Clustered markers need their cluster expanded before the popup opens.
+    clusterRef.current.zoomToShowLayer(marker, () => marker.openPopup());
   }, [focus]);
 
   return <div className="ff-map" ref={containerRef} />;

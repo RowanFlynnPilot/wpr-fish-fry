@@ -258,7 +258,18 @@ export default function App() {
         onSortAddress={sortByAddress}
         locNote={locNote}
       />
-      <MapView venues={filtered} focus={focus} onMarkerClick={onMarkerClick} />
+      <MapView
+        venues={filtered}
+        focus={focus}
+        userLoc={userLoc}
+        miles={miles}
+        onShowDetails={onMarkerClick}
+      />
+      <p className="ff-maplegend">
+        🍴 Restaurant &nbsp;·&nbsp; 🥂 Supper club &nbsp;·&nbsp; 🍺 Bar &amp;
+        tavern &nbsp;·&nbsp; 🎖️ VFW &amp; Legion &nbsp;·&nbsp; black ring =
+        this week&rsquo;s featured fry
+      </p>
 
       {data && (
         <p className="ff-count" aria-live="polite">
