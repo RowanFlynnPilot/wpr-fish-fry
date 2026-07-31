@@ -119,11 +119,13 @@ def parse_bool(value: str):
     return {"TRUE": True, "FALSE": False}.get(value)
 
 
-def validate(rows: list[dict]) -> list[dict]:
+def validate(rows: list[dict], warnings: list[str] | None = None) -> list[dict]:
     errors: list[str] = []
     venues: list[dict] = []
     featured_labels: list[str] = []
     seen_names: dict[str, int] = {}
+    if warnings is None:
+        warnings = []
 
     for r in rows:
         label = f"Row {r['_row']} ({r['venue_name'] or 'no venue_name'})"
@@ -185,14 +187,21 @@ def validate(rows: list[dict]) -> list[dict]:
                     f"{label}: {col} must start with http:// or https:// (got '{r[col]}')"
                 )
 
-        # The business model, enforced in code: free rows don't get paid features.
+        # The business model, enforced in code: free rows don't get paid
+        # features. Paid content on a free row stays in the sheet (handy for
+        # parking a lapsed sponsor's photo/description) but is stripped from
+        # the published data — warned, not fatal, so a downgrade never forces
+        # deleting data. If a NEW sponsor's photo isn't showing up, this
+        # warning in the build summary is the first place to look.
         if r["tier"] == "free":
             populated = [c for c in PAID_ONLY_COLUMNS if r[c]]
             if populated:
-                row_errors.append(
-                    f"{label}: free-tier row has paid-tier column(s) populated: "
-                    f"{', '.join(populated)} — upgrade the tier or clear the cells"
+                warnings.append(
+                    f"{label}: free tier — {', '.join(populated)} kept in the "
+                    "sheet but not published. Upgrade the tier to show them."
                 )
+                for c in populated:
+                    r[c] = ""
 
         if bools.get("featured_this_week"):
             featured_labels.append(label)
@@ -366,14 +375,14 @@ def featured_blurb(v: dict) -> str:
     )
 
 
-def write_step_summary(active: list[dict], warning: str | None) -> None:
+def write_step_summary(active: list[dict], warnings: list[str]) -> None:
     """In CI, hand the curators a build recap and a ready-to-paste featured
     blurb in the Actions run summary. No-op locally."""
     summary_path = os.environ.get("GITHUB_STEP_SUMMARY")
     if not summary_path:
         return
     lines = [f"## Fish fry build — {len(active)} active venue(s)", ""]
-    if warning:
+    for warning in warnings:
         lines += [f"⚠️ {warning}", ""]
     featured = next((v for v in active if v["featured_this_week"]), None)
     if featured:
@@ -405,7 +414,8 @@ def main() -> None:
         sys.exit(2)
 
     rows = load_csv(sys.argv[1])
-    venues = validate(rows)
+    warnings: list[str] = []
+    venues = validate(rows, warnings)
 
     active = [v for v in venues if v["active"]]
     for v in active:
@@ -417,14 +427,14 @@ def main() -> None:
     # Curator typo detector: a sharp drop in active venues is more often a
     # sheet mistake than a wave of seasonal closures. Warn, don't fail —
     # closures are legitimate and the curators can judge.
-    warning = None
     prev_count = previous_venue_count()
     if prev_count and prev_count >= 5 and len(active) < prev_count * 0.7:
-        warning = (
+        warnings.append(
             f"Active venue count dropped from {prev_count} to {len(active)} since "
             "the last build. If that isn't intentional (seasonal closures), check "
             "the sheet's 'active' column."
         )
+    for warning in warnings:
         print(f"WARNING: {warning}", file=sys.stderr)
 
     payload = {
@@ -434,7 +444,7 @@ def main() -> None:
     }
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT_PATH.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
-    write_step_summary(active, warning)
+    write_step_summary(active, warnings)
     print(
         f"Build OK — {len(active)} active venue(s), "
         f"{len(venues) - len(active)} inactive → {OUTPUT_PATH.relative_to(ROOT)}"

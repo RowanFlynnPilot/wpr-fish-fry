@@ -62,9 +62,16 @@ class ContractTests(unittest.TestCase):
         rows = [base_row(), base_row(_row=3)]
         validate_expecting_failure(self, rows, "duplicate venue_name")
 
-    def test_free_tier_with_paid_columns_fails(self):
-        rows = [base_row(photo_url="https://example.com/pic.jpg")]
-        validate_expecting_failure(self, rows, "paid-tier column(s)")
+    def test_free_tier_paid_columns_stripped_with_warning(self):
+        # Paid content parked on a free row is kept in the sheet but never
+        # published; the build warns instead of failing (2026-07 decision).
+        rows = [base_row(photo_url="https://example.com/pic.jpg", description="Nice spot")]
+        warnings = []
+        venues = build.validate(rows, warnings)
+        self.assertEqual(venues[0]["photo_url"], "")
+        self.assertEqual(venues[0]["description"], "")
+        self.assertEqual(len(warnings), 1)
+        self.assertIn("not published", warnings[0])
 
     def test_featured_flag_requires_featured_tier(self):
         rows = [base_row(featured_this_week="TRUE")]

@@ -44,7 +44,7 @@ copy it into a new Google Sheet to start.
 | sides, hours | sides optional, hours required — both free text |
 | all_you_can_eat, takeout, featured_this_week, active | exactly `TRUE` or `FALSE`, nothing else |
 | tier | required, enum: `free` `standard` `featured` |
-| description, photo_url, menu_url | **paid tiers only** — populated on a `free` row fails the build |
+| description, photo_url, menu_url | **paid tiers only** — on a `free` row they stay in the sheet but are stripped from the published data (build warns; lets a lapsed sponsor's content park until they re-up) |
 | featured_this_week | `TRUE` on at most one row, and that row must be tier `featured` |
 | editor_note | optional |
 | active | `FALSE` keeps seasonal closures in the sheet without publishing them |
@@ -52,6 +52,10 @@ copy it into a new Google Sheet to start.
 Any violation fails the build. The Actions run goes red and the log names the
 sheet row and venue with a plain-English fix. That red run **is** the feedback
 loop for the curators — do not soften it with fallbacks or silent stripping.
+The one deliberate exception (2026-07, Rowan's call): paid columns on a free
+row strip with a **named warning** in the log and run summary instead of
+failing — so a downgrade never forces deleting sponsor content. If a new
+sponsor's photo isn't showing, check that warning first: the tier is wrong.
 
 ## Geocoding — one mechanism
 
