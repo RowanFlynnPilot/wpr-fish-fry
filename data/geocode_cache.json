@@ -185,6 +185,12 @@
     "lon": -89.681032,
     "source": "nominatim-poi-name"
   },
+  "206423 county hwy m, stratford": {
+    "geocoded_at": "2026-08-01T22:03:56+00:00",
+    "lat": 44.74308,
+    "lon": -90.024894,
+    "source": "nominatim-city-approx"
+  },
   "208 clark st, hatley": {
     "geocoded_at": "2026-07-11T03:07:57+00:00",
     "lat": 44.887581,
