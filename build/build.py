@@ -153,6 +153,12 @@ def validate(rows: list[dict], warnings: list[str] | None = None) -> list[dict]:
             else:
                 seen_names[name_key] = r["_row"]
 
+        # Enum columns are case/spacing forgiving, same as `fish` already is:
+        # "Bar" and "Supper Club" are unambiguous, so normalize rather than
+        # bounce the curator. Anything genuinely unknown still fails below.
+        r["venue_type"] = "_".join(r["venue_type"].lower().split())
+        r["tier"] = r["tier"].lower().strip()
+
         if r["venue_type"] and r["venue_type"] not in VENUE_TYPES:
             row_errors.append(
                 f"{label}: venue_type '{r['venue_type']}' is not one of {', '.join(sorted(VENUE_TYPES))}"

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-31T02:55:21+00:00",
+  "generated_at": "2026-08-01T19:12:58+00:00",
   "venue_count": 59,
   "venues": [
     {
@@ -56,32 +56,6 @@
       "editor_note": "",
       "lat": 44.939978,
       "lon": -89.618716,
-      "logo": ""
-    },
-    {
-      "venue_name": "Arrow Sports Bar & Grill",
-      "venue_type": "bar",
-      "address": "6202 Schofield Ave",
-      "city": "Schofield",
-      "phone": "715-359-2363",
-      "website": "https://www.facebook.com/arrowsportsclubweston/",
-      "fish": [
-        "cod"
-      ],
-      "price_low": 10.0,
-      "price_high": 20.0,
-      "sides": "",
-      "hours": "Fri 4PM - 9PM",
-      "all_you_can_eat": false,
-      "takeout": true,
-      "tier": "free",
-      "description": "",
-      "photo_url": "",
-      "menu_url": "",
-      "featured_this_week": false,
-      "editor_note": "",
-      "lat": 44.910081,
-      "lon": -89.605723,
       "logo": ""
     },
     {
@@ -401,7 +375,7 @@
       "photo_url": "",
       "menu_url": "",
       "featured_this_week": false,
-      "editor_note": "Fraternal club - closest venue_type is vfw_legion; review.",
+      "editor_note": "",
       "lat": 44.933209,
       "lon": -89.661089,
       "logo": ""
@@ -430,7 +404,7 @@
       "photo_url": "",
       "menu_url": "",
       "featured_this_week": false,
-      "editor_note": "Fraternal club - closest venue_type is vfw_legion; review.",
+      "editor_note": "",
       "lat": 44.939481,
       "lon": -89.639268,
       "logo": ""
@@ -599,12 +573,12 @@
       "logo": ""
     },
     {
-      "venue_name": "Hiawatha Sports Bar",
+      "venue_name": "Hiawatha Social",
       "venue_type": "bar",
       "address": "713 Grant St",
       "city": "Wausau",
       "phone": "715-298-1061",
-      "website": "",
+      "website": "https://www.facebook.com/p/The-Hiawatha-Social-61589170547504/",
       "fish": [
         "haddock",
         "shrimp"
@@ -847,6 +821,32 @@
       "lat": 44.910314,
       "lon": -89.604807,
       "logo": "logos/log-cabin-restaurant.png"
+    },
+    {
+      "venue_name": "LT Club",
+      "venue_type": "bar",
+      "address": "318 S 3rd Ave",
+      "city": "Wausau",
+      "phone": "715-848-3320",
+      "website": "https://wiscobars.com/bars/wausau/lt-club/",
+      "fish": [
+        "cod"
+      ],
+      "price_low": 10.0,
+      "price_high": 20.0,
+      "sides": "",
+      "hours": "Fri 4PM-8PM",
+      "all_you_can_eat": false,
+      "takeout": true,
+      "tier": "free",
+      "description": "",
+      "photo_url": "",
+      "menu_url": "",
+      "featured_this_week": false,
+      "editor_note": "",
+      "lat": 44.960647,
+      "lon": -89.639408,
+      "logo": ""
     },
     {
       "venue_name": "Milwaukee Burger Company",

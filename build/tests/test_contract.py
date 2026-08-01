@@ -94,6 +94,17 @@ class ContractTests(unittest.TestCase):
         ]
         validate_expecting_failure(self, rows, "more than one row")
 
+    def test_enum_columns_normalize_case_and_spacing(self):
+        rows = [base_row(venue_type="Supper Club", tier="Featured",
+                         featured_this_week="TRUE", description="x")]
+        venues = build.validate(rows)
+        self.assertEqual(venues[0]["venue_type"], "supper_club")
+        self.assertEqual(venues[0]["tier"], "featured")
+
+    def test_unknown_venue_type_still_fails(self):
+        rows = [base_row(venue_type="Brewpub")]
+        validate_expecting_failure(self, rows, "venue_type")
+
     def test_unknown_fish_fails(self):
         rows = [base_row(fish="perch, muskie")]
         validate_expecting_failure(self, rows, "muskie")

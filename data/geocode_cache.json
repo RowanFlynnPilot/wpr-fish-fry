@@ -245,6 +245,12 @@
     "lon": -89.586119,
     "source": "nominatim"
   },
+  "318 s 3rd ave, wausau": {
+    "geocoded_at": "2026-08-01T19:12:58+00:00",
+    "lat": 44.960647,
+    "lon": -89.639408,
+    "source": "nominatim"
+  },
   "3607 n mountain rd, wausau": {
     "geocoded_at": "2026-07-11T03:10:10+00:00",
     "lat": 44.933383,
