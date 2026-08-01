@@ -32,6 +32,7 @@ export default function FilterBar({
     }
   };
   const fishOptions = [...new Set(venues.flatMap((v) => v.fish))].sort();
+  const countyOptions = [...new Set(venues.map((v) => v.county).filter(Boolean))].sort();
   const typeOptions = Object.keys(TYPE_LABELS).filter((t) =>
     venues.some((v) => v.venue_type === t)
   );
@@ -62,6 +63,23 @@ export default function FilterBar({
             setFilters((f) => ({ ...f, q: e.target.value }))
           }
         />
+        {countyOptions.length > 1 && (
+          <select
+            className="ff-county"
+            aria-label="Filter by county"
+            value={filters.county}
+            onChange={(e) =>
+              setFilters((f) => ({ ...f, county: e.target.value }))
+            }
+          >
+            <option value="">All counties</option>
+            {countyOptions.map((c) => (
+              <option key={c} value={c}>
+                {c} County
+              </option>
+            ))}
+          </select>
+        )}
       </div>
 
       <div className="ff-filter-group">

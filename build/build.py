@@ -66,6 +66,36 @@ BOOLEAN_COLUMNS = ["all_you_can_eat", "takeout", "featured_this_week", "active"]
 URL_COLUMNS = ["website", "photo_url", "menu_url"]
 PAID_ONLY_COLUMNS = ["description", "photo_url", "menu_url"]
 
+# County is derived from city rather than carried as a 21st sheet column —
+# the mapping is deterministic and keeps the contract stable. Towns that
+# straddle a county line (Colby, Abbotsford, Unity, Dorchester, Spencer)
+# are assigned to the county holding their main business district; a few
+# rural venues carry a mailing city from the neighboring county, and those
+# are called out in their editor_note. A city missing here fails the build.
+CITY_COUNTY = {
+    # Marathon
+    "wausau": "Marathon", "schofield": "Marathon", "weston": "Marathon",
+    "rothschild": "Marathon", "mosinee": "Marathon", "kronenwetter": "Marathon",
+    "hatley": "Marathon", "ringle": "Marathon", "marathon city": "Marathon",
+    "athens": "Marathon", "edgar": "Marathon", "stratford": "Marathon",
+    "fenwood": "Marathon", "spencer": "Marathon", "elderon": "Marathon",
+    "rib mountain": "Marathon", "brokaw": "Marathon", "bevent": "Marathon",
+    "knowlton": "Marathon", "rozellville": "Marathon",
+    # Lincoln
+    "merrill": "Lincoln", "tomahawk": "Lincoln",
+    # Clark
+    "colby": "Clark", "abbotsford": "Clark", "unity": "Clark",
+    "dorchester": "Clark", "greenwood": "Clark", "neillsville": "Clark",
+    # Shawano
+    "birnamwood": "Shawano", "eland": "Shawano", "aniwa": "Shawano",
+    "wittenberg": "Shawano", "tigerton": "Shawano",
+    # Portage / Wood
+    "stevens point": "Portage", "plover": "Portage", "junction city": "Portage",
+    "marshfield": "Wood", "pittsville": "Wood",
+    # Waupaca / Langlade
+    "manawa": "Waupaca", "clintonville": "Waupaca", "antigo": "Langlade",
+}
+
 VENUE_TYPES = {"restaurant", "supper_club", "bar", "vfw_legion"}
 TIERS = {"free", "standard", "featured"}
 FISH = {"perch", "cod", "walleye", "bluegill", "haddock", "smelt", "shrimp", "flounder"}
@@ -143,6 +173,12 @@ def validate(rows: list[dict], warnings: list[str] | None = None) -> list[dict]:
         for col in REQUIRED:
             if not r[col]:
                 row_errors.append(f"{label}: required column '{col}' is empty")
+
+        if r["city"] and r["city"].lower().strip() not in CITY_COUNTY:
+            row_errors.append(
+                f"{label}: city '{r['city']}' has no county assigned — add it to "
+                "CITY_COUNTY in build.py (the county filter is built from it)"
+            )
 
         name_key = r["venue_name"].lower()
         if r["venue_name"]:
@@ -245,6 +281,7 @@ def validate(rows: list[dict], warnings: list[str] | None = None) -> list[dict]:
             "venue_type": r["venue_type"],
             "address": r["address"],
             "city": r["city"],
+            "county": CITY_COUNTY[r["city"].lower().strip()],
             "phone": r["phone"],
             "website": r["website"],
             "fish": fish,

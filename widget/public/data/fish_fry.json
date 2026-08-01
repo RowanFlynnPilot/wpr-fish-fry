@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-01T19:12:58+00:00",
+  "generated_at": "2026-08-01T20:55:10+00:00",
   "venue_count": 59,
   "venues": [
     {
@@ -7,6 +7,7 @@
       "venue_type": "bar",
       "address": "1724 Merrill Ave",
       "city": "Wausau",
+      "county": "Marathon",
       "phone": "715-841-0035",
       "website": "https://www.facebook.com/p/4-Fathers-Pub-61556538628561/",
       "fish": [
@@ -33,6 +34,7 @@
       "venue_type": "restaurant",
       "address": "1702 Grand Ave",
       "city": "Wausau",
+      "county": "Marathon",
       "phone": "715-298-1064",
       "website": "",
       "fish": [
@@ -63,6 +65,7 @@
       "venue_type": "restaurant",
       "address": "606 N 3rd St",
       "city": "Wausau",
+      "county": "Marathon",
       "phone": "715-848-5668",
       "website": "https://www.backwhencafe.com/",
       "fish": [
@@ -90,6 +93,7 @@
       "venue_type": "restaurant",
       "address": "900 Golf Club Rd",
       "city": "Wausau",
+      "county": "Marathon",
       "phone": "715-675-2460",
       "website": "http://bbjacks.com/",
       "fish": [
@@ -118,6 +122,7 @@
       "venue_type": "restaurant",
       "address": "1490 County Rd XX",
       "city": "Rothschild",
+      "county": "Marathon",
       "phone": "715-393-4409",
       "website": "https://www.facebook.com/p/Blissful-Bites-Brunch-100091658664778/",
       "fish": [
@@ -144,6 +149,7 @@
       "venue_type": "restaurant",
       "address": "3607 N Mountain Rd",
       "city": "Wausau",
+      "county": "Marathon",
       "phone": "715-845-5570",
       "website": "https://www.carmeloswausau.com/",
       "fish": [
@@ -170,6 +176,7 @@
       "venue_type": "bar",
       "address": "130665 County Road N",
       "city": "Marathon City",
+      "county": "Marathon",
       "phone": "715-352-3701",
       "website": "",
       "fish": [
@@ -198,6 +205,7 @@
       "venue_type": "restaurant",
       "address": "1000 Imperial Ave",
       "city": "Rothschild",
+      "county": "Marathon",
       "phone": "715-355-9200",
       "website": "https://www.cedarcreekgrillhouse.com/",
       "fish": [
@@ -224,6 +232,7 @@
       "venue_type": "bar",
       "address": "158241 E Wausau Ave",
       "city": "Wausau",
+      "county": "Marathon",
       "phone": "715-393-4026",
       "website": "https://cheeksbar.com/",
       "fish": [
@@ -252,6 +261,7 @@
       "venue_type": "bar",
       "address": "R13085 County Rd N",
       "city": "Ringle",
+      "county": "Marathon",
       "phone": "715-842-1913",
       "website": "https://www.facebook.com/ProstHillBarGrillLLC/",
       "fish": [
@@ -279,6 +289,7 @@
       "venue_type": "bar",
       "address": "5307 Westfair Ave",
       "city": "Schofield",
+      "county": "Marathon",
       "phone": "715-298-1046",
       "website": "https://www.facebook.com/daybreakbar/",
       "fish": [
@@ -305,6 +316,7 @@
       "venue_type": "bar",
       "address": "1715 Stewart Ave",
       "city": "Wausau",
+      "county": "Marathon",
       "phone": "715-848-2292",
       "website": "https://www.daysbowl.com/",
       "fish": [
@@ -331,6 +343,7 @@
       "venue_type": "bar",
       "address": "601 W Thomas St",
       "city": "Wausau",
+      "county": "Marathon",
       "phone": "715-298-3131",
       "website": "https://www.facebook.com/p/Denmar-Tavern-100041395795806/",
       "fish": [
@@ -358,6 +371,7 @@
       "venue_type": "restaurant",
       "address": "151508 County Rd NN",
       "city": "Wausau",
+      "county": "Marathon",
       "phone": "715-571-6342",
       "website": "",
       "fish": [
@@ -385,6 +399,7 @@
       "venue_type": "vfw_legion",
       "address": "1703 S 3rd Ave",
       "city": "Wausau",
+      "county": "Marathon",
       "phone": "715-845-4795",
       "website": "http://wausaueaglesclub251.com/",
       "fish": [
@@ -414,6 +429,7 @@
       "venue_type": "restaurant",
       "address": "151523 County Rd NN",
       "city": "Wausau",
+      "county": "Marathon",
       "phone": "715-551-1172",
       "website": "https://eracaferibmountain.com/",
       "fish": [
@@ -440,6 +456,7 @@
       "venue_type": "bar",
       "address": "4198 County Rd X",
       "city": "Mosinee",
+      "county": "Marathon",
       "phone": "715-295-6695",
       "website": "https://www.facebook.com/funnyfarmbar/",
       "fish": [
@@ -467,6 +484,7 @@
       "venue_type": "bar",
       "address": "152501 Morning Glory Ln",
       "city": "Wausau",
+      "county": "Marathon",
       "phone": "715-393-4495",
       "website": "https://www.thegaragewausau.com/",
       "fish": [
@@ -495,6 +513,7 @@
       "venue_type": "restaurant",
       "address": "450 Orbiting Dr",
       "city": "Mosinee",
+      "county": "Marathon",
       "phone": "715-693-4001",
       "website": "https://gorskiswi.com",
       "fish": [
@@ -524,6 +543,7 @@
       "venue_type": "bar",
       "address": "216050 County Rd B",
       "city": "Mosinee",
+      "county": "Marathon",
       "phone": "715-693-2335",
       "website": "https://www.facebook.com/p/Hammer-Down-Bar-100054357648287/",
       "fish": [
@@ -551,6 +571,7 @@
       "venue_type": "bar",
       "address": "208 Clark St",
       "city": "Hatley",
+      "county": "Marathon",
       "phone": "715-446-5006",
       "website": "https://www.facebook.com/p/Hatley-Hangout-100095334878258/",
       "fish": [
@@ -577,6 +598,7 @@
       "venue_type": "bar",
       "address": "713 Grant St",
       "city": "Wausau",
+      "county": "Marathon",
       "phone": "715-298-1061",
       "website": "https://www.facebook.com/p/The-Hiawatha-Social-61589170547504/",
       "fish": [
@@ -604,6 +626,7 @@
       "venue_type": "bar",
       "address": "840 Grand Ave",
       "city": "Schofield",
+      "county": "Marathon",
       "phone": "715-298-3225",
       "website": "https://hoehnshuddlebarandgrill.com/",
       "fish": [
@@ -634,6 +657,7 @@
       "venue_type": "bar",
       "address": "143203 State Hwy 153",
       "city": "Mosinee",
+      "county": "Marathon",
       "phone": "715-693-7222",
       "website": "https://hogcreekbarandgrill.com/",
       "fish": [
@@ -662,6 +686,7 @@
       "venue_type": "restaurant",
       "address": "8507 State Hwy 52",
       "city": "Wausau",
+      "county": "Marathon",
       "phone": "715-842-8396",
       "website": "https://welcomehomeon52.com/",
       "fish": [
@@ -689,6 +714,7 @@
       "venue_type": "supper_club",
       "address": "4810 Ross Ave",
       "city": "Schofield",
+      "county": "Marathon",
       "phone": "715-359-6307",
       "website": "https://www.facebook.com/KellyClubSportsBar/",
       "fish": [
@@ -715,6 +741,7 @@
       "venue_type": "restaurant",
       "address": "204575 County Rd DB",
       "city": "Mosinee",
+      "county": "Marathon",
       "phone": "715-693-0099",
       "website": "https://www.knowltonhouse.com/",
       "fish": [
@@ -741,6 +768,7 @@
       "venue_type": "restaurant",
       "address": "214857 County Rd Y",
       "city": "Hatley",
+      "county": "Marathon",
       "phone": "715-255-4029",
       "website": "https://www.lisasatlakeside.com/",
       "fish": [
@@ -772,6 +800,7 @@
       "venue_type": "bar",
       "address": "157024 E Hamilton St",
       "city": "Wausau",
+      "county": "Marathon",
       "phone": "715-845-9585",
       "website": "https://www.theloadingzone.biz",
       "fish": [
@@ -801,6 +830,7 @@
       "venue_type": "restaurant",
       "address": "1522 Metro Dr",
       "city": "Schofield",
+      "county": "Marathon",
       "phone": "715-359-3669",
       "website": "https://www.logcabinwausau.com/",
       "fish": [
@@ -827,6 +857,7 @@
       "venue_type": "bar",
       "address": "318 S 3rd Ave",
       "city": "Wausau",
+      "county": "Marathon",
       "phone": "715-848-3320",
       "website": "https://wiscobars.com/bars/wausau/lt-club/",
       "fish": [
@@ -853,6 +884,7 @@
       "venue_type": "restaurant",
       "address": "2200 Stewart Ave",
       "city": "Wausau",
+      "county": "Marathon",
       "phone": "715-298-9371",
       "website": "https://milwaukeeburgercompany.com/",
       "fish": [
@@ -879,6 +911,7 @@
       "venue_type": "restaurant",
       "address": "422 3rd St",
       "city": "Wausau",
+      "county": "Marathon",
       "phone": "715-845-5879",
       "website": "https://www.mintcafewausau.com/",
       "fish": [
@@ -906,6 +939,7 @@
       "venue_type": "bar",
       "address": "1206 N 3rd St",
       "city": "Wausau",
+      "county": "Marathon",
       "phone": "715-298-0028",
       "website": "https://nevermoreonthird.com/",
       "fish": [
@@ -932,6 +966,7 @@
       "venue_type": "bar",
       "address": "707 Grand Ave",
       "city": "Rothschild",
+      "county": "Marathon",
       "phone": "715-298-6000",
       "website": "https://www.facebook.com/p/Norms-100063639667190/",
       "fish": [
@@ -959,6 +994,7 @@
       "venue_type": "restaurant",
       "address": "151701 Gadwall Ln",
       "city": "Wausau",
+      "county": "Marathon",
       "phone": "715-393-4040",
       "website": "https://www.olivasgullivers.com/",
       "fish": [
@@ -987,6 +1023,7 @@
       "venue_type": "supper_club",
       "address": "5912 Business Hwy 51 S",
       "city": "Weston",
+      "county": "Marathon",
       "phone": "715-359-2200",
       "website": "https://thepalmswausau.com",
       "fish": [
@@ -1014,6 +1051,7 @@
       "venue_type": "bar",
       "address": "1041 E Grand Ave",
       "city": "Rothschild",
+      "county": "Marathon",
       "phone": "715-359-9417",
       "website": "https://www.papillonspizza.com/",
       "fish": [
@@ -1040,6 +1078,7 @@
       "venue_type": "supper_club",
       "address": "1208 Half Moon Lake Dr",
       "city": "Mosinee",
+      "county": "Marathon",
       "phone": "715-693-3180",
       "website": "https://thepinewood.com/",
       "fish": [
@@ -1067,6 +1106,7 @@
       "venue_type": "bar",
       "address": "1024 Western Ave",
       "city": "Mosinee",
+      "county": "Marathon",
       "phone": "715-693-3636",
       "website": "http://www.pitstopmosinee.com/",
       "fish": [
@@ -1094,6 +1134,7 @@
       "venue_type": "bar",
       "address": "11420 S County Rd K",
       "city": "Merrill",
+      "county": "Lincoln",
       "phone": "715-536-9391",
       "website": "https://www.facebook.com/profile.php?id=61552638063869",
       "fish": [
@@ -1120,6 +1161,7 @@
       "venue_type": "restaurant",
       "address": "5305 N 32nd Ave",
       "city": "Wausau",
+      "county": "Marathon",
       "phone": "715-675-7070",
       "website": "https://www.richards-restaurant.com/",
       "fish": [
@@ -1148,6 +1190,7 @@
       "venue_type": "bar",
       "address": "H12950 State Hwy 52",
       "city": "Wausau",
+      "county": "Marathon",
       "phone": "715-581-8237",
       "website": "https://sunrisebar52.com/",
       "fish": [
@@ -1175,6 +1218,7 @@
       "venue_type": "bar",
       "address": "145727 W State Hwy 153",
       "city": "Mosinee",
+      "county": "Marathon",
       "phone": "715-814-1655",
       "website": "https://www.facebook.com/SaltyBonesLLC/",
       "fish": [
@@ -1201,6 +1245,7 @@
       "venue_type": "bar",
       "address": "1239 Schofield Ave",
       "city": "Schofield",
+      "county": "Marathon",
       "phone": "715-241-7665",
       "website": "http://www.sconnis.com/",
       "fish": [
@@ -1228,6 +1273,7 @@
       "venue_type": "bar",
       "address": "10302 Market St",
       "city": "Rothschild",
+      "county": "Marathon",
       "phone": "715-355-7001",
       "website": "https://www.meetatthebar.com/wausau.html",
       "fish": [
@@ -1256,6 +1302,7 @@
       "venue_type": "bar",
       "address": "102 S 2nd Ave",
       "city": "Wausau",
+      "county": "Marathon",
       "phone": "715-842-3059",
       "website": "https://www.facebook.com/pages/The-Chatterbox-Bar/117540758272535",
       "fish": [
@@ -1282,6 +1329,7 @@
       "venue_type": "bar",
       "address": "238532 County Rd W",
       "city": "Wausau",
+      "county": "Marathon",
       "phone": "715-298-0923",
       "website": "https://themillyardwi.com/",
       "fish": [
@@ -1311,6 +1359,7 @@
       "venue_type": "bar",
       "address": "1578 N Shore Dr",
       "city": "Hatley",
+      "county": "Marathon",
       "phone": "715-446-2190",
       "website": "https://www.facebook.com/p/The-Red-Retriever-Bar-Grill-61554763671287/",
       "fish": [
@@ -1337,6 +1386,7 @@
       "venue_type": "restaurant",
       "address": "3806 Schofield Ave",
       "city": "Weston",
+      "county": "Marathon",
       "phone": "715-841-0080",
       "website": "https://www.tineandcellar.com/",
       "fish": [
@@ -1364,6 +1414,7 @@
       "venue_type": "bar",
       "address": "3901 Sherman Rd",
       "city": "Wausau",
+      "county": "Marathon",
       "phone": "715-848-2000",
       "website": "",
       "fish": [
@@ -1392,6 +1443,7 @@
       "venue_type": "bar",
       "address": "8101 Schofield Ave",
       "city": "Weston",
+      "county": "Marathon",
       "phone": "715-241-8999",
       "website": "https://www.trail-side-bar-and-grill.com/",
       "fish": [
@@ -1418,6 +1470,7 @@
       "venue_type": "bar",
       "address": "1201 W Thomas St",
       "city": "Wausau",
+      "county": "Marathon",
       "phone": "715-848-2465",
       "website": "https://treustictoc.com/",
       "fish": [
@@ -1444,6 +1497,7 @@
       "venue_type": "restaurant",
       "address": "525 Grand Ave",
       "city": "Schofield",
+      "county": "Marathon",
       "phone": "715-359-9596",
       "website": "https://www.tricityfamilyrestaurant.com/",
       "fish": [
@@ -1473,6 +1527,7 @@
       "venue_type": "restaurant",
       "address": "213 Main St",
       "city": "Mosinee",
+      "county": "Marathon",
       "phone": "715-693-3090",
       "website": "https://www.twoscompanymosinee.com/",
       "fish": [
@@ -1501,6 +1556,7 @@
       "venue_type": "restaurant",
       "address": "3904 Stewart Ave",
       "city": "Wausau",
+      "county": "Marathon",
       "phone": "715-845-7304",
       "website": "https://wausaumine.com/",
       "fish": [
@@ -1529,6 +1585,7 @@
       "venue_type": "bar",
       "address": "1300 N River Dr",
       "city": "Wausau",
+      "county": "Marathon",
       "phone": "715-298-6012",
       "website": "https://play-wow.net/",
       "fish": [
@@ -1557,6 +1614,7 @@
       "venue_type": "restaurant",
       "address": "628 N 3rd Ave",
       "city": "Wausau",
+      "county": "Marathon",
       "phone": "715-663-3663",
       "website": "https://www.westsiderdiner.com/",
       "fish": [
@@ -1583,6 +1641,7 @@
       "venue_type": "bar",
       "address": "2005 Schofield Ave",
       "city": "Schofield",
+      "county": "Marathon",
       "phone": "715-359-5864",
       "website": "https://wigglyfieldanddome.com/",
       "fish": [

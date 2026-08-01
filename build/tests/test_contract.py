@@ -101,6 +101,14 @@ class ContractTests(unittest.TestCase):
         self.assertEqual(venues[0]["venue_type"], "supper_club")
         self.assertEqual(venues[0]["tier"], "featured")
 
+    def test_county_derived_from_city(self):
+        venues = build.validate([base_row(city="Merrill")])
+        self.assertEqual(venues[0]["county"], "Lincoln")
+
+    def test_unmapped_city_fails(self):
+        rows = [base_row(city="Milwaukee")]
+        validate_expecting_failure(self, rows, "no county assigned")
+
     def test_unknown_venue_type_still_fails(self):
         rows = [base_row(venue_type="Brewpub")]
         validate_expecting_failure(self, rows, "venue_type")

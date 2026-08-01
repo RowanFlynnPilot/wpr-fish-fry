@@ -9,7 +9,14 @@ import FishGuide from "./components/FishGuide.jsx";
 // no-ops in some embedded/iframe contexts (notably mobile Safari across
 // the WordPress iframe boundary), and instant works everywhere. The card
 // highlight pulse handles orientation.
-const EMPTY_FILTERS = { q: "", fish: [], types: [], takeout: false, ayce: false };
+const EMPTY_FILTERS = {
+  q: "",
+  county: "",
+  fish: [],
+  types: [],
+  takeout: false,
+  ayce: false,
+};
 
 export function venueSlug(name) {
   return name.toLowerCase().replace(/[^a-z0-9]+/g, "-");
@@ -69,7 +76,8 @@ export default function App() {
     const q = filters.q.trim().toLowerCase();
     return venues.filter(
       (v) =>
-        (!q || `${v.venue_name} ${v.city}`.toLowerCase().includes(q)) &&
+          (!q || `${v.venue_name} ${v.city}`.toLowerCase().includes(q)) &&
+        (!filters.county || v.county === filters.county) &&
         (filters.fish.length === 0 || filters.fish.some((f) => v.fish.includes(f))) &&
         (filters.types.length === 0 || filters.types.includes(v.venue_type)) &&
         (!filters.takeout || v.takeout) &&
@@ -207,6 +215,7 @@ export default function App() {
 
   const hasFilters =
     filters.q.trim() !== "" ||
+    filters.county !== "" ||
     filters.fish.length > 0 ||
     filters.types.length > 0 ||
     filters.takeout ||
@@ -242,8 +251,8 @@ export default function App() {
         />
         <h1>Friday Fish Fry Finder</h1>
         <p className="ff-tagline">
-          Every fish fry in the Wausau area — the prices, the perch, the potato
-          pancakes.
+          Every fish fry in Marathon County and its neighbors — the prices, the
+          perch, the potato pancakes.
         </p>
       </header>
 

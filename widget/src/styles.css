@@ -118,6 +118,23 @@ body {
   outline-offset: 1px;
 }
 
+.ff-county {
+  font-family: var(--display);
+  font-size: 13px;
+  padding: 6px 8px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--paper);
+  color: var(--ink);
+  cursor: pointer;
+  flex: none;
+}
+
+.ff-county:focus-visible {
+  outline: 2px solid var(--teal-dark);
+  outline-offset: 1px;
+}
+
 .ff-locnote {
   font-size: 11px;
   font-style: italic;
