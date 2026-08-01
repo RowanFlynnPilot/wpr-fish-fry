@@ -86,6 +86,9 @@ CITY_COUNTY = {
     # Clark
     "colby": "Clark", "abbotsford": "Clark", "unity": "Clark",
     "dorchester": "Clark", "greenwood": "Clark", "neillsville": "Clark",
+    "loyal": "Clark", "withee": "Clark", "thorp": "Clark",
+    # Taylor
+    "medford": "Taylor", "stetsonville": "Taylor",
     # Shawano
     "birnamwood": "Shawano", "eland": "Shawano", "aniwa": "Shawano",
     "wittenberg": "Shawano", "tigerton": "Shawano",
