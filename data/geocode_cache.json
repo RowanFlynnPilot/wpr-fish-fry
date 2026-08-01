@@ -23,6 +23,18 @@
     "lon": -89.718712,
     "source": "nominatim"
   },
+  "1025 e grand ave, rothschild": {
+    "geocoded_at": "2026-08-01T22:40:56+00:00",
+    "lat": 44.897811,
+    "lon": -89.611909,
+    "source": "nominatim"
+  },
+  "103 e clark st, spencer": {
+    "geocoded_at": "2026-08-01T22:41:34+00:00",
+    "lat": 44.757313,
+    "lon": -90.299413,
+    "source": "nominatim"
+  },
   "10302 market st, rothschild": {
     "geocoded_at": "2026-07-11T03:08:38+00:00",
     "lat": 44.863949,
@@ -35,16 +47,46 @@
     "lon": -89.609644,
     "source": "nominatim"
   },
+  "113 e clark st, spencer": {
+    "geocoded_at": "2026-08-01T22:41:32+00:00",
+    "lat": 44.757208,
+    "lon": -90.298639,
+    "source": "nominatim"
+  },
   "11420 s county rd k, merrill": {
     "geocoded_at": "2026-07-30T21:23:07+00:00",
     "lat": 45.180522,
     "lon": -89.683459,
     "source": "nominatim-city-approx"
   },
+  "115 w redwood st, edgar": {
+    "geocoded_at": "2026-08-01T22:41:12+00:00",
+    "lat": 44.92186,
+    "lon": -89.964936,
+    "source": "nominatim"
+  },
+  "117 alfred st, athens": {
+    "geocoded_at": "2026-08-01T22:41:23+00:00",
+    "lat": 45.034567,
+    "lon": -90.074369,
+    "source": "nominatim"
+  },
+  "118600 county road p, stratford": {
+    "geocoded_at": "2026-08-01T22:44:44+00:00",
+    "lat": 44.801076,
+    "lon": -90.079297,
+    "source": "nominatim-city-approx"
+  },
   "1201 w thomas st, wausau": {
     "geocoded_at": "2026-07-11T03:08:55+00:00",
     "lat": 44.948257,
     "lon": -89.650504,
+    "source": "nominatim"
+  },
+  "1205 lake st, merrill": {
+    "geocoded_at": "2026-08-01T22:41:07+00:00",
+    "lat": 45.190208,
+    "lon": -89.677841,
     "source": "nominatim"
   },
   "1206 n 3rd st, wausau": {
@@ -59,11 +101,35 @@
     "lon": -89.7123,
     "source": "nominatim"
   },
+  "1208 n center ave, merrill": {
+    "geocoded_at": "2026-08-01T22:41:24+00:00",
+    "lat": 45.189582,
+    "lon": -89.682107,
+    "source": "nominatim"
+  },
+  "122923 county rd c, stratford": {
+    "geocoded_at": "2026-08-01T22:44:31+00:00",
+    "lat": 44.801076,
+    "lon": -90.079297,
+    "source": "nominatim-city-approx"
+  },
   "1239 schofield ave, schofield": {
     "geocoded_at": "2026-07-11T03:08:36+00:00",
     "lat": 44.913014,
     "lon": -89.609356,
     "source": "nominatim"
+  },
+  "124 n prospect st, merrill": {
+    "geocoded_at": "2026-08-01T22:40:49+00:00",
+    "lat": 45.180303,
+    "lon": -89.705314,
+    "source": "nominatim"
+  },
+  "127590 opportunity ln, edgar": {
+    "geocoded_at": "2026-08-01T22:44:52+00:00",
+    "lat": 44.943232,
+    "lon": -89.96574,
+    "source": "nominatim-poi-name"
   },
   "1300 n 6th st, wausau": {
     "geocoded_at": "2026-07-04T05:40:05+00:00",
@@ -83,10 +149,34 @@
     "lon": -89.831885,
     "source": "nominatim-road-approx"
   },
+  "133071 county road c, mosinee": {
+    "geocoded_at": "2026-08-01T22:45:03+00:00",
+    "lat": 44.801213,
+    "lon": -89.731218,
+    "source": "nominatim-road-approx"
+  },
+  "1418 lenard st, wausau": {
+    "geocoded_at": "2026-08-01T22:40:44+00:00",
+    "lat": 44.981333,
+    "lon": -89.634618,
+    "source": "nominatim"
+  },
+  "142475 county road nn, marathon city": {
+    "geocoded_at": "2026-08-01T22:41:29+00:00",
+    "lat": 44.934161,
+    "lon": -89.777261,
+    "source": "nominatim"
+  },
   "143203 state hwy 153, mosinee": {
     "geocoded_at": "2026-07-11T03:10:46+00:00",
     "lat": 44.792767,
     "lon": -89.703075,
+    "source": "nominatim-city-approx"
+  },
+  "144746 county rd n, marathon city": {
+    "geocoded_at": "2026-08-01T22:44:37+00:00",
+    "lat": 44.931529,
+    "lon": -89.840189,
     "source": "nominatim-city-approx"
   },
   "145727 w state hwy 153, mosinee": {
@@ -149,6 +239,12 @@
     "lon": -89.62938,
     "source": "nominatim-road-approx"
   },
+  "168925 state highway 52, aniwa": {
+    "geocoded_at": "2026-08-01T22:40:57+00:00",
+    "lat": 45.025987,
+    "lon": -89.21126,
+    "source": "nominatim"
+  },
   "1702 grand ave, wausau": {
     "geocoded_at": "2026-07-30T21:22:11+00:00",
     "lat": 44.939978,
@@ -173,11 +269,23 @@
     "lon": -89.657849,
     "source": "nominatim"
   },
+  "1801 county road xx, kronenwetter": {
+    "geocoded_at": "2026-08-01T22:41:35+00:00",
+    "lat": 44.8579,
+    "lon": -89.623756,
+    "source": "nominatim"
+  },
   "2005 schofield ave, schofield": {
     "geocoded_at": "2026-07-11T03:09:05+00:00",
     "lat": 44.903291,
     "lon": -89.613926,
     "source": "nominatim"
+  },
+  "201100 county road x, mosinee": {
+    "geocoded_at": "2026-08-01T22:44:24+00:00",
+    "lat": 44.801213,
+    "lon": -89.731218,
+    "source": "nominatim-road-approx"
   },
   "204575 county rd db, mosinee": {
     "geocoded_at": "2026-07-11T03:10:53+00:00",
@@ -191,10 +299,22 @@
     "lon": -90.024894,
     "source": "nominatim-city-approx"
   },
+  "206484 county hwy m, stratford": {
+    "geocoded_at": "2026-08-01T22:45:29+00:00",
+    "lat": 44.801076,
+    "lon": -90.079297,
+    "source": "nominatim-city-approx"
+  },
   "208 clark st, hatley": {
     "geocoded_at": "2026-07-11T03:07:57+00:00",
     "lat": 44.887581,
     "lon": -89.338496,
+    "source": "nominatim"
+  },
+  "209770 county road o, mosinee": {
+    "geocoded_at": "2026-08-01T22:41:02+00:00",
+    "lat": 44.8876,
+    "lon": -89.767647,
     "source": "nominatim"
   },
   "213 main st, mosinee": {
@@ -202,6 +322,12 @@
     "lat": 44.792202,
     "lon": -89.701578,
     "source": "nominatim"
+  },
+  "213720 state hwy 97, stratford": {
+    "geocoded_at": "2026-08-01T22:45:09+00:00",
+    "lat": 44.801076,
+    "lon": -90.079297,
+    "source": "nominatim-city-approx"
   },
   "214857 county rd y, hatley": {
     "geocoded_at": "2026-07-11T03:10:59+00:00",
@@ -215,6 +341,12 @@
     "lon": -89.69904,
     "source": "nominatim-road-approx"
   },
+  "220 alfred st, athens": {
+    "geocoded_at": "2026-08-01T22:40:47+00:00",
+    "lat": 45.033268,
+    "lon": -90.073591,
+    "source": "nominatim"
+  },
   "2200 stewart ave, wausau": {
     "geocoded_at": "2026-07-11T03:08:16+00:00",
     "lat": 44.958892,
@@ -227,11 +359,23 @@
     "lon": -89.628621,
     "source": "nominatim"
   },
+  "231745 county rd s, edgar": {
+    "geocoded_at": "2026-08-01T22:45:31+00:00",
+    "lat": 44.971634,
+    "lon": -89.905326,
+    "source": "nominatim-poi-name"
+  },
   "238532 county rd w, wausau": {
     "geocoded_at": "2026-07-11T03:11:26+00:00",
     "lat": 44.959786,
     "lon": -89.633279,
     "source": "nominatim-city-approx-spread"
+  },
+  "2405 w main st, merrill": {
+    "geocoded_at": "2026-08-01T22:41:19+00:00",
+    "lat": 45.176742,
+    "lon": -89.734381,
+    "source": "nominatim"
   },
   "2510 stewart ave, wausau": {
     "geocoded_at": "2026-07-11T03:07:25+00:00",
@@ -251,6 +395,24 @@
     "lon": -89.586119,
     "source": "nominatim"
   },
+  "305 n 3rd ave, stratford": {
+    "geocoded_at": "2026-08-01T22:45:22+00:00",
+    "lat": 44.801076,
+    "lon": -90.079297,
+    "source": "nominatim-city-approx"
+  },
+  "311 main st, marathon city": {
+    "geocoded_at": "2026-08-01T22:41:26+00:00",
+    "lat": 44.931857,
+    "lon": -89.840461,
+    "source": "nominatim"
+  },
+  "313 main st, mosinee": {
+    "geocoded_at": "2026-08-01T22:41:31+00:00",
+    "lat": 44.792829,
+    "lon": -89.702418,
+    "source": "nominatim"
+  },
   "318 s 3rd ave, wausau": {
     "geocoded_at": "2026-08-01T19:12:58+00:00",
     "lat": 44.960647,
@@ -262,6 +424,12 @@
     "lat": 44.933383,
     "lon": -89.681847,
     "source": "nominatim-poi-name"
+  },
+  "3780 redwood st, fenwood": {
+    "geocoded_at": "2026-08-01T22:41:43+00:00",
+    "lat": 44.864207,
+    "lon": -90.014997,
+    "source": "nominatim"
   },
   "3806 schofield ave, weston": {
     "geocoded_at": "2026-07-11T03:08:48+00:00",
@@ -279,6 +447,12 @@
     "geocoded_at": "2026-07-11T03:08:59+00:00",
     "lat": 44.9555,
     "lon": -89.685208,
+    "source": "nominatim"
+  },
+  "408 n 3rd st, wausau": {
+    "geocoded_at": "2026-08-01T22:41:28+00:00",
+    "lat": 44.960082,
+    "lon": -89.628152,
     "source": "nominatim"
   },
   "4198 county rd x, mosinee": {
@@ -299,6 +473,12 @@
     "lon": -89.628022,
     "source": "nominatim"
   },
+  "4411 stewart ave, wausau": {
+    "geocoded_at": "2026-08-01T22:41:14+00:00",
+    "lat": 44.955301,
+    "lon": -89.692644,
+    "source": "nominatim"
+  },
   "450 orbiting dr, mosinee": {
     "geocoded_at": "2026-07-11T03:10:37+00:00",
     "lat": 44.785211,
@@ -309,6 +489,18 @@
     "geocoded_at": "2026-07-11T03:08:06+00:00",
     "lat": 44.913213,
     "lon": -89.601997,
+    "source": "nominatim"
+  },
+  "501 main st, marathon city": {
+    "geocoded_at": "2026-08-01T22:41:21+00:00",
+    "lat": 44.930267,
+    "lon": -89.840669,
+    "source": "nominatim"
+  },
+  "503 e spruce st, abbotsford": {
+    "geocoded_at": "2026-08-01T22:41:16+00:00",
+    "lat": 44.945762,
+    "lon": -90.318926,
     "source": "nominatim"
   },
   "525 grand ave, schofield": {
@@ -328,6 +520,12 @@
     "lat": 44.909691,
     "lon": -89.604566,
     "source": "nominatim-city-approx"
+  },
+  "5902 schofield ave, weston": {
+    "geocoded_at": "2026-08-01T22:41:01+00:00",
+    "lat": 44.903883,
+    "lon": -89.550054,
+    "source": "nominatim"
   },
   "5912 business hwy 51 s, weston": {
     "geocoded_at": "2026-07-11T03:11:06+00:00",
@@ -377,6 +575,12 @@
     "lon": -89.620257,
     "source": "nominatim"
   },
+  "810 e center ave, dorchester": {
+    "geocoded_at": "2026-08-01T22:40:50+00:00",
+    "lat": 45.003432,
+    "lon": -90.323419,
+    "source": "nominatim"
+  },
   "8101 schofield ave, weston": {
     "geocoded_at": "2026-07-11T03:08:49+00:00",
     "lat": 44.899903,
@@ -407,10 +611,28 @@
     "lon": -89.624279,
     "source": "nominatim-city-approx-spread"
   },
+  "n1294 highway 64 & 107, merrill": {
+    "geocoded_at": "2026-08-01T22:44:49+00:00",
+    "lat": 45.19072,
+    "lon": -89.723561,
+    "source": "nominatim-road-approx"
+  },
   "r13085 county rd n, ringle": {
     "geocoded_at": "2026-07-11T03:10:21+00:00",
     "lat": 44.911692,
     "lon": -89.456808,
+    "source": "nominatim-city-approx"
+  },
+  "w1302 county rd a, dorchester": {
+    "geocoded_at": "2026-08-01T22:44:58+00:00",
+    "lat": 45.001266,
+    "lon": -90.331546,
+    "source": "nominatim-city-approx"
+  },
+  "w5931 church ave, merrill": {
+    "geocoded_at": "2026-08-01T22:45:16+00:00",
+    "lat": 45.180522,
+    "lon": -89.683459,
     "source": "nominatim-city-approx"
   }
 }
