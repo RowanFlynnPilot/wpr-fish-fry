@@ -82,16 +82,25 @@ CITY_COUNTY = {
     "rib mountain": "Marathon", "brokaw": "Marathon", "bevent": "Marathon",
     "knowlton": "Marathon", "rozellville": "Marathon",
     # Lincoln
-    "merrill": "Lincoln", "tomahawk": "Lincoln",
+    "merrill": "Lincoln", "tomahawk": "Lincoln", "gleason": "Lincoln",
+    "irma": "Lincoln", "heafford junction": "Lincoln", "harrison": "Lincoln",
+    "doering": "Lincoln", "bloomville": "Lincoln",
     # Clark
     "colby": "Clark", "abbotsford": "Clark", "unity": "Clark",
     "dorchester": "Clark", "greenwood": "Clark", "neillsville": "Clark",
-    "loyal": "Clark", "withee": "Clark", "thorp": "Clark",
+    "loyal": "Clark", "withee": "Clark", "thorp": "Clark", "owen": "Clark",
+    "curtiss": "Clark", "granton": "Clark", "willard": "Clark",
+    "chili": "Clark", "humbird": "Clark", "longwood": "Clark",
+    "christie": "Clark", "riplinger": "Clark",
     # Taylor
     "medford": "Taylor", "stetsonville": "Taylor",
     # Shawano
     "birnamwood": "Shawano", "eland": "Shawano", "aniwa": "Shawano",
-    "wittenberg": "Shawano", "tigerton": "Shawano",
+    "wittenberg": "Shawano", "tigerton": "Shawano", "shawano": "Shawano",
+    "bonduel": "Shawano", "cecil": "Shawano", "gresham": "Shawano",
+    "mattoon": "Shawano", "bowler": "Shawano", "pulaski": "Shawano",
+    "caroline": "Shawano", "pella": "Shawano",
+    "keshena": "Menominee", "neopit": "Menominee",
     # Portage / Wood
     "stevens point": "Portage", "plover": "Portage", "junction city": "Portage",
     "marshfield": "Wood", "pittsville": "Wood",
