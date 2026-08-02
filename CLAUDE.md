@@ -46,7 +46,7 @@ copy it into a new Google Sheet to start.
 | tier | required, enum: `free` `standard` `featured` |
 | description, photo_url, menu_url | **paid tiers only** — on a `free` row they stay in the sheet but are stripped from the published data (build warns; lets a lapsed sponsor's content park until they re-up). photo_url is a URL **or** a `photos-inbox/` filename |
 | featured_this_week | `TRUE` on at most one row, and that row must be tier `featured` |
-| editor_note | optional |
+| editor_note | optional. `[Square-bracketed]` segments are **curator-only** — mileage tags, verification flags, sourcing — and are stripped at publish; prose outside brackets is reader-facing. An unmatched bracket fails the build (a private note must never half-leak) |
 | active | `FALSE` keeps seasonal closures in the sheet without publishing them |
 
 Any violation fails the build. The Actions run goes red and the log names the

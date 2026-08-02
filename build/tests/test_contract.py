@@ -139,6 +139,26 @@ class ContractTests(unittest.TestCase):
         rows = [base_row(website="wausaumine.com")]
         validate_expecting_failure(self, rows, "website")
 
+    def test_editor_note_brackets_are_curator_only(self):
+        # [Bracketed] segments are notes-to-self and never publish; the
+        # reader sees only the prose outside them, cleanly re-spaced.
+        rows = [base_row(editor_note=(
+            "[42 mi from Wausau] Cajun fish is the signature. "
+            "[Detail sourced from wiscobars.com]"
+        ))]
+        venues = build.validate(rows)
+        self.assertEqual(venues[0]["editor_note"], "Cajun fish is the signature.")
+
+    def test_editor_note_all_brackets_publishes_empty(self):
+        rows = [base_row(editor_note="[FISH SPECIES UNVERIFIED - defaulted to cod.]")]
+        venues = build.validate(rows)
+        self.assertEqual(venues[0]["editor_note"], "")
+
+    def test_editor_note_unmatched_bracket_fails(self):
+        # A note the curator thought was private must never half-leak.
+        rows = [base_row(editor_note="[NEEDS HOURS before activating. Call ahead")]
+        validate_expecting_failure(self, rows, "unmatched")
+
     def test_normalize_address(self):
         # load_csv strips cells before this runs; the key's job is lowercase
         # and collapsing internal runs of whitespace.

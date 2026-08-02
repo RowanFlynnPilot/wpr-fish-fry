@@ -276,6 +276,19 @@ def validate(rows: list[dict], warnings: list[str] | None = None) -> list[dict]:
                 for c in populated:
                     r[c] = ""
 
+        # editor_note is two audiences in one cell: square-bracketed segments
+        # are curator-to-curator (mileage tags, verification flags, sourcing)
+        # and never publish; everything outside brackets is the newsroom
+        # speaking to readers. An unbalanced bracket means a note the curator
+        # thought was private would leak onto a card — that fails, loudly.
+        reader_note = re.sub(r"\[[^\[\]]*\]", " ", r["editor_note"])
+        if "[" in reader_note or "]" in reader_note:
+            row_errors.append(
+                f"{label}: editor_note has an unmatched [ or ] — bracketed "
+                "text is curator-only and must be closed, or it would publish"
+            )
+        reader_note = re.sub(r"\s+", " ", reader_note).strip()
+
         if bools.get("featured_this_week"):
             featured_labels.append(label)
             if r["tier"] != "featured":
@@ -308,7 +321,7 @@ def validate(rows: list[dict], warnings: list[str] | None = None) -> list[dict]:
             "photo_url": r["photo_url"],
             "menu_url": r["menu_url"],
             "featured_this_week": bools["featured_this_week"],
-            "editor_note": r["editor_note"],
+            "editor_note": reader_note,
             "active": bools["active"],
         })
 

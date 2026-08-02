@@ -12,6 +12,7 @@ import FishGuide from "./components/FishGuide.jsx";
 const EMPTY_FILTERS = {
   q: "",
   county: "",
+  city: "",
   fish: [],
   types: [],
   takeout: false,
@@ -76,8 +77,10 @@ export default function App() {
     const q = filters.q.trim().toLowerCase();
     return venues.filter(
       (v) =>
-          (!q || `${v.venue_name} ${v.city}`.toLowerCase().includes(q)) &&
+          (!q ||
+            `${v.venue_name} ${v.city} ${v.county}`.toLowerCase().includes(q)) &&
         (!filters.county || v.county === filters.county) &&
+        (!filters.city || v.city === filters.city) &&
         (filters.fish.length === 0 || filters.fish.some((f) => v.fish.includes(f))) &&
         (filters.types.length === 0 || filters.types.includes(v.venue_type)) &&
         (!filters.takeout || v.takeout) &&
@@ -216,6 +219,7 @@ export default function App() {
   const hasFilters =
     filters.q.trim() !== "" ||
     filters.county !== "" ||
+    filters.city !== "" ||
     filters.fish.length > 0 ||
     filters.types.length > 0 ||
     filters.takeout ||

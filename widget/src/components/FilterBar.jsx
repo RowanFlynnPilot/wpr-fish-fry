@@ -32,7 +32,22 @@ export default function FilterBar({
     }
   };
   const fishOptions = [...new Set(venues.flatMap((v) => v.fish))].sort();
-  const countyOptions = [...new Set(venues.map((v) => v.county).filter(Boolean))].sort();
+  // County → sorted towns, with venue counts for both. Rebuilt per render
+  // from live data, so a county or town appears the moment it has a fry.
+  const byCounty = new Map();
+  venues.forEach((v) => {
+    if (!v.county) return;
+    const towns = byCounty.get(v.county) ?? new Map();
+    towns.set(v.city, (towns.get(v.city) ?? 0) + 1);
+    byCounty.set(v.county, towns);
+  });
+  const countyOptions = [...byCounty.keys()].sort();
+  const countyCount = (c) =>
+    [...byCounty.get(c).values()].reduce((a, b) => a + b, 0);
+  // Town list narrows to the chosen county; otherwise grouped by county.
+  const townGroups = (
+    filters.county ? [filters.county] : countyOptions
+  ).filter((c) => byCounty.has(c));
   const typeOptions = Object.keys(TYPE_LABELS).filter((t) =>
     venues.some((v) => v.venue_type === t)
   );
@@ -69,17 +84,37 @@ export default function FilterBar({
             aria-label="Filter by county"
             value={filters.county}
             onChange={(e) =>
-              setFilters((f) => ({ ...f, county: e.target.value }))
+              // A new county invalidates any town picked under the old one.
+              setFilters((f) => ({ ...f, county: e.target.value, city: "" }))
             }
           >
             <option value="">All counties</option>
             {countyOptions.map((c) => (
               <option key={c} value={c}>
-                {c} County
+                {c} County ({countyCount(c)})
               </option>
             ))}
           </select>
         )}
+        <select
+          className="ff-county"
+          aria-label="Filter by town"
+          value={filters.city}
+          onChange={(e) =>
+            setFilters((f) => ({ ...f, city: e.target.value }))
+          }
+        >
+          <option value="">All towns</option>
+          {townGroups.map((c) => (
+            <optgroup key={c} label={`${c} County`}>
+              {[...byCounty.get(c).keys()].sort().map((t) => (
+                <option key={t} value={t}>
+                  {t} ({byCounty.get(c).get(t)})
+                </option>
+              ))}
+            </optgroup>
+          ))}
+        </select>
       </div>
 
       <div className="ff-filter-group">
