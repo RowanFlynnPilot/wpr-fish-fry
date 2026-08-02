@@ -92,3 +92,36 @@ Real values found during research are already filled in.
 At ~90–145 venues the single alphabetical list gets unwieldy. Recommend
 adding a **city filter** (chips like the fish filters, generated from the
 data) in the same change that activates a large batch.
+
+## Lincoln County goes in whole (2026-08, Rowan's call)
+
+The tri-county sweep gated `active` on a 45-mile readership radius. Lincoln
+is now exempt from that gate: Merrill and Tomahawk are WPR's own northern
+beat, so distance stopped being the deciding factor there. Clark and Shawano
+still honour the radius, and every held row keeps its `[NN mi from Wausau]`
+prefix so widening further stays a selection job, not a research job.
+
+That took Lincoln from 16 rows to **21 of its 23**. Five cleared on a
+follow-up pass that chased exactly what the sweep left blank:
+
+| venue | what was missing | what the follow-up found |
+|---|---|---|
+| Shorthorns Bar & Grill | hours | Fri 9AM-11PM, and **walleye** — a real species, not the cod default |
+| WT Silverado | hours | Fri 11AM-2AM, **perch and walleye** |
+| Bottoms Up Bar & Grill | hours | Fri 11AM-11PM |
+| Club X to C | hours | Fri 3PM-10PM dining room, off the venue's own site |
+| Pine Ridge Restaurant | hours | Fri 5AM-10PM — full restaurant day, *not* the fry window; flagged in its editor_note |
+
+Two stay `active=FALSE`, both because the fry itself is unconfirmed rather
+than because of distance: **Bill's Bar** (Merrill) and **My Place at River's
+Edge** (Tomahawk, kitchen hours known, fry not attested). One call each
+settles them.
+
+Also fixed in passing: **Winding Trail**'s website in the sweep
+(`windingtrailgrillbar.com`) does not resolve — the live site is
+`windingtrailbar.com`, which also yielded its sides (rye bread, coleslaw).
+
+Northwoods menus are overwhelmingly **photographs of paper**, so species
+often can't be read off the web at all. Rows carrying the `cod` placeholder
+now say so in editor_note (`FISH SPECIES UNVERIFIED - defaulted to cod`)
+rather than letting a guess read as sourced fact.
