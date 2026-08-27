@@ -137,10 +137,30 @@ export default function MapView({ venues, focus, userLoc, miles, onShowDetails }
       markersRef.current[v.venue_name] = marker;
     });
 
+    // Center on where the fish fries actually are: trim each axis to its
+    // 5th–95th percentile so a lone far-out venue can't shrink the Wausau
+    // mass to a corner dot. Trimmed venues stay one pan away (and inside
+    // any real cluster of them, >5% of points, which survives the trim).
+    // Small filtered sets show everything; the featured venue (paid
+    // placement) and the reader's own pin are always kept in frame.
     const points = venues.map((v) => [v.lat, v.lon]);
-    if (userLoc) points.push([userLoc.lat, userLoc.lon]);
     if (points.length > 0) {
-      mapRef.current.fitBounds(L.latLngBounds(points), {
+      let bounds;
+      if (points.length < 20) {
+        bounds = L.latLngBounds(points);
+      } else {
+        const at = (sorted, p) => sorted[Math.round((sorted.length - 1) * p)];
+        const lats = points.map((p) => p[0]).sort((a, b) => a - b);
+        const lons = points.map((p) => p[1]).sort((a, b) => a - b);
+        bounds = L.latLngBounds(
+          [at(lats, 0.05), at(lons, 0.05)],
+          [at(lats, 0.95), at(lons, 0.95)]
+        );
+      }
+      const featured = venues.find((v) => v.featured_this_week);
+      if (featured) bounds.extend([featured.lat, featured.lon]);
+      if (userLoc) bounds.extend([userLoc.lat, userLoc.lon]);
+      mapRef.current.fitBounds(bounds, {
         padding: [30, 30],
         maxZoom: 13,
       });
