@@ -161,6 +161,17 @@ swap in a higher-res original if the newsroom supplies one).
 The widget posts `{ type: "wpr-fish-fry:height", height }` to its parent on
 resize; the WordPress snippet in README.md sizes the iframe from it. Don't
 rename the message type without updating the embed on the WordPress side.
+The site's security layer rejects `<script>` in article bodies, so the
+listener installs once site-wide (README Part 1), not per article.
+
+`embed.html` is the second Vite entry: the **compact embed** (`<App
+compact />`) for fixed-height iframes with no parent script — map and
+filters pinned, list scrolling in `.ff-scroll`, height messages suppressed.
+`embed-compact-test.html` is its script-free fake-article harness.
+
+Map tiles are keyless OSM standard, desaturated toward the palette in CSS
+(`.leaflet-tile-pane` filter) — CARTO key-gated its basemaps (2026-08,
+"API KEY REQUIRED" watermarks) and must not be reintroduced without a key.
 
 ## Principles
 

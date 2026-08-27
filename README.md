@@ -50,6 +50,26 @@ listener takes over on first paint. The widget reports its height with
 `postMessage`, so the frame resizes itself and never shows an inner
 scrollbar.
 
+### No-setup alternative: the compact embed
+
+When Part 1 isn't an option, `embed.html` is a layout **designed for a
+fixed frame** — map and filters stay pinned, the venue list scrolls in its
+own panel, and an "Open the full guide" link escapes to the standalone
+page. One Custom HTML block, no script anywhere, saves first try:
+
+```html
+<iframe
+  src="https://rowanflynnpilot.github.io/wpr-fish-fry/embed.html"
+  style="width: 100%; border: 0;"
+  height="1100"
+  title="Friday Fish Fry Finder"
+  loading="lazy"
+></iframe>
+```
+
+Demo harness: [embed-compact-test.html](https://rowanflynnpilot.github.io/wpr-fish-fry/embed-compact-test.html)
+fakes an article around it, script-free, the way WordPress will see it.
+
 To see the contract working before touching WordPress, open
 [the embed test page](https://rowanflynnpilot.github.io/wpr-fish-fry/embed-test.html)
 — it wraps the widget in a fake article using this exact snippet.

@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Compact embed test — fake WordPress article</title>
+    <style>
+      body {
+        font-family: Georgia, serif;
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 24px 16px;
+        line-height: 1.7;
+        color: #222;
+      }
+      h1 { font-family: "Arial Black", sans-serif; }
+      .note { background: #ffec9e; padding: 8px 12px; font-size: 14px; }
+    </style>
+  </head>
+  <body>
+    <h1>Where to find a fish fry this Friday</h1>
+    <p class="note">
+      Fake article around the COMPACT embed: one fixed-height iframe, no
+      script anywhere on this page — exactly what survives the WordPress
+      security filter. The list must scroll inside its own panel; this page
+      must never grow an inner scrollbar-on-scrollbar fight over the map.
+    </p>
+    <p>
+      Some article lead-in text so the widget sits mid-article the way it
+      will on wausaupilotandreview.com. Lorem perch dolor sit walleye,
+      consectetur haddock elit.
+    </p>
+
+    <iframe
+      src="./embed.html"
+      style="width: 100%; border: 0;"
+      height="1100"
+      title="Friday Fish Fry Finder"
+      loading="lazy"
+    ></iframe>
+
+    <p>
+      And article text continuing after the embed, to prove the fixed frame
+      hands scrolling back to the page cleanly at both edges.
+    </p>
+  </body>
+</html>

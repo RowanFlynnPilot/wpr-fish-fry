@@ -34,7 +34,10 @@ function milesBetween(a, b) {
   return 2 * R * Math.asin(Math.sqrt(h));
 }
 
-export default function App() {
+// compact: the fixed-height embed (embed.html). The frame never grows, so
+// the venue list scrolls in its own panel, chrome slims down, and the
+// height postMessage stays quiet — there is no listener to talk to.
+export default function App({ compact = false }) {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [filters, setFilters] = useState(EMPTY_FILTERS);
@@ -59,7 +62,7 @@ export default function App() {
   // Embedded in a WordPress iframe: report our height so the parent page can
   // size the frame and the widget never scrolls-within-a-scroll.
   useEffect(() => {
-    if (window.parent === window) return;
+    if (compact || window.parent === window) return;
     const post = () =>
       window.parent.postMessage(
         { type: "wpr-fish-fry:height", height: document.documentElement.scrollHeight },
@@ -69,7 +72,7 @@ export default function App() {
     observer.observe(document.documentElement);
     post();
     return () => observer.disconnect();
-  }, []);
+  }, [compact]);
 
   const venues = data ? data.venues : [];
 
@@ -165,10 +168,12 @@ export default function App() {
   }, []);
 
   // Guide → listings loop: filter to one species and jump to the results.
+  // In compact the count line is pinned above the scroll panel — no jump.
   const findFish = useCallback((fish) => {
     setFilters((f) => ({ ...f, fish: [fish] }));
-    document.querySelector(".ff-count")?.scrollIntoView({ block: "start" });
-  }, []);
+    if (!compact)
+      document.querySelector(".ff-count")?.scrollIntoView({ block: "start" });
+  }, [compact]);
 
   const onMarkerClick = useCallback(
     (name) => focusVenue(name, "map"),
@@ -178,9 +183,11 @@ export default function App() {
     (name) => {
       focusVenue(name, "list");
       // The reader is deep in the list — bring the map back to them.
-      document.querySelector(".ff-map")?.scrollIntoView({ block: "start" });
+      // (Compact keeps the map pinned in view; nothing to scroll.)
+      if (!compact)
+        document.querySelector(".ff-map")?.scrollIntoView({ block: "start" });
     },
-    [focusVenue]
+    [focusVenue, compact]
   );
 
   useEffect(() => {
@@ -227,9 +234,11 @@ export default function App() {
   const clearFilters = () => setFilters(EMPTY_FILTERS);
   const loading = !data && !error;
 
+  const appClass = `ff-app ${compact ? "ff-app--compact" : ""}`;
+
   if (error) {
     return (
-      <div className="ff-app">
+      <div className={appClass}>
         <div className="ff-error">
           <p>
             The fish fry data didn&rsquo;t load ({error}). If it keeps
@@ -244,7 +253,7 @@ export default function App() {
   }
 
   return (
-    <div className="ff-app">
+    <div className={appClass}>
       <header className="ff-header">
         <img
           className="ff-badge"
@@ -254,10 +263,12 @@ export default function App() {
           height="72"
         />
         <h1>Friday Fish Fry Finder</h1>
-        <p className="ff-tagline">
-          Every fish fry in Marathon County and its neighbors — the prices, the
-          perch, the potato pancakes.
-        </p>
+        {!compact && (
+          <p className="ff-tagline">
+            Every fish fry in Marathon County and its neighbors — the prices,
+            the perch, the potato pancakes.
+          </p>
+        )}
       </header>
 
       <FilterBar
@@ -305,6 +316,7 @@ export default function App() {
         </p>
       )}
 
+      <div className={compact ? "ff-scroll" : undefined}>
       {featured && (
         <FeaturedCard
           venue={featured}
@@ -352,6 +364,17 @@ export default function App() {
       <FishGuide venues={venues} onFindFish={findFish} />
 
       <footer className="ff-footer">
+        {compact && (
+          <p className="ff-fullguide">
+            <a
+              href="https://rowanflynnpilot.github.io/wpr-fish-fry/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Open the full guide ↗
+            </a>
+          </p>
+        )}
         <div className="ff-footer-brand">
           <img
             src={`${import.meta.env.BASE_URL}brand/wpr-typewriter-192.png`}
@@ -400,6 +423,7 @@ export default function App() {
           to add photos, your menu, and the weekly featured slot.
         </p>
       </footer>
+      </div>
     </div>
   );
 }

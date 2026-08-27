@@ -44,15 +44,14 @@ export default function MapView({ venues, focus, userLoc, miles, onShowDetails }
     const map = L.map(containerRef.current, {
       scrollWheelZoom: false, // embedded iframe: don't hijack article scroll
     }).setView(WAUSAU, 10);
-    // Muted CARTO cartography so the newspaper palette does the talking.
-    L.tileLayer(
-      "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
-      {
-        attribution:
-          '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-        maxZoom: 19,
-      }
-    ).addTo(map);
+    // OSM standard tiles, keyless. CARTO key-gated their basemaps
+    // (2026-08, tiles watermarked "API KEY REQUIRED"); the newspaper look
+    // is recovered with a desaturating filter on the tile pane in CSS.
+    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      attribution:
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      maxZoom: 19,
+    }).addTo(map);
 
     const cluster = L.markerClusterGroup({
       maxClusterRadius: 42,

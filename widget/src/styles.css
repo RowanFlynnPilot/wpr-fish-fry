@@ -950,3 +950,104 @@ body {
     font-size: 12px;
   }
 }
+
+/* ---------- compact embed (embed.html) ----------
+   Lives inside a FIXED-height iframe with no parent script: the app fills
+   the frame exactly, map and filters stay pinned, and everything from the
+   featured card down scrolls inside .ff-scroll. */
+
+html.ff-embed,
+html.ff-embed body,
+html.ff-embed #root {
+  height: 100%;
+}
+
+.ff-app--compact {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 10px 14px 12px;
+}
+
+.ff-app--compact .ff-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+}
+
+.ff-app--compact .ff-badge {
+  width: 34px;
+  height: 34px;
+  margin-bottom: 0;
+}
+
+.ff-app--compact .ff-header h1 {
+  font-size: clamp(20px, 4vw, 26px);
+  margin: 0;
+}
+
+.ff-app--compact .ff-filters {
+  padding: 8px 10px;
+  margin-bottom: 8px;
+  gap: 6px;
+}
+
+.ff-app--compact .ff-map {
+  height: 280px;
+  flex: none;
+}
+
+.ff-app--compact .ff-maplegend {
+  margin: 4px 0;
+  font-size: 11px;
+}
+
+.ff-app--compact .ff-count {
+  margin: 6px 0;
+}
+
+.ff-app--compact .ff-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  border-top: 1px solid var(--line);
+  padding-top: 10px;
+  /* keep the scrollbar clear of card borders */
+  padding-right: 6px;
+  margin-right: -6px;
+}
+
+/* The map never scrolls away in compact, so no way back is needed. */
+.ff-app--compact .ff-backtomap {
+  display: none;
+}
+
+.ff-app--compact .ff-footer {
+  margin-top: 14px;
+}
+
+.ff-fullguide {
+  font-family: var(--display);
+  font-size: 14px;
+  margin: 0 0 10px;
+}
+
+.ff-fullguide a {
+  color: var(--teal-dark, var(--teal));
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+}
+
+.ff-fullguide a:hover {
+  color: var(--ink);
+}
+
+/* OSM standard tiles pulled toward the black-on-white newspaper palette —
+   the keyless replacement for CARTO light (key-gated 2026-08). */
+.ff-map .leaflet-tile-pane {
+  filter: grayscale(0.55) saturate(0.75) brightness(1.02);
+}
