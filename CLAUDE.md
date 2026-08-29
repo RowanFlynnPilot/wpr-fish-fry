@@ -139,8 +139,9 @@ cd widget; npm run build
   exceptions, and they apply to everyone equally.
 - The featured slot is pinned above the list, ignores filters (it's paid
   placement), and is excluded from the list so it never renders twice. On the
-  map, the featured venue's marker gets a black ring — no logo on the map
-  (editorial decision, 2026-07).
+  map, the featured venue gets a larger ink-black teardrop — the paid tier
+  as visible cartography, but still no logo on the map (editorial decision,
+  2026-07).
 - "Sponsor" tag wording in `App.jsx`/`VenueCard.jsx` is placeholder pending
   Shereen's disclosure language.
 - `FishGuide.jsx` holds the editorial "Know Your Fry" guide, keyed to the
@@ -169,9 +170,16 @@ compact />`) for fixed-height iframes with no parent script — map and
 filters pinned, list scrolling in `.ff-scroll`, height messages suppressed.
 `embed-compact-test.html` is its script-free fake-article harness.
 
-Map tiles are keyless OSM standard, desaturated toward the palette in CSS
-(`.leaflet-tile-pane` filter) — CARTO key-gated its basemaps (2026-08,
-"API KEY REQUIRED" watermarks) and must not be reintroduced without a key.
+The map is **MapLibre GL + OpenFreeMap vector tiles** (keyless, free for
+commercial use) with a hand-written style in the WPR palette — the Travel
+Portland treatment, shared with the On Tap tool: cream land, sage woods,
+teal water, gold highways, dashed county lines, place labels only. Venue
+pins are teardrops tinted by venue type with the type glyph inside;
+overlapping pins collapse into numbered clusters that split on click;
+`cooperativeGestures` handles the Ctrl+scroll-to-zoom overlay. History:
+raster CARTO key-gated its basemaps (2026-08, "API KEY REQUIRED"
+watermarks), plain OSM raster was the stopgap, MapLibre replaced both —
+never reintroduce a key-gated tile source.
 
 ## Principles
 

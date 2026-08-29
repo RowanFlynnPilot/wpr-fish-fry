@@ -1,6 +1,5 @@
 import { useEffect, useRef } from "react";
-import L from "leaflet";
-import "leaflet.markercluster";
+import * as maplibregl from "maplibre-gl";
 import { directionsUrl, formatHours, priceRange } from "./VenueCard.jsx";
 import { TYPE_LABELS } from "./FilterBar.jsx";
 
@@ -12,13 +11,73 @@ const TYPE_GLYPH = {
   vfw_legion: "🎖️",
 };
 
-const WAUSAU = [44.9591, -89.6301];
+const WAUSAU = [-89.6301, 44.9591]; // MapLibre speaks [lng, lat]
 
 const REDUCED_MOTION = window.matchMedia(
   "(prefers-reduced-motion: reduce)"
 ).matches;
 
 const properCase = (s) => s[0].toUpperCase() + s.slice(1);
+
+// Hand-styled OpenFreeMap vector basemap in the WPR palette — the Travel
+// Portland treatment, shared with the On Tap tool: cream land, sage woods,
+// teal water, gold highways, dashed county lines, and only place labels.
+// Keyless and free for commercial use; nothing to expire.
+const MAP_STYLE = {
+  version: 8,
+  glyphs: "https://tiles.openfreemap.org/fonts/{fontstack}/{range}.pbf",
+  sources: {
+    omt: {
+      type: "vector",
+      url: "https://tiles.openfreemap.org/planet",
+      attribution:
+        '<a href="https://openfreemap.org">OpenFreeMap</a> © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    },
+  },
+  layers: [
+    { id: "bg", type: "background", paint: { "background-color": "#F1EADA" } },
+    { id: "wood", type: "fill", source: "omt", "source-layer": "landcover",
+      filter: ["in", ["get", "class"], ["literal", ["wood", "forest"]]],
+      paint: { "fill-color": "#D3DEC1", "fill-opacity": 0.8 } },
+    { id: "grass", type: "fill", source: "omt", "source-layer": "landcover",
+      filter: ["in", ["get", "class"], ["literal", ["grass", "farmland", "meadow", "wetland"]]],
+      paint: { "fill-color": "#E3E7CD", "fill-opacity": 0.6 } },
+    { id: "park", type: "fill", source: "omt", "source-layer": "park",
+      paint: { "fill-color": "#CCDBB8", "fill-opacity": 0.7 } },
+    { id: "residential", type: "fill", source: "omt", "source-layer": "landuse",
+      filter: ["in", ["get", "class"], ["literal", ["residential", "suburb", "neighbourhood"]]],
+      paint: { "fill-color": "#EBE2CE", "fill-opacity": 0.55 } },
+    { id: "water", type: "fill", source: "omt", "source-layer": "water",
+      paint: { "fill-color": "#A5C8C0" } },
+    { id: "waterway", type: "line", source: "omt", "source-layer": "waterway",
+      paint: { "line-color": "#A5C8C0",
+        "line-width": ["interpolate", ["linear"], ["zoom"], 8, 0.6, 13, 2.5] } },
+    { id: "minor-roads", type: "line", source: "omt", "source-layer": "transportation", minzoom: 10,
+      filter: ["in", ["get", "class"], ["literal", ["minor", "service"]]],
+      paint: { "line-color": "#E7DDC4",
+        "line-width": ["interpolate", ["linear"], ["zoom"], 10, 0.5, 15, 3] } },
+    { id: "mid-roads", type: "line", source: "omt", "source-layer": "transportation",
+      filter: ["in", ["get", "class"], ["literal", ["secondary", "tertiary"]]],
+      paint: { "line-color": "#EBD9A6",
+        "line-width": ["interpolate", ["linear"], ["zoom"], 8, 0.7, 14, 4] } },
+    { id: "main-roads", type: "line", source: "omt", "source-layer": "transportation",
+      filter: ["in", ["get", "class"], ["literal", ["motorway", "trunk", "primary"]]],
+      paint: { "line-color": "#E5B963",
+        "line-width": ["interpolate", ["linear"], ["zoom"], 7, 1.1, 14, 5.5] } },
+    { id: "boundary", type: "line", source: "omt", "source-layer": "boundary",
+      filter: ["all", ["<=", ["get", "admin_level"], 6], ["!=", ["get", "maritime"], 1]],
+      paint: { "line-color": "#C8BEA6", "line-width": 1, "line-dasharray": [3, 2] } },
+    { id: "city-labels", type: "symbol", source: "omt", "source-layer": "place",
+      filter: ["in", ["get", "class"], ["literal", ["city", "town"]]],
+      layout: { "text-field": ["get", "name"], "text-font": ["Noto Sans Regular"],
+        "text-size": ["match", ["get", "class"], "city", 14, 12.5] },
+      paint: { "text-color": "#41493F", "text-halo-color": "#F1EADA", "text-halo-width": 1.3 } },
+    { id: "village-labels", type: "symbol", source: "omt", "source-layer": "place", minzoom: 9.5,
+      filter: ["==", ["get", "class"], "village"],
+      layout: { "text-field": ["get", "name"], "text-font": ["Noto Sans Regular"], "text-size": 10.5 },
+      paint: { "text-color": "#5A6157", "text-halo-color": "#F1EADA", "text-halo-width": 1.2 } },
+  ],
+};
 
 function popupHtml(v, milesAway) {
   const dist =
@@ -36,38 +95,89 @@ function popupHtml(v, milesAway) {
 export default function MapView({ venues, focus, userLoc, miles, onShowDetails }) {
   const containerRef = useRef(null);
   const mapRef = useRef(null);
-  const clusterRef = useRef(null);
-  const markersRef = useRef({});
+  const markersRef = useRef([]); // live maplibregl.Marker objects
+  const byNameRef = useRef({}); // venue_name -> Marker (unclustered only)
+  const venuesRef = useRef(venues);
+  const milesRef = useRef(miles);
   const youRef = useRef(null);
 
-  useEffect(() => {
-    const map = L.map(containerRef.current, {
-      scrollWheelZoom: false, // embedded iframe: don't hijack article scroll
-    }).setView(WAUSAU, 10);
-    // OSM standard tiles, keyless. CARTO key-gated their basemaps
-    // (2026-08, tiles watermarked "API KEY REQUIRED"); the newspaper look
-    // is recovered with a desaturating filter on the tile pane in CSS.
-    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-      attribution:
-        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-      maxZoom: 19,
-    }).addTo(map);
+  // Screen-space clustering, same as the On Tap tool: pins that would
+  // overlap at the current zoom collapse into a numbered circle; clicking
+  // it zooms in until the group splits. Re-run on every zoom change.
+  const renderMarkers = () => {
+    const map = mapRef.current;
+    if (!map) return;
+    markersRef.current.forEach((m) => m.remove());
+    markersRef.current = [];
+    byNameRef.current = {};
 
-    const cluster = L.markerClusterGroup({
-      maxClusterRadius: 42,
-      disableClusteringAtZoom: 13,
-      showCoverageOnHover: false,
-      iconCreateFunction: (c) =>
-        L.divIcon({
-          className: "ff-cluster",
-          html: `<span>${c.getChildCount()}</span>`,
-          iconSize: [38, 38],
-          iconAnchor: [19, 19],
-        }),
+    const clusters = [];
+    for (const v of venuesRef.current) {
+      const p = map.project([v.lon, v.lat]);
+      const hit = clusters.find((c) => Math.hypot(c.x - p.x, c.y - p.y) < 40);
+      if (hit) hit.items.push(v);
+      else clusters.push({ x: p.x, y: p.y, items: [v] });
+    }
+
+    for (const c of clusters) {
+      if (c.items.length === 1) {
+        const v = c.items[0];
+        const el = document.createElement("div");
+        el.className = "ff-pin-wrap";
+        el.innerHTML =
+          `<div class="ff-pin ff-pin--${v.venue_type}` +
+          `${v.featured_this_week ? " ff-pin-featured" : ""}">` +
+          `<span>${TYPE_GLYPH[v.venue_type]}</span></div>` +
+          `<div class="ff-pin-tip"><strong>${v.venue_name}</strong> · ${priceRange(v)}</div>`;
+        const marker = new maplibregl.Marker({ element: el, anchor: "bottom" })
+          .setLngLat([v.lon, v.lat])
+          .setPopup(
+            new maplibregl.Popup({ offset: 34, closeButton: false }).setHTML(
+              popupHtml(v, milesRef.current?.[v.venue_name])
+            )
+          )
+          .addTo(map);
+        byNameRef.current[v.venue_name] = marker;
+        markersRef.current.push(marker);
+      } else {
+        const el = document.createElement("div");
+        el.className = "ff-cluster";
+        el.textContent = c.items.length;
+        const lng = c.items.reduce((s, v) => s + v.lon, 0) / c.items.length;
+        const lat = c.items.reduce((s, v) => s + v.lat, 0) / c.items.length;
+        el.addEventListener("click", () =>
+          map.easeTo({
+            center: [lng, lat],
+            zoom: map.getZoom() + 2.2,
+            duration: REDUCED_MOTION ? 0 : 500,
+          })
+        );
+        markersRef.current.push(
+          new maplibregl.Marker({ element: el })
+            .setLngLat([lng, lat])
+            .addTo(map)
+        );
+      }
+    }
+  };
+
+  useEffect(() => {
+    const map = new maplibregl.Map({
+      container: containerRef.current,
+      style: MAP_STYLE,
+      center: WAUSAU,
+      zoom: 9,
+      // The Travel Portland trick that matters inside a WordPress iframe:
+      // plain scroll keeps scrolling the article; Ctrl/⌘ + scroll zooms,
+      // with MapLibre's own overlay saying so. Pinch-zoom works regardless.
+      cooperativeGestures: true,
+      attributionControl: { compact: true },
     });
-    map.addLayer(cluster);
-    clusterRef.current = cluster;
+    map.addControl(new maplibregl.NavigationControl({ showCompass: false }));
     mapRef.current = map;
+    if (import.meta.env.DEV) window.__ffmap = map;
+
+    map.on("zoomend", renderMarkers);
 
     // One delegated listener covers every popup's "Full listing" link.
     const onPopupClick = (e) => {
@@ -78,128 +188,89 @@ export default function MapView({ venues, focus, userLoc, miles, onShowDetails }
     };
     containerRef.current.addEventListener("click", onPopupClick);
 
-    // Ctrl/⌘ + scroll zooms; plain scroll keeps scrolling the article and
-    // briefly shows a hint. (Pinch-zoom on touch works regardless.)
-    const hint = L.DomUtil.create("div", "ff-zoom-hint", containerRef.current);
-    hint.textContent = /Mac/.test(navigator.userAgent)
-      ? "Use ⌘ + scroll to zoom the map"
-      : "Use Ctrl + scroll to zoom the map";
-    let hintTimer = null;
-    let lastWheelZoom = 0;
-    const onWheel = (e) => {
-      if (e.ctrlKey || e.metaKey) {
-        e.preventDefault();
-        hint.classList.remove("is-visible");
-        const now = performance.now();
-        if (now - lastWheelZoom < 180) return;
-        lastWheelZoom = now;
-        map.setZoomAround(
-          map.mouseEventToLatLng(e),
-          map.getZoom() + (e.deltaY < 0 ? 1 : -1)
-        );
-      } else {
-        hint.classList.add("is-visible");
-        clearTimeout(hintTimer);
-        hintTimer = setTimeout(() => hint.classList.remove("is-visible"), 1100);
-      }
-    };
-    containerRef.current.addEventListener("wheel", onWheel, { passive: false });
+    // The container can be 0×0 at first paint in a lazy-loaded iframe —
+    // give the map its real size once it has one.
+    const ro = new ResizeObserver(() => map.resize());
+    ro.observe(containerRef.current);
 
-    return () => map.remove();
+    return () => {
+      ro.disconnect();
+      map.remove();
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
-    const cluster = clusterRef.current;
-    cluster.clearLayers();
-    markersRef.current = {};
-    venues.forEach((v) => {
-      // The featured (paid) venue gets a black ring, nothing louder.
-      const icon = L.divIcon({
-        className: `ff-marker ff-marker--${v.venue_type} ${v.featured_this_week ? "ff-marker-featured" : ""}`,
-        html: `<span>${TYPE_GLYPH[v.venue_type]}</span>`,
-        iconSize: [34, 34],
-        iconAnchor: [17, 17],
-        popupAnchor: [0, -18],
-      });
-      const marker = L.marker([v.lat, v.lon], { icon })
-        .bindPopup(popupHtml(v, miles?.[v.venue_name]))
-        .bindTooltip(
-          `<strong>${v.venue_name}</strong> · ${priceRange(v)}`,
-          {
-            direction: "top",
-            offset: [0, -20],
-            opacity: 1,
-            className: "ff-tooltip",
-          }
-        );
-      cluster.addLayer(marker);
-      markersRef.current[v.venue_name] = marker;
-    });
+    venuesRef.current = venues;
+    milesRef.current = miles;
+    const map = mapRef.current;
 
     // Center on where the fish fries actually are: trim each axis to its
     // 5th–95th percentile so a lone far-out venue can't shrink the Wausau
-    // mass to a corner dot. Trimmed venues stay one pan away (and inside
-    // any real cluster of them, >5% of points, which survives the trim).
-    // Small filtered sets show everything; the featured venue (paid
-    // placement) and the reader's own pin are always kept in frame.
-    const points = venues.map((v) => [v.lat, v.lon]);
+    // mass to a corner dot. Small filtered sets show everything; the
+    // featured venue (paid placement) and the reader's pin stay in frame.
+    const points = venues.map((v) => [v.lon, v.lat]);
     if (points.length > 0) {
-      let bounds;
+      let sw, ne;
       if (points.length < 20) {
-        bounds = L.latLngBounds(points);
+        const lons = points.map((p) => p[0]);
+        const lats = points.map((p) => p[1]);
+        sw = [Math.min(...lons), Math.min(...lats)];
+        ne = [Math.max(...lons), Math.max(...lats)];
       } else {
         const at = (sorted, p) => sorted[Math.round((sorted.length - 1) * p)];
-        const lats = points.map((p) => p[0]).sort((a, b) => a - b);
-        const lons = points.map((p) => p[1]).sort((a, b) => a - b);
-        bounds = L.latLngBounds(
-          [at(lats, 0.05), at(lons, 0.05)],
-          [at(lats, 0.95), at(lons, 0.95)]
-        );
+        const lons = points.map((p) => p[0]).sort((a, b) => a - b);
+        const lats = points.map((p) => p[1]).sort((a, b) => a - b);
+        sw = [at(lons, 0.05), at(lats, 0.05)];
+        ne = [at(lons, 0.95), at(lats, 0.95)];
       }
+      const bounds = new maplibregl.LngLatBounds(sw, ne);
       const featured = venues.find((v) => v.featured_this_week);
-      if (featured) bounds.extend([featured.lat, featured.lon]);
-      if (userLoc) bounds.extend([userLoc.lat, userLoc.lon]);
-      mapRef.current.fitBounds(bounds, {
-        padding: [30, 30],
-        maxZoom: 13,
-      });
+      if (featured) bounds.extend([featured.lon, featured.lat]);
+      if (userLoc) bounds.extend([userLoc.lon, userLoc.lat]);
+      map.fitBounds(bounds, { padding: 30, maxZoom: 13, duration: 0 });
     }
+    renderMarkers();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [venues, miles, userLoc]);
 
   // "You are here" pin whenever a distance sort gave us a reader location.
   useEffect(() => {
-    const map = mapRef.current;
     if (youRef.current) {
-      map.removeLayer(youRef.current);
+      youRef.current.remove();
       youRef.current = null;
     }
     if (userLoc) {
-      youRef.current = L.circleMarker([userLoc.lat, userLoc.lon], {
-        radius: 8,
-        color: "#ffffff",
-        weight: 2,
-        fillColor: "#3a867c",
-        fillOpacity: 1,
-      })
-        .bindPopup("You are here")
-        .addTo(map);
+      const el = document.createElement("div");
+      el.className = "ff-you";
+      youRef.current = new maplibregl.Marker({ element: el })
+        .setLngLat([userLoc.lon, userLoc.lat])
+        .setPopup(new maplibregl.Popup({ offset: 12 }).setText("You are here"))
+        .addTo(mapRef.current);
     }
   }, [userLoc]);
 
   useEffect(() => {
     if (!focus || focus.source !== "list") return;
-    const marker = markersRef.current[focus.name];
-    if (!marker) return;
     const map = mapRef.current;
-    const zoom = Math.max(map.getZoom(), 13);
-    if (REDUCED_MOTION) {
-      map.setView(marker.getLatLng(), zoom);
-    } else {
-      map.flyTo(marker.getLatLng(), zoom);
-    }
-    // Clustered markers need their cluster expanded before the popup opens.
-    clusterRef.current.zoomToShowLayer(marker, () => marker.openPopup());
+    const v = venuesRef.current.find((x) => x.venue_name === focus.name);
+    if (!v) return;
+    // Zoom 14 splits even the ~400m-spread rural pin groups, so the venue
+    // is guaranteed its own pin — then open its popup once markers settle.
+    const open = () => {
+      const marker = byNameRef.current[focus.name];
+      if (marker && !marker.getPopup().isOpen()) marker.togglePopup();
+    };
+    map.once("moveend", () => {
+      renderMarkers();
+      open();
+    });
+    map.flyTo({
+      center: [v.lon, v.lat],
+      zoom: Math.max(map.getZoom(), 14),
+      duration: REDUCED_MOTION ? 0 : 1200,
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [focus]);
 
   return <div className="ff-map" ref={containerRef} />;

@@ -246,99 +246,54 @@ body {
   border-color: var(--ink);
 }
 
-.ff-cluster {
+/* Teardrop pins + clusters (MapLibre markers), Portland-style: solid
+   drops tinted by venue type — the same wayfinding colors the legend
+   mirrors — with the type glyph inside. The featured (paid) venue gets a
+   bigger ink-black drop: the tier is visible cartography. */
+.ff-pin-wrap {
+  cursor: pointer;
+  position: relative;
+}
+
+.ff-pin {
+  width: 30px;
+  height: 30px;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  background: var(--teal);
+  border: 2px solid #ffffff;
+  box-shadow: 0 2px 6px rgba(17, 17, 17, 0.35);
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--paper);
-  border: 2px solid var(--teal);
-  border-radius: 50%;
-  box-shadow: 0 1px 4px rgba(17, 17, 17, 0.3);
-  font-family: var(--display);
-  font-weight: 700;
+}
+
+.ff-pin span {
+  transform: rotate(45deg);
   font-size: 14px;
-  color: var(--teal-dark);
+  line-height: 1;
 }
 
-.ff-marker {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 34px;
-  height: 34px;
-  background: var(--paper);
-  border: 2px solid var(--teal);
-  border-radius: 50%;
-  font-size: 16px;
-  box-shadow: 0 1px 4px rgba(17, 17, 17, 0.3);
+.ff-pin--supper_club { background: #7a3540; }
+.ff-pin--bar { background: #a06a1f; }
+.ff-pin--vfw_legion { background: #55622e; }
+
+.ff-pin-featured {
+  width: 40px;
+  height: 40px;
+  background: var(--ink);
 }
 
-/* Wayfinding colors per venue type — muted so the newspaper palette still
-   leads. The legend under the map mirrors them. */
-.ff-marker--restaurant {
-  border-color: var(--teal);
-}
+.ff-pin-featured span { font-size: 19px; }
 
-.ff-marker--supper_club {
-  border-color: #7a3540;
-}
-
-.ff-marker--bar {
-  border-color: #a06a1f;
-}
-
-.ff-marker--vfw_legion {
-  border-color: #55622e;
-}
-
-.ff-marker-featured {
-  border-color: var(--ink);
-}
-
-.ff-zoom-hint {
+/* Pure-CSS hover tooltip above the pin. */
+.ff-pin-tip {
+  display: none;
   position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1200;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 200ms ease;
-  font-family: var(--display);
-  font-size: 15px;
-  color: #fff;
-  background: rgba(17, 17, 17, 0.45);
-}
-
-.ff-zoom-hint.is-visible {
-  opacity: 1;
-}
-
-.leaflet-popup-content strong {
-  font-family: var(--display);
-  font-weight: 500;
-  font-size: 14px;
-}
-
-.leaflet-popup-content a {
-  color: var(--teal-dark);
-}
-
-.leaflet-popup-content {
-  font-family: var(--body);
-  font-size: 13px;
-}
-
-.ff-popup-type {
-  font-family: var(--display);
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--ink-soft);
-}
-
-.ff-tooltip {
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
   font-family: var(--display);
   font-weight: 400;
   font-size: 12px;
@@ -348,14 +303,64 @@ body {
   border-radius: 4px;
   box-shadow: 0 1px 4px rgba(17, 17, 17, 0.18);
   padding: 3px 9px;
+  pointer-events: none;
+  z-index: 5;
 }
 
-.ff-tooltip strong {
+.ff-pin-tip strong { font-weight: 500; }
+
+.ff-pin-wrap:hover .ff-pin-tip { display: block; }
+
+.ff-cluster {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: var(--teal-dark);
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(17, 17, 17, 0.35);
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.ff-you {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--teal);
+  border: 2px solid #ffffff;
+  box-shadow: 0 1px 4px rgba(17, 17, 17, 0.35);
+}
+
+.maplibregl-popup-content strong {
+  font-family: var(--display);
   font-weight: 500;
+  font-size: 14px;
 }
 
-.ff-tooltip::before {
-  border-top-color: var(--line);
+.maplibregl-popup-content a {
+  color: var(--teal-dark);
+}
+
+.maplibregl-popup-content {
+  font-family: var(--body);
+  font-size: 13px;
+  border-radius: 4px;
+  box-shadow: 0 4px 14px rgba(17, 17, 17, 0.18);
+  padding: 10px 14px;
+}
+
+.ff-popup-type {
+  font-family: var(--display);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-soft);
 }
 
 /* ---------- result count ---------- */
@@ -1046,8 +1051,4 @@ html.ff-embed #root {
   color: var(--ink);
 }
 
-/* OSM standard tiles pulled toward the black-on-white newspaper palette —
-   the keyless replacement for CARTO light (key-gated 2026-08). */
-.ff-map .leaflet-tile-pane {
-  filter: grayscale(0.55) saturate(0.75) brightness(1.02);
-}
+
