@@ -219,40 +219,55 @@ body {
   text-align: center;
 }
 
+/* Legend swatches mirror the solid teardrop pins exactly. */
 .ff-dot {
   display: inline-block;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: var(--paper);
-  border: 2px solid var(--teal);
+  width: 11px;
+  height: 11px;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  background: var(--teal);
+  border: 1.5px solid #ffffff;
+  box-shadow: 0 0 0 1px var(--line);
   vertical-align: -1px;
-  margin-right: 3px;
+  margin-right: 5px;
 }
 
 .ff-dot--supper_club {
-  border-color: #7a3540;
+  background: #7a3540;
 }
 
 .ff-dot--bar {
-  border-color: #a06a1f;
+  background: #a06a1f;
 }
 
 .ff-dot--vfw_legion {
-  border-color: #55622e;
+  background: #55622e;
 }
 
 .ff-dot--featured {
-  border-color: var(--ink);
+  background: var(--ink);
+  width: 13px;
+  height: 13px;
 }
 
 /* Teardrop pins + clusters (MapLibre markers), Portland-style: solid
    drops tinted by venue type — the same wayfinding colors the legend
    mirrors — with the type glyph inside. The featured (paid) venue gets a
    bigger ink-black drop: the tier is visible cartography. */
+/* No `position` here: MapLibre positions the marker element itself
+   (absolute + translate(-50%)), and overriding it stretches the wrapper to
+   the map's width and shifts every pin half a map to the left. */
 .ff-pin-wrap {
   cursor: pointer;
-  position: relative;
+}
+
+.ff-pin-wrap:focus-visible {
+  outline: none;
+}
+
+.ff-pin-wrap:focus-visible .ff-pin {
+  box-shadow: 0 0 0 3px var(--paper), 0 0 0 5px var(--teal-dark);
 }
 
 .ff-pin {
@@ -550,9 +565,16 @@ body {
   outline-offset: -2px;
 }
 
+/* Expanded = the whole photo, uncropped — but capped so a tall phone shot
+   doesn't push the venue's own name two screens down the page. The image
+   scales to fit and centers within the card. */
 .ff-card .ff-photo-btn.is-expanded .ff-card-photo {
   height: auto;
-  max-height: none;
+  width: auto;
+  max-width: 100%;
+  max-height: 560px;
+  margin: 0 auto;
+  display: block;
   object-fit: contain;
 }
 

@@ -18,7 +18,7 @@ widget/public/data/fish_fry.json     ← static JSON, the only data artifact
 widget/public/photos/                ← cached sponsor photos (committed)
         │
         ▼
-widget/ (Vite + React 18 + Leaflet)  ← npm run build
+widget/ (Vite + React 18 + MapLibre GL)  ← npm run build
         │
         ▼
 GitHub Pages (/wpr-fish-fry/)        ← WordPress iframe embed (snippet in README.md)

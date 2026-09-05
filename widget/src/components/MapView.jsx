@@ -124,12 +124,31 @@ export default function MapView({ venues, focus, userLoc, miles, onShowDetails }
         const v = c.items[0];
         const el = document.createElement("div");
         el.className = "ff-pin-wrap";
+        // Keyboard readers reach pins too: Tab to a pin, Enter opens it.
+        el.setAttribute("role", "button");
+        el.setAttribute("tabindex", "0");
+        el.setAttribute(
+          "aria-label",
+          `${v.venue_name}, ${TYPE_LABELS[v.venue_type]}, ${priceRange(v)}`
+        );
+        el.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            marker.togglePopup();
+          }
+        });
         el.innerHTML =
           `<div class="ff-pin ff-pin--${v.venue_type}` +
           `${v.featured_this_week ? " ff-pin-featured" : ""}">` +
           `<span>${TYPE_GLYPH[v.venue_type]}</span></div>` +
           `<div class="ff-pin-tip"><strong>${v.venue_name}</strong> · ${priceRange(v)}</div>`;
-        const marker = new maplibregl.Marker({ element: el, anchor: "bottom" })
+        // The drop is a rotated square, so its tip sits ~6px below the
+        // unrotated box; lift the anchor so the tip touches the venue.
+        const marker = new maplibregl.Marker({
+          element: el,
+          anchor: "bottom",
+          offset: [0, -6],
+        })
           .setLngLat([v.lon, v.lat])
           .setPopup(
             new maplibregl.Popup({ offset: 34, closeButton: false }).setHTML(
