@@ -27,6 +27,42 @@ body {
   line-height: 1.6;
 }
 
+/* ---------- browser surfaces ----------
+   The parts we didn't draw still carry the design. Readers copy addresses
+   and phone numbers out of this widget constantly, so selection, the caret,
+   the scrollbar and underlines get the WPR palette instead of the browser's
+   default blue. */
+
+::selection {
+  background: rgba(58, 134, 124, 0.24);
+  color: var(--ink);
+}
+
+html {
+  scrollbar-color: var(--teal) rgba(58, 134, 124, 0.1);
+}
+
+input,
+select,
+textarea {
+  caret-color: var(--teal-dark);
+}
+
+/* Underlines clear the descenders of Merriweather's serifs. */
+a {
+  text-underline-offset: 0.18em;
+  text-decoration-thickness: 1px;
+}
+
+/* Prices, hours and distances are data: fix the digit width so a column of
+   them lines up down the list instead of shimmering by a pixel per row. */
+.ff-fact,
+.ff-count,
+.ff-dist,
+.maplibregl-popup-content {
+  font-variant-numeric: tabular-nums;
+}
+
 .ff-app {
   max-width: 760px;
   margin: 0 auto;
@@ -56,6 +92,7 @@ body {
   margin: 0 0 6px;
   color: var(--ink);
   letter-spacing: 0.01em;
+  text-wrap: balance;
 }
 
 .ff-tagline {
@@ -396,7 +433,7 @@ body {
 .ff-clear {
   font-family: var(--display);
   font-size: 12px;
-  padding: 0;
+  padding: 4px 0;
   border: none;
   border-bottom: 1px solid rgba(58, 134, 124, 0.4);
   background: none;
@@ -418,8 +455,27 @@ body {
 
 /* ---------- featured slot ---------- */
 
+/* The one authored moment in the widget: the featured slot is the paid
+   placement and the page's lead image, so its photo releases a slight crop
+   on arrival. Exponential ease-out, once.
+
+   Deliberately transform-only, with no fill mode. Content that must be seen
+   is never animated from opacity 0 — an animation whose clock never advances
+   (offscreen throttling, a paused compositor, a stalled iframe) would leave
+   the sponsor's card invisible. Here the worst case is a photo sitting 3%
+   large inside a clipping card, which no reader can detect. */
 .ff-featured {
   margin-bottom: 16px;
+}
+
+.ff-featured .ff-card-photo {
+  animation: ff-settle 900ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes ff-settle {
+  from {
+    transform: scale(1.03);
+  }
 }
 
 .ff-featured-badge {
@@ -631,12 +687,15 @@ body {
   height: 40px;
 }
 
+/* Venue names run long here ("Z's Fork Horners Restaurant, Bar & Grill"),
+   so balance the wrap rather than leaving one orphaned word. */
 .ff-card-name {
   font-family: var(--display);
   font-weight: 500;
   font-size: 21px;
   line-height: 1.15;
   margin: 0;
+  text-wrap: balance;
 }
 
 .ff-card-place {
@@ -656,9 +715,13 @@ body {
   font-size: 13px;
 }
 
+/* Reserving the price column keeps every card's hours starting at the same
+   x, so the eye runs straight down the list instead of tracking a ragged
+   edge set by whichever venue has a $9.50 in it. */
 .ff-price {
   font-weight: 500;
   color: var(--teal-dark);
+  min-width: 5.5rem;
 }
 
 .ff-hours {
@@ -720,6 +783,13 @@ body {
   font-family: var(--display);
   font-weight: 400;
   font-size: 13px;
+}
+
+/* 24px minimum target on every pointer, not just phones (WCAG 2.2 AA).
+   The padding doubles as underline offset, clearing the descenders. */
+.ff-links a,
+.ff-maplink {
+  padding: 3px 0;
 }
 
 .ff-links a {
@@ -812,6 +882,12 @@ body {
   padding: 10px 4px;
   cursor: pointer;
   list-style-position: inside;
+}
+
+/* The disclosure triangle is a browser default that belongs to no design
+   system — put it in the accent so it reads as ours. */
+.ff-guide-entry summary::marker {
+  color: var(--teal);
 }
 
 .ff-guide-entry summary:hover {
@@ -947,7 +1023,8 @@ body {
   }
 
   .ff-card.is-selected,
-  .ff-skeleton {
+  .ff-skeleton,
+  .ff-featured .ff-card-photo {
     animation: none;
   }
 }
