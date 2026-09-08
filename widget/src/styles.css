@@ -1125,19 +1125,6 @@ a {
   color: var(--teal-dark);
 }
 
-/* A "call ahead, the data may be stale" warning is worthless in a footer
-   24,000px below the fold. It now runs directly above the map, set as a
-   newspaper standing notice: hairline rules, no alarm color. */
-.ff-stale {
-  margin: 0 0 12px;
-  padding: 7px 2px;
-  border-top: 1px solid var(--ink);
-  border-bottom: 1px solid var(--ink);
-  font-style: italic;
-  font-size: 12px;
-  color: var(--ink);
-  text-align: center;
-}
 
 .ff-advertise {
   margin: 8px 0 0;

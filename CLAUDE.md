@@ -100,9 +100,12 @@ the filename it wanted.
   featured slot for the coming Friday.
 - `build/tests/` pins the sheet-contract validation rules; CI runs them
   before every data build.
-- The widget shows a "call ahead" stale-data notice when `generated_at` is
-  older than 26 hours — the reader-facing symptom of a silently broken
-  pipeline.
+- **No reader-facing staleness warning** (removed 2026-09, Rowan's call).
+  A venue's Friday hours don't change week to week, so an old build does not
+  make a listing wrong, and "call ahead before you drive" only taught readers
+  to distrust the guide. The footer's quiet `Last built <date>` is the honest
+  version and stays. A broken pipeline surfaces to the newsroom through the
+  red Actions run, not to readers through an alarm.
 - `widget/public/embed-test.html` fakes a WordPress article around the
   widget to demo the iframe auto-height contract end to end.
 

@@ -221,12 +221,6 @@ export default function App({ compact = false }) {
     if (el) el.scrollIntoView({ block: "center" });
   }, [focus]);
 
-  // Hourly builds mean fresh data; if the pipeline breaks silently, tell
-  // readers instead of letting them trust week-old hours.
-  const staleHours = data
-    ? (Date.now() - new Date(data.generated_at).getTime()) / 3.6e6
-    : 0;
-
   // The featured slot is paid placement: pinned above the list, unaffected by
   // filters, and excluded from the list so it never renders twice.
   const featured = venues.find((v) => v.featured_this_week);
@@ -390,18 +384,6 @@ export default function App({ compact = false }) {
           </p>
         )}
       </div>
-
-      {data && staleHours > 26 && (
-        <p className="ff-stale">
-          Heads up: these listings haven&rsquo;t refreshed since{" "}
-          {new Date(data.generated_at).toLocaleDateString("en-US", {
-            weekday: "long",
-            month: "short",
-            day: "numeric",
-          })}
-          . Call ahead before you drive.
-        </p>
-      )}
 
       <MapView
         venues={filtered}
