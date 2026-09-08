@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { Fragment, useCallback, useEffect, useMemo, useState } from "react";
 import FilterBar from "./components/FilterBar.jsx";
 import MapView from "./components/MapView.jsx";
 import FeaturedCard from "./components/FeaturedCard.jsx";
@@ -22,6 +22,27 @@ const EMPTY_FILTERS = {
 export function venueSlug(name) {
   return name.toLowerCase().replace(/[^a-z0-9]+/g, "-");
 }
+
+// One predicate, used both for the live list and for the empty state's
+// "which single filter is doing the damage?" probe.
+function matchesFilters(v, f) {
+  const q = f.q.trim().toLowerCase();
+  return (
+    (!q || `${v.venue_name} ${v.city} ${v.county}`.toLowerCase().includes(q)) &&
+    (!f.county || v.county === f.county) &&
+    (!f.city || v.city === f.city) &&
+    (f.fish.length === 0 || f.fish.some((x) => v.fish.includes(x))) &&
+    (f.types.length === 0 || f.types.includes(v.venue_type)) &&
+    (!f.takeout || v.takeout) &&
+    (!f.ayce || v.all_you_can_eat)
+  );
+}
+
+// A jump line back to the filters every dozen cards. The full embed is one
+// 24,000px document inside an auto-height iframe: it never scrolls itself,
+// so nothing can be pinned, and a single control at the end of 97 listings
+// is a control nobody reaches.
+const JUMP_EVERY = 12;
 
 function milesBetween(a, b) {
   const R = 3958.8; // earth radius, miles
@@ -76,20 +97,10 @@ export default function App({ compact = false }) {
 
   const venues = data ? data.venues : [];
 
-  const filtered = useMemo(() => {
-    const q = filters.q.trim().toLowerCase();
-    return venues.filter(
-      (v) =>
-          (!q ||
-            `${v.venue_name} ${v.city} ${v.county}`.toLowerCase().includes(q)) &&
-        (!filters.county || v.county === filters.county) &&
-        (!filters.city || v.city === filters.city) &&
-        (filters.fish.length === 0 || filters.fish.some((f) => v.fish.includes(f))) &&
-        (filters.types.length === 0 || filters.types.includes(v.venue_type)) &&
-        (!filters.takeout || v.takeout) &&
-        (!filters.ayce || v.all_you_can_eat)
-    );
-  }, [venues, filters]);
+  const filtered = useMemo(
+    () => venues.filter((v) => matchesFilters(v, filters)),
+    [venues, filters]
+  );
 
   const miles = useMemo(() => {
     if (!userLoc) return {};
@@ -167,13 +178,24 @@ export default function App({ compact = false }) {
     setFocus({ name, source, ts: Date.now() });
   }, []);
 
-  // Guide → listings loop: filter to one species and jump to the results.
-  // In compact the count line is pinned above the scroll panel — no jump.
-  const findFish = useCallback((fish) => {
-    setFilters((f) => ({ ...f, fish: [fish] }));
-    if (!compact)
-      document.querySelector(".ff-count")?.scrollIntoView({ block: "start" });
-  }, [compact]);
+  // Scrolling alone strands a keyboard reader: the control they activated is
+  // now offscreen and Tab carries on from there. Move focus with the view.
+  const goToResults = useCallback(() => {
+    document.querySelector(".ff-results")?.scrollIntoView({ block: "start" });
+    document.querySelector(".ff-count")?.focus({ preventScroll: true });
+  }, []);
+
+  // Guide → listings loop: filter to one species and jump to the results
+  // header, which now sits above the map — so the reader lands on the new
+  // count and a map of just that species.
+  // In compact the header is pinned above the scroll panel — no jump.
+  const findFish = useCallback(
+    (fish) => {
+      setFilters((f) => ({ ...f, fish: [fish] }));
+      if (!compact) goToResults();
+    },
+    [compact, goToResults]
+  );
 
   const onMarkerClick = useCallback(
     (name) => focusVenue(name, "map"),
@@ -184,8 +206,11 @@ export default function App({ compact = false }) {
       focusVenue(name, "list");
       // The reader is deep in the list — bring the map back to them.
       // (Compact keeps the map pinned in view; nothing to scroll.)
-      if (!compact)
-        document.querySelector(".ff-map")?.scrollIntoView({ block: "start" });
+      if (!compact) {
+        const map = document.querySelector(".ff-map");
+        map?.scrollIntoView({ block: "start" });
+        map?.focus({ preventScroll: true });
+      }
     },
     [focusVenue, compact]
   );
@@ -234,11 +259,79 @@ export default function App({ compact = false }) {
   const clearFilters = () => setFilters(EMPTY_FILTERS);
   const loading = !data && !error;
 
+  // "No results" is a dead end unless it names the way out. Probe each active
+  // filter on its own and offer to drop whichever one is costing the most.
+  const loosen = useMemo(() => {
+    if (!hasFilters || filtered.length > 0) return null;
+    const q = filters.q.trim();
+    const dims = [
+      q && { key: "q", value: "", label: `the search for “${q}”` },
+      filters.county && {
+        key: "county",
+        value: "",
+        label: `the ${filters.county} County filter`,
+      },
+      filters.city && {
+        key: "city",
+        value: "",
+        label: `the ${filters.city} filter`,
+      },
+      filters.fish.length > 0 && {
+        key: "fish",
+        value: [],
+        label:
+          filters.fish.length === 1
+            ? `the ${filters.fish[0]} filter`
+            : "the fish filters",
+      },
+      filters.types.length > 0 && {
+        key: "types",
+        value: [],
+        label:
+          filters.types.length === 1
+            ? "the venue-type filter"
+            : "the venue-type filters",
+      },
+      filters.takeout && { key: "takeout", value: false, label: "Takeout" },
+      filters.ayce && { key: "ayce", value: false, label: "All You Can Eat" },
+    ].filter(Boolean);
+    let best = null;
+    for (const d of dims) {
+      const n = venues.filter((v) =>
+        matchesFilters(v, { ...filters, [d.key]: d.value })
+      ).length;
+      if (n > 0 && (!best || n > best.n)) best = { ...d, n };
+    }
+    return best;
+  }, [venues, filters, filtered.length, hasFilters]);
+
   const appClass = `ff-app ${compact ? "ff-app--compact" : ""}`;
+
+  // The masthead ships with the error state too: a naked grey box dropped
+  // mid-article reads as a broken page, not as our tool having a bad minute.
+  const header = (
+    <header className="ff-header">
+      <img
+        className="ff-badge"
+        src={`${import.meta.env.BASE_URL}brand/wpr-typewriter-192.png`}
+        alt="Wausau Pilot & Review"
+        width="72"
+        height="72"
+      />
+      <h1>Friday Fish Fry Finder</h1>
+      {!compact && (
+        <p className="ff-tagline">
+          Every fish fry in Marathon County and its neighbors — the prices,
+          the perch, the potato pancakes.
+        </p>
+      )}
+    </header>
+  );
 
   if (error) {
     return (
       <div className={appClass}>
+        {header}
         <div className="ff-error">
           <p>
             The fish fry data didn&rsquo;t load ({error}). If it keeps
@@ -254,22 +347,7 @@ export default function App({ compact = false }) {
 
   return (
     <div className={appClass}>
-      <header className="ff-header">
-        <img
-          className="ff-badge"
-          src={`${import.meta.env.BASE_URL}brand/wpr-typewriter-192.png`}
-          alt="Wausau Pilot & Review"
-          width="72"
-          height="72"
-        />
-        <h1>Friday Fish Fry Finder</h1>
-        {!compact && (
-          <p className="ff-tagline">
-            Every fish fry in Marathon County and its neighbors — the prices,
-            the perch, the potato pancakes.
-          </p>
-        )}
-      </header>
+      {header}
 
       <FilterBar
         venues={venues}
@@ -282,6 +360,49 @@ export default function App({ compact = false }) {
         onSortAddress={sortByAddress}
         locNote={locNote}
       />
+
+      {/* The results header sits between the filters and the map on purpose:
+          it is the answer to the reader's question and the feedback for the
+          control they just touched, and "Clear filters" belongs beside the
+          filters rather than a map's height below them. */}
+      <div className="ff-results">
+        <h2 className="ff-count" tabIndex={-1}>
+          {loading ? (
+            <span className="ff-count-skel" aria-hidden="true" />
+          ) : (
+            <span aria-live="polite">
+              {hasFilters
+                ? `${filtered.length} of ${venues.length} fish fries match.`
+                : `${venues.length} fish fries this Friday.`}
+            </span>
+          )}
+        </h2>
+        {data && (
+          <p className="ff-count-actions">
+            {hasFilters && (
+              <button type="button" className="ff-clear" onClick={clearFilters}>
+                Clear filters
+              </button>
+            )}
+            <button type="button" className="ff-clear" onClick={surpriseMe}>
+              Can&rsquo;t decide? Spin for a fry
+            </button>
+          </p>
+        )}
+      </div>
+
+      {data && staleHours > 26 && (
+        <p className="ff-stale">
+          Heads up: these listings haven&rsquo;t refreshed since{" "}
+          {new Date(data.generated_at).toLocaleDateString("en-US", {
+            weekday: "long",
+            month: "short",
+            day: "numeric",
+          })}
+          . Call ahead before you drive.
+        </p>
+      )}
+
       <MapView
         venues={filtered}
         focus={focus}
@@ -300,22 +421,6 @@ export default function App({ compact = false }) {
         <span className="ff-dot ff-dot--featured" /> featured fry
       </p>
 
-      {data && (
-        <p className="ff-count" aria-live="polite">
-          {hasFilters
-            ? `${filtered.length} of ${venues.length} fish fries match.`
-            : `${venues.length} fish fries this Friday.`}
-          {hasFilters && (
-            <button type="button" className="ff-clear" onClick={clearFilters}>
-              Clear filters
-            </button>
-          )}
-          <button type="button" className="ff-clear" onClick={surpriseMe}>
-            Can&rsquo;t decide? Spin for a fry
-          </button>
-        </p>
-      )}
-
       <div className={compact ? "ff-scroll" : undefined}>
       {featured && (
         <FeaturedCard
@@ -329,33 +434,52 @@ export default function App({ compact = false }) {
       <section className="ff-list" aria-label="Fish fry listings">
         {loading &&
           [0, 1, 2].map((i) => <div key={i} className="ff-card ff-skeleton" />)}
-        {listVenues.map((v) => (
-          <VenueCard
-            key={v.venue_name}
-            venue={v}
-            onShowMap={onShowMap}
-            distance={miles[v.venue_name]}
-            selected={focus?.name === v.venue_name}
-          />
+        {listVenues.map((v, i) => (
+          <Fragment key={v.venue_name}>
+            {i > 0 && i % JUMP_EVERY === 0 && (
+              <p className="ff-jump">
+                <button
+                  type="button"
+                  className="ff-jumplink"
+                  onClick={goToResults}
+                >
+                  ↑ Filters &amp; map
+                </button>
+              </p>
+            )}
+            <VenueCard
+              venue={v}
+              onShowMap={onShowMap}
+              distance={miles[v.venue_name]}
+              selected={focus?.name === v.venue_name}
+            />
+          </Fragment>
         ))}
         {data && listVenues.length === 0 && (
           <div className="ff-empty">
             <p>No fish fries match those filters. Loosen up — it&rsquo;s Friday.</p>
+            {loosen && (
+              <p className="ff-empty-hint">
+                Dropping {loosen.label} would show {loosen.n}{" "}
+                {loosen.n === 1 ? "fish fry" : "fish fries"}.{" "}
+                <button
+                  type="button"
+                  className="ff-maplink"
+                  onClick={() =>
+                    setFilters((f) => ({ ...f, [loosen.key]: loosen.value }))
+                  }
+                >
+                  Drop it
+                </button>
+              </p>
+            )}
             <button type="button" className="ff-chip" onClick={clearFilters}>
               Clear filters
             </button>
           </div>
         )}
         {listVenues.length > 3 && (
-          <button
-            type="button"
-            className="ff-backtomap"
-            onClick={() =>
-              document
-                .querySelector(".ff-map")
-                ?.scrollIntoView({ block: "start" })
-            }
-          >
+          <button type="button" className="ff-backtomap" onClick={goToResults}>
             ↑ Back to the map
           </button>
         )}
@@ -364,17 +488,6 @@ export default function App({ compact = false }) {
       <FishGuide venues={venues} onFindFish={findFish} />
 
       <footer className="ff-footer">
-        {compact && (
-          <p className="ff-fullguide">
-            <a
-              href="https://rowanflynnpilot.github.io/wpr-fish-fry/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Open the full guide ↗
-            </a>
-          </p>
-        )}
         <div className="ff-footer-brand">
           <img
             src={`${import.meta.env.BASE_URL}brand/wpr-typewriter-192.png`}
@@ -400,17 +513,6 @@ export default function App({ compact = false }) {
             .
           </span>
         )}
-        {data && staleHours > 26 && (
-          <p className="ff-stale">
-            Heads up: these listings haven&rsquo;t refreshed since{" "}
-            {new Date(data.generated_at).toLocaleDateString("en-US", {
-              weekday: "long",
-              month: "short",
-              day: "numeric",
-            })}
-            . Call ahead before you drive.
-          </p>
-        )}
         <p className="ff-advertise">
           Run a fish fry?{" "}
           <a
@@ -424,6 +526,21 @@ export default function App({ compact = false }) {
         </p>
       </footer>
       </div>
+
+      {/* Pinned below the scroll panel, not inside it. The compact frame shows
+          about one listing at a time, so its one exit to the full 97 must not
+          sit 22,000px down the very panel the reader is stuck in. */}
+      {compact && (
+        <p className="ff-fullguide">
+          <a
+            href="https://rowanflynnpilot.github.io/wpr-fish-fry/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Open the full guide ↗
+          </a>
+        </p>
+      )}
     </div>
   );
 }

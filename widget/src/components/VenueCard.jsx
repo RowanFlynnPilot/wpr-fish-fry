@@ -69,11 +69,15 @@ export default function VenueCard({
               photoExpanded ? "Click to shrink" : "Click to see the full photo"
             }
           >
+            {/* The featured photo is the paid slot's lead image and sits
+                near the top of both embeds — lazy-loading it only delays
+                the card's real height and shifts the list under it. */}
             <img
               className="ff-card-photo"
               src={photoSrc}
               alt={v.venue_name}
-              loading="lazy"
+              loading={featured ? "eager" : "lazy"}
+              decoding="async"
             />
           </button>
           <a

@@ -137,6 +137,24 @@ a {
   align-items: baseline;
 }
 
+/* The Find row is one control strip. Left to themselves the input measured
+   31px and the selects 36px, so baseline alignment set their tops 4px apart
+   — a ragged edge across the widest row in the widget. Equal heights, and
+   centered rather than baseline-aligned, since an <input> and a <select>
+   never agree on a baseline. */
+.ff-search,
+.ff-county {
+  height: 34px;
+}
+
+/* Only while the group is a row. Below 520px it becomes a column, where
+   `center` would centre the FIND label while every other label sits left. */
+@media (min-width: 521px) {
+  .ff-filter-group--find {
+    align-items: center;
+  }
+}
+
 .ff-search {
   flex: 1;
   width: 100%;
@@ -172,6 +190,65 @@ a {
   outline-offset: 1px;
 }
 
+/* display:contents so the selects stay direct flex children of the group on
+   wide screens and keep its baseline alignment exactly; the wrapper only
+   becomes a real box at phone widths, where it pairs them on one row. */
+.ff-where {
+  display: contents;
+}
+
+/* Fish and venue fold behind this on narrow frames. Styled as one of the
+   bar's own small-caps labels so the disclosure reads as part of the form
+   rather than a control bolted onto it. */
+.ff-more {
+  border-top: 1px solid var(--line);
+  padding-top: 8px;
+}
+
+/* display:list-item, not flex: a flex summary drops its ::marker in Chrome,
+   which leaves a disclosure with no affordance that it opens at all. */
+.ff-more-summary {
+  display: list-item;
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ink-soft);
+  cursor: pointer;
+  padding: 4px 0;
+  list-style-position: inside;
+}
+
+.ff-more-summary::marker {
+  color: var(--teal);
+}
+
+.ff-more-summary:hover {
+  color: var(--teal-dark);
+}
+
+.ff-more-summary:focus-visible {
+  outline: 2px solid var(--teal-dark);
+  outline-offset: 2px;
+}
+
+/* A collapsed refinement must never silently explain a short list. */
+.ff-more-count {
+  display: inline-block;
+  margin-left: 8px;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  background: var(--teal);
+  color: var(--paper);
+  border-radius: 999px;
+  padding: 1px 8px;
+}
+
+.ff-more[open] > .ff-filter-group {
+  margin-top: 8px;
+}
+
 .ff-locnote {
   font-size: 11px;
   font-style: italic;
@@ -189,6 +266,7 @@ a {
 .ff-addr-input {
   flex: 1;
   width: auto;
+  height: 28px;
   padding: 4px 10px;
   font-size: 12px;
 }
@@ -415,19 +493,54 @@ a {
   color: var(--ink-soft);
 }
 
-/* ---------- result count ---------- */
+/* ---------- results header ----------
+   Sits between the filters and the map: the count is the answer to the
+   reader's question and the feedback for the filter they just touched, and
+   it is the <h2> the 97 venue <h3>s hang under. Status and its reset sit
+   left; the playful spin sits right, so two very different actions stop
+   wearing one affordance. */
 
-.ff-count {
+.ff-results {
   display: flex;
   align-items: baseline;
-  gap: 10px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 4px 14px;
   margin: 0 0 12px;
+  scroll-margin-top: 8px;
+}
+
+.ff-count {
+  margin: 0;
   font-family: var(--display);
   font-weight: 500;
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--ink-soft);
+}
+
+.ff-count:focus {
+  outline: none;
+}
+
+.ff-count-actions {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin: 0;
+}
+
+/* Same shimmer as the card skeletons: the results line holds its place
+   instead of appearing from nowhere and shoving the map down. */
+.ff-count-skel {
+  display: inline-block;
+  width: 14ch;
+  height: 0.85em;
+  border-radius: 2px;
+  background: linear-gradient(100deg, #f4f4f4 40%, #ececec 50%, #f4f4f4 60%);
+  background-size: 200% 100%;
+  animation: ff-shimmer 1.4s linear infinite;
 }
 
 .ff-clear {
@@ -847,6 +960,45 @@ a {
   border-color: var(--teal);
 }
 
+/* Newspaper jump line. The full embed is one tall document in an iframe that
+   never scrolls itself, so nothing can be pinned — the way back to the
+   filters has to be laid into the column at intervals instead. */
+.ff-jump {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+}
+
+.ff-jump::before,
+.ff-jump::after {
+  content: "";
+  flex: 1;
+  border-top: 1px solid var(--line);
+}
+
+.ff-jumplink {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 4px 8px;
+  border: none;
+  background: none;
+  color: var(--ink-soft);
+  cursor: pointer;
+}
+
+.ff-jumplink:hover {
+  color: var(--teal-dark);
+}
+
+.ff-jumplink:focus-visible {
+  outline: 2px solid var(--teal-dark);
+  outline-offset: 2px;
+}
+
 /* ---------- fish field guide ---------- */
 
 .ff-guide {
@@ -924,6 +1076,21 @@ a {
   border-radius: 4px;
 }
 
+/* Chips capitalize so species read as "Perch". A sentence in a chip must
+   not: this button said "Clear Filters" beside a "Clear filters" elsewhere,
+   and the error chip said "Try Again". */
+.ff-empty .ff-chip,
+.ff-error .ff-chip {
+  text-transform: none;
+}
+
+/* An empty state that only says "nothing here" leaves the reader to guess
+   which of seven filters did it. This names the costly one and drops it. */
+.ff-empty-hint {
+  margin: 0 0 12px;
+  color: var(--ink);
+}
+
 .ff-footer {
   margin-top: 20px;
   padding-top: 14px;
@@ -958,10 +1125,18 @@ a {
   color: var(--teal-dark);
 }
 
+/* A "call ahead, the data may be stale" warning is worthless in a footer
+   24,000px below the fold. It now runs directly above the map, set as a
+   newspaper standing notice: hairline rules, no alarm color. */
 .ff-stale {
-  margin: 8px 0 0;
+  margin: 0 0 12px;
+  padding: 7px 2px;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
   font-style: italic;
+  font-size: 12px;
   color: var(--ink);
+  text-align: center;
 }
 
 .ff-advertise {
@@ -988,6 +1163,19 @@ a {
     gap: 4px;
   }
 
+  /* County and town go side by side rather than as two stacked full-width
+     bars — one location decision, one row. */
+  .ff-where {
+    display: flex;
+    gap: 6px;
+    width: 100%;
+  }
+
+  .ff-where .ff-county {
+    flex: 1;
+    min-width: 0;
+  }
+
   .ff-card-facts {
     flex-direction: column;
     gap: 2px;
@@ -999,9 +1187,19 @@ a {
     font-size: 14px;
   }
 
+  .ff-search,
+  .ff-county {
+    height: 42px;
+    font-size: 14px;
+  }
+
   .ff-search {
     padding: 9px 10px;
-    font-size: 14px;
+  }
+
+  .ff-addr-input {
+    height: 36px;
+    font-size: 13px;
   }
 
   .ff-links {
@@ -1024,6 +1222,7 @@ a {
 
   .ff-card.is-selected,
   .ff-skeleton,
+  .ff-count-skel,
   .ff-featured .ff-card-photo {
     animation: none;
   }
@@ -1032,12 +1231,20 @@ a {
 /* ---------- print: readers pin Friday lists to the fridge ---------- */
 
 @media print {
+  /* .ff-photo-wrap, not .ff-card-photo: hiding the image alone left the
+     absolutely-positioned "Download" pill printing over the card body, and
+     the photo button's ink background printing as a black bar. The legend
+     and the jump lines describe a map and a scroll that aren't on paper. */
   .ff-filters,
   .ff-map,
+  .ff-maplegend,
   .ff-maplink,
   .ff-clear,
+  .ff-count-actions,
   .ff-badge,
-  .ff-card-photo {
+  .ff-photo-wrap,
+  .ff-jump,
+  .ff-backtomap {
     display: none;
   }
 
@@ -1125,9 +1332,26 @@ html.ff-embed #root {
   margin-right: -6px;
 }
 
-/* The map never scrolls away in compact, so no way back is needed. */
-.ff-app--compact .ff-backtomap {
+/* The map and filters never scroll away in compact, so no way back is
+   needed — and a jump line every dozen cards would be pure noise. */
+.ff-app--compact .ff-backtomap,
+.ff-app--compact .ff-jump {
   display: none;
+}
+
+/* The compact frame is a fixed 1100px. Chrome above the list has to leave
+   the list something: on a phone the filter bar alone stood 481px and the
+   scroll panel was measured at 165px — a third of one card. The disclosure
+   in FilterBar reclaims most of it; the map gives back the rest. */
+@media (max-width: 520px) {
+  .ff-app--compact .ff-map {
+    height: 200px;
+  }
+
+  .ff-app--compact .ff-header {
+    margin-bottom: 6px;
+    padding-bottom: 6px;
+  }
 }
 
 .ff-app--compact .ff-footer {
@@ -1137,7 +1361,11 @@ html.ff-embed #root {
 .ff-fullguide {
   font-family: var(--display);
   font-size: 14px;
-  margin: 0 0 10px;
+  flex: none;
+  margin: 8px 0 0;
+  padding-top: 8px;
+  border-top: 1px solid var(--line);
+  text-align: center;
 }
 
 .ff-fullguide a {

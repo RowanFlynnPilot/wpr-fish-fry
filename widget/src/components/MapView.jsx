@@ -292,5 +292,7 @@ export default function MapView({ venues, focus, userLoc, miles, onShowDetails }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [focus]);
 
-  return <div className="ff-map" ref={containerRef} />;
+  // tabIndex -1 so "Show on map" can land focus here: without it the reader
+  // is scrolled to the map while focus stays on a button now offscreen.
+  return <div className="ff-map" ref={containerRef} tabIndex={-1} />;
 }
