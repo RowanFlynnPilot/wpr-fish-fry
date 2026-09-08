@@ -80,15 +80,6 @@ export default function VenueCard({
               decoding="async"
             />
           </button>
-          <a
-            className="ff-photo-dl"
-            href={photoSrc}
-            download={`${venueSlug(v.venue_name)}.jpg`}
-            aria-label={`Download the ${v.venue_name} photo`}
-            title="Download photo"
-          >
-            Download
-          </a>
         </div>
       )}
 
