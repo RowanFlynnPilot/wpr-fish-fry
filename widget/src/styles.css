@@ -705,17 +705,16 @@ a {
   outline-offset: -2px;
 }
 
-/* Expanded = the whole photo, uncropped — but capped so a tall phone shot
-   doesn't push the venue's own name two screens down the page. The image
-   scales to fit and centers within the card. */
+/* Expanded = full card width at the photo's natural height, capped at 560px
+   so a tall phone shot doesn't push the venue's own name two screens down.
+   Landscape photos show whole; a square or portrait photo fills the frame
+   and trims top and bottom (the featured card keeps its plate-low bias)
+   rather than letterboxing between ink bars. */
 .ff-card .ff-photo-btn.is-expanded .ff-card-photo {
+  width: 100%;
   height: auto;
-  width: auto;
-  max-width: 100%;
   max-height: 560px;
-  margin: 0 auto;
-  display: block;
-  object-fit: contain;
+  object-fit: cover;
 }
 
 .ff-card-body {
