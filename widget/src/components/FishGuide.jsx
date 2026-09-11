@@ -53,6 +53,13 @@ const GUIDE = {
     menu: "Dinner plates and combo platters, usually the lighter option beside the beer-battered standards.",
     pairs: "Fries and slaw with a squeeze of lemon; a light lager.",
   },
+  salmon: {
+    title: "Salmon",
+    flavor:
+      "The fry's off-ramp — rich, meaty, and full-flavored, usually baked or broiled rather than battered, for the diner who wants fish without the fryer.",
+    menu: "A baked or broiled fillet, most often the non-fried option beside the traditional plates.",
+    pairs: "Baked potato or wild rice and a green salad; a pinot noir or an amber ale.",
+  },
   shrimp: {
     title: "Shrimp",
     flavor:

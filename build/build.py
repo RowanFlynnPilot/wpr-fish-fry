@@ -110,7 +110,7 @@ CITY_COUNTY = {
 
 VENUE_TYPES = {"restaurant", "supper_club", "bar", "vfw_legion"}
 TIERS = {"free", "standard", "featured"}
-FISH = {"perch", "cod", "walleye", "bluegill", "haddock", "smelt", "shrimp", "flounder"}
+FISH = {"perch", "cod", "walleye", "bluegill", "haddock", "smelt", "shrimp", "flounder", "salmon"}
 
 
 def die(errors: list[str]) -> None:

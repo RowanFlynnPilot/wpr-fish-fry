@@ -39,7 +39,7 @@ copy it into a new Google Sheet to start.
 | venue_type | required, enum: `restaurant` `supper_club` `bar` `vfw_legion` |
 | address, city | required — geocoded at build, never edit coordinates in the sheet. `city` also drives the reader-facing **county filter** via `CITY_COUNTY` in build.py; an unmapped city fails the build |
 | phone, website | optional |
-| fish | required, comma-separated from: perch, cod, walleye, bluegill, haddock, smelt, shrimp |
+| fish | required, comma-separated from: perch, cod, walleye, bluegill, haddock, smelt, flounder, salmon, shrimp — the `FISH` set in build.py is authoritative |
 | price_low, price_high | required, numeric, low ≤ high |
 | sides, hours | sides optional, hours required — both free text |
 | all_you_can_eat, takeout, featured_this_week, active | exactly `TRUE` or `FALSE`, nothing else |
