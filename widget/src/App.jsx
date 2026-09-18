@@ -324,7 +324,7 @@ export default function App({ compact = false }) {
 
   if (error) {
     return (
-      <div className={appClass}>
+      <main className={appClass}>
         {header}
         <div className="ff-error">
           <p>
@@ -335,12 +335,18 @@ export default function App({ compact = false }) {
             Try again
           </button>
         </div>
-      </div>
+      </main>
     );
   }
 
   return (
-    <div className={appClass}>
+    <main className={appClass}>
+      {/* Roughly 400 controls sit between the filters and the field guide —
+          five per listing. Without this a keyboard reader tabs through every
+          one of them to reach anything below the list. Hidden until focused. */}
+      <a className="ff-skip" href="#ff-guide">
+        Skip the listings
+      </a>
       {header}
 
       <FilterBar
@@ -523,6 +529,6 @@ export default function App({ compact = false }) {
           </a>
         </p>
       )}
-    </div>
+    </main>
   );
 }

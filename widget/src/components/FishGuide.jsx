@@ -76,7 +76,7 @@ export default function FishGuide({ venues, onFindFish }) {
   if (present.length === 0) return null;
 
   return (
-    <section className="ff-guide" aria-label="Field guide to the fish">
+    <section id="ff-guide" className="ff-guide" aria-label="Field guide to the fish">
       <h2 className="ff-guide-head">Know Your Fry</h2>
       <p className="ff-guide-tagline">
         A field guide to what&rsquo;s in the fryer — and what to order with it.
