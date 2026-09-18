@@ -10,6 +10,19 @@
   --ink-soft: #666666;
   --line: #e0e0e0;
   --rule: #111111;
+
+  /* Channels, so every tint and shadow derives from the token above rather
+     than repeating the literal. Changing the teal used to mean finding
+     eight hand-written rgba() copies of it. */
+  --teal-rgb: 58 134 124;
+  --ink-rgb: 17 17 17;
+
+  /* Venue-type wayfinding. One value per type, shared by the map pins and
+     the legend swatches beneath them — they drifted apart once already. */
+  --type-restaurant: #3a867c;
+  --type-supper-club: #7a3540;
+  --type-bar: #a06a1f;
+  --type-vfw: #55622e;
   --display: "Oswald", "Arial Narrow", Helvetica, sans-serif;
   --body: "Merriweather", Georgia, serif;
 }
@@ -38,12 +51,12 @@ body {
    default blue. */
 
 ::selection {
-  background: rgba(58, 134, 124, 0.24);
+  background: rgb(var(--teal-rgb) / 0.24);
   color: var(--ink);
 }
 
 html {
-  scrollbar-color: var(--teal) rgba(58, 134, 124, 0.1);
+  scrollbar-color: var(--teal) rgb(var(--teal-rgb) / 0.1);
 }
 
 input,
@@ -296,7 +309,7 @@ a {
 }
 
 .ff-chip:hover {
-  background: rgba(58, 134, 124, 0.12);
+  background: rgb(var(--teal-rgb) / 0.12);
 }
 
 .ff-chip.is-on {
@@ -347,22 +360,22 @@ a {
   border-radius: 50% 50% 50% 0;
   transform: rotate(-45deg);
   background: var(--teal);
-  border: 1.5px solid #ffffff;
+  border: 1.5px solid var(--paper);
   box-shadow: 0 0 0 1px var(--line);
   vertical-align: -1px;
   margin-right: 5px;
 }
 
 .ff-dot--supper_club {
-  background: #7a3540;
+  background: var(--type-supper-club);
 }
 
 .ff-dot--bar {
-  background: #a06a1f;
+  background: var(--type-bar);
 }
 
 .ff-dot--vfw_legion {
-  background: #55622e;
+  background: var(--type-vfw);
 }
 
 .ff-dot--featured {
@@ -396,8 +409,8 @@ a {
   border-radius: 50% 50% 50% 0;
   transform: rotate(-45deg);
   background: var(--teal);
-  border: 2px solid #ffffff;
-  box-shadow: 0 2px 6px rgba(17, 17, 17, 0.35);
+  border: 2px solid var(--paper);
+  box-shadow: 0 2px 6px rgb(var(--ink-rgb) / 0.35);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -409,9 +422,9 @@ a {
   line-height: 1;
 }
 
-.ff-pin--supper_club { background: #7a3540; }
-.ff-pin--bar { background: #a06a1f; }
-.ff-pin--vfw_legion { background: #55622e; }
+.ff-pin--supper_club { background: var(--type-supper-club); }
+.ff-pin--bar { background: var(--type-bar); }
+.ff-pin--vfw_legion { background: var(--type-vfw); }
 
 .ff-pin-featured {
   width: 40px;
@@ -436,7 +449,7 @@ a {
   background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 4px;
-  box-shadow: 0 1px 4px rgba(17, 17, 17, 0.18);
+  box-shadow: 0 1px 4px rgb(var(--ink-rgb) / 0.18);
   padding: 3px 9px;
   pointer-events: none;
   z-index: 5;
@@ -453,10 +466,10 @@ a {
   width: 36px;
   height: 36px;
   background: var(--teal-dark);
-  color: #ffffff;
-  border: 2px solid #ffffff;
+  color: var(--paper);
+  border: 2px solid var(--paper);
   border-radius: 50%;
-  box-shadow: 0 2px 6px rgba(17, 17, 17, 0.35);
+  box-shadow: 0 2px 6px rgb(var(--ink-rgb) / 0.35);
   font-family: var(--display);
   font-weight: 700;
   font-size: 14px;
@@ -468,8 +481,8 @@ a {
   height: 16px;
   border-radius: 50%;
   background: var(--teal);
-  border: 2px solid #ffffff;
-  box-shadow: 0 1px 4px rgba(17, 17, 17, 0.35);
+  border: 2px solid var(--paper);
+  box-shadow: 0 1px 4px rgb(var(--ink-rgb) / 0.35);
 }
 
 .maplibregl-popup-content strong {
@@ -486,7 +499,7 @@ a {
   font-family: var(--body);
   font-size: 13px;
   border-radius: 4px;
-  box-shadow: 0 4px 14px rgba(17, 17, 17, 0.18);
+  box-shadow: 0 4px 14px rgb(var(--ink-rgb) / 0.18);
   padding: 10px 14px;
 }
 
@@ -557,7 +570,7 @@ a {
   font-size: 12px;
   padding: 4px 0;
   border: none;
-  border-bottom: 1px solid rgba(58, 134, 124, 0.4);
+  border-bottom: 1px solid rgb(var(--teal-rgb) / 0.4);
   background: none;
   color: var(--teal-dark);
   cursor: pointer;
@@ -634,7 +647,7 @@ a {
 }
 
 .ff-card:hover {
-  box-shadow: 0 2px 8px rgba(17, 17, 17, 0.1);
+  box-shadow: 0 2px 8px rgb(var(--ink-rgb) / 0.1);
 }
 
 .ff-card:not(.ff-card-featured):not(.is-selected):hover {
@@ -647,16 +660,16 @@ a {
 
 .ff-card.is-selected {
   border-color: var(--teal);
-  box-shadow: 0 0 0 2px rgba(58, 134, 124, 0.25);
+  box-shadow: 0 0 0 2px rgb(var(--teal-rgb) / 0.25);
   animation: ff-pulse 900ms ease-out 1;
 }
 
 @keyframes ff-pulse {
   0% {
-    box-shadow: 0 0 0 6px rgba(58, 134, 124, 0.35);
+    box-shadow: 0 0 0 6px rgb(var(--teal-rgb) / 0.35);
   }
   100% {
-    box-shadow: 0 0 0 2px rgba(58, 134, 124, 0.25);
+    box-shadow: 0 0 0 2px rgb(var(--teal-rgb) / 0.25);
   }
 }
 
@@ -838,7 +851,7 @@ a {
 }
 
 .ff-tag-fish {
-  background: rgba(58, 134, 124, 0.14);
+  background: rgb(var(--teal-rgb) / 0.14);
   color: var(--teal-dark);
 }
 
@@ -896,7 +909,7 @@ a {
 .ff-links a {
   color: var(--teal-dark);
   text-decoration: none;
-  border-bottom: 1px solid rgba(58, 134, 124, 0.4);
+  border-bottom: 1px solid rgb(var(--teal-rgb) / 0.4);
 }
 
 .ff-links a:hover {
@@ -914,7 +927,7 @@ a {
   font-size: 13px;
   padding: 0;
   border: none;
-  border-bottom: 1px solid rgba(58, 134, 124, 0.4);
+  border-bottom: 1px solid rgb(var(--teal-rgb) / 0.4);
   background: none;
   color: var(--teal-dark);
   cursor: pointer;
