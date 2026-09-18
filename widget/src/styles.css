@@ -143,6 +143,10 @@ a {
 
 /* ---------- filters ---------- */
 
+/* Groups separate by space, not rules. The gap between groups has to beat
+   the largest gap inside one by about 2x or the rows read as a single
+   undifferentiated block — which is what 10px between groups and 10px
+   between a label and its chips was doing. */
 .ff-filters {
   background: var(--paper);
   border: 1px solid var(--line);
@@ -150,13 +154,13 @@ a {
   padding: 12px 14px;
   margin-bottom: 14px;
   display: grid;
-  gap: 10px;
+  gap: 18px;
 }
 
 .ff-filter-group {
   display: flex;
   align-items: baseline;
-  gap: 10px;
+  gap: 8px;
 }
 
 .ff-filter-label {
@@ -263,8 +267,10 @@ a {
   color: var(--teal);
 }
 
-.ff-more-summary:hover {
-  color: var(--teal-dark);
+@media (hover: hover) {
+  .ff-more-summary:hover {
+    color: var(--teal-dark);
+  }
 }
 
 .ff-more-summary:focus-visible {
@@ -329,8 +335,10 @@ a {
   transition: background 120ms ease, color 120ms ease;
 }
 
-.ff-chip:hover {
-  background: rgb(var(--teal-rgb) / 0.12);
+@media (hover: hover) {
+  .ff-chip:hover {
+    background: rgb(var(--teal-rgb) / 0.12);
+  }
 }
 
 /* --teal-dark, not --teal: white on #3a867c measures 4.30:1 and the
@@ -481,7 +489,9 @@ a {
 
 .ff-pin-tip strong { font-weight: 500; }
 
-.ff-pin-wrap:hover .ff-pin-tip { display: block; }
+@media (hover: hover) {
+  .ff-pin-wrap:hover .ff-pin-tip { display: block; }
+}
 
 .ff-cluster {
   display: flex;
@@ -602,8 +612,10 @@ a {
   letter-spacing: normal;
 }
 
-.ff-clear:hover {
-  border-bottom-color: var(--teal-dark);
+@media (hover: hover) {
+  .ff-clear:hover {
+    border-bottom-color: var(--teal-dark);
+  }
 }
 
 .ff-clear:focus-visible,
@@ -670,12 +682,16 @@ a {
   transition: border-color 120ms ease, box-shadow 120ms ease;
 }
 
-.ff-card:hover {
-  box-shadow: 0 2px 8px rgb(var(--ink-rgb) / 0.1);
+@media (hover: hover) {
+  .ff-card:hover {
+    box-shadow: 0 2px 8px rgb(var(--ink-rgb) / 0.1);
+  }
 }
 
-.ff-card:not(.ff-card-featured):not(.is-selected):hover {
-  border-color: var(--teal);
+@media (hover: hover) {
+  .ff-card:not(.ff-card-featured):not(.is-selected):hover {
+    border-color: var(--teal);
+  }
 }
 
 .ff-card {
@@ -936,8 +952,10 @@ a {
   border-bottom: 1px solid rgb(var(--teal-rgb) / 0.4);
 }
 
-.ff-links a:hover {
-  border-bottom-color: var(--teal-dark);
+@media (hover: hover) {
+  .ff-links a:hover {
+    border-bottom-color: var(--teal-dark);
+  }
 }
 
 .ff-links a:focus-visible {
@@ -957,8 +975,10 @@ a {
   cursor: pointer;
 }
 
-.ff-maplink:hover {
-  border-bottom-color: var(--teal-dark);
+@media (hover: hover) {
+  .ff-maplink:hover {
+    border-bottom-color: var(--teal-dark);
+  }
 }
 
 .ff-maplink:focus-visible {
@@ -980,9 +1000,11 @@ a {
   cursor: pointer;
 }
 
-.ff-backtomap:hover {
-  color: var(--teal-dark);
-  border-color: var(--teal);
+@media (hover: hover) {
+  .ff-backtomap:hover {
+    color: var(--teal-dark);
+    border-color: var(--teal);
+  }
 }
 
 /* Newspaper jump line. The full embed is one tall document in an iframe that
@@ -1015,8 +1037,10 @@ a {
   cursor: pointer;
 }
 
-.ff-jumplink:hover {
-  color: var(--teal-dark);
+@media (hover: hover) {
+  .ff-jumplink:hover {
+    color: var(--teal-dark);
+  }
 }
 
 .ff-jumplink:focus-visible {
@@ -1067,8 +1091,10 @@ a {
   color: var(--teal);
 }
 
-.ff-guide-entry summary:hover {
-  color: var(--teal-dark);
+@media (hover: hover) {
+  .ff-guide-entry summary:hover {
+    color: var(--teal-dark);
+  }
 }
 
 .ff-guide-entry summary:focus-visible {
@@ -1148,8 +1174,10 @@ a {
   text-decoration: none;
 }
 
-.ff-footer-brand a:hover {
-  color: var(--teal-dark);
+@media (hover: hover) {
+  .ff-footer-brand a:hover {
+    color: var(--teal-dark);
+  }
 }
 
 
@@ -1170,6 +1198,14 @@ a {
 
   .ff-card-featured .ff-card-photo {
     height: 260px;
+  }
+
+  /* Stacked groups need less absolute separation to read apart: 12 against
+     4 clears the 2x ratio while giving back most of the height that 18px
+     would cost on a phone, where the filter bar is already the tallest
+     thing above the map. */
+  .ff-filters {
+    gap: 12px;
   }
 
   .ff-filter-group {
@@ -1391,8 +1427,10 @@ html.ff-embed #root {
   border-bottom: 1px solid currentColor;
 }
 
-.ff-fullguide a:hover {
-  color: var(--ink);
+@media (hover: hover) {
+  .ff-fullguide a:hover {
+    color: var(--ink);
+  }
 }
 
 
