@@ -257,7 +257,7 @@ a {
   margin-left: 8px;
   font-size: 10px;
   letter-spacing: 0.08em;
-  background: var(--teal);
+  background: var(--teal-dark);
   color: var(--paper);
   border-radius: 999px;
   padding: 1px 8px;
@@ -312,8 +312,11 @@ a {
   background: rgb(var(--teal-rgb) / 0.12);
 }
 
+/* --teal-dark, not --teal: white on #3a867c measures 4.30:1 and the
+   threshold for this size is 4.5. The darker step measures 6.27:1. Applies
+   to every white-on-accent fill in the widget. */
 .ff-chip.is-on {
-  background: var(--teal);
+  background: var(--teal-dark);
   color: var(--paper);
 }
 
@@ -359,7 +362,7 @@ a {
   height: 11px;
   border-radius: 50% 50% 50% 0;
   transform: rotate(-45deg);
-  background: var(--teal);
+  background: var(--type-restaurant);
   border: 1.5px solid var(--paper);
   box-shadow: 0 0 0 1px var(--line);
   vertical-align: -1px;
@@ -408,7 +411,7 @@ a {
   height: 30px;
   border-radius: 50% 50% 50% 0;
   transform: rotate(-45deg);
-  background: var(--teal);
+  background: var(--type-restaurant);
   border: 2px solid var(--paper);
   box-shadow: 0 2px 6px rgb(var(--ink-rgb) / 0.35);
   display: flex;
