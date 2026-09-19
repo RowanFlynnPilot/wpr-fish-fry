@@ -39,6 +39,13 @@ const GUIDE = {
     menu: "Dinner plates and sandwiches; often the step-up option next to cod.",
     pairs: "Fries with malt vinegar; a pale ale.",
   },
+  pollock: {
+    title: "Pollock",
+    flavor:
+      "Cod's thriftier relative from the same family — mild, a little softer, with a fine flake that all but disappears under a good breading. Wild-caught Alaskan, and the reason a plate can still come in under fifteen dollars.",
+    menu: "The value plate, usually hand-breaded rather than beer-battered; often the most fish for the least money on the board.",
+    pairs: "Fries and slaw, tartar with a heavy hand; whatever's coldest on tap.",
+  },
   smelt: {
     title: "Smelt",
     flavor:
